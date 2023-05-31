@@ -1,0 +1,283 @@
+/* Font family */
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap");
+
+/* tailwind inport */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Variables */
+:root {
+  /* color  */
+  --color-primary: #0adab9;
+  --color-secondary: #bfc6d7;
+
+  --color-gray: #6a7ba8;
+  --color-dark: #181830;
+
+  --social-bg: #454c5f;
+
+  --bg-dark: #1a1f2c;
+  --bg-gray: #1e2433;
+
+  --border: #272646;
+}
+
+/**================================================== *
+ * ==========  Custom components  ========== *
+ * ================================================== */
+@layer components {
+  /* @TODO: Typography */
+  .paragraph-default {
+    @apply text-[16px] md:text-[18px] leading-[21px] md:leading-[30px] font-normal text-[color:var(--color-secondary)];
+  }
+  .paragraph-large {
+    @apply text-[18px] sm:text-[24px] leading-[24px] sm:leading-[34px] font-normal text-[color:var(--color-secondary)];
+  }
+  .paragraph-small {
+    @apply text-[16px] leading-[21px] font-semibold;
+  }
+  .figure-caption {
+    @apply text-[16px] leading-[22px] font-normal;
+  }
+  .heading-1 {
+    @apply text-[38px] 
+    sm:text-[57px]
+    md:text-[76px] 
+    leading-[49px] 
+    sm:leading-[74px]
+    md:leading-[99px] 
+    font-bold text-white;
+  }
+  .heading-2 {
+    @apply text-[32px] md:text-[57px] leading-[42px] md:leading-[74px] font-bold;
+  }
+  .heading-3 {
+    @apply text-[18px] md:text-[24px] leading-[23px] md:leading-[31px] font-semibold text-[color:var(--color-primary)];
+  }
+  .heading-4 {
+    @apply text-[24px] md:text-[32px] leading-[34px] md:leading-[42px] font-semibold text-white;
+  }
+  .heading-5 {
+    @apply text-[18px] sm:text-[24px] leading-[23px] sm:leading-[31px] font-semibold;
+  }
+  .heading-6 {
+    @apply text-[16px] md:text-[18px] leading-[23px] font-semibold;
+  }
+
+  /* @TODO: Button style */
+  .btn {
+    @apply inline-flex items-center justify-center uppercase text-[16px] sm:text-[18px] leading-[19px] sm:leading-[23px] font-semibold rounded-[5px] px-[15px] sm:px-[30px] py-[10px] sm:py-[15px] gap-1 hover:shadow-[4px_4px_9px_var(--bg-gray)] ease-out hover:translate-y-1 transition-all;
+  }
+  
+  .btn--primary {
+    @apply bg-[color:var(--color-primary)] text-[color:var(--color-dark)];
+  }
+  .btn--bark {
+    @apply bg-[#202636] text-white;
+  }
+  .btn__social {
+    @apply flex items-center justify-center bg-[color:var(--social-bg)] hover:bg-[color:var(--color-primary)] text-white w-8 xl:w-[40px] h-8 xl:h-[40px] hover:text-[color:var(--bg-dark)] rounded-full transition duration-500 ease-in-out;
+  }
+
+  .btn-community {
+    @apply inline-flex justify-center items-center rounded-full hover:shadow-[4px_4px_9px_var(--bg-gray)] ease-out hover:translate-y-1 transition-all;
+  }
+  .input-form {
+    @apply w-full focus-visible:outline-none p-[20px_120px_20px_30px] md:p-[20px_150px_20px_30px] rounded-[10px] border border-[#7C92C8] bg-[#2D364D] text-white placeholder:text-[#7C92C8];
+  }
+}
+/* =======  End of Custom components  ======= */
+
+/**================================================== *
+ * ==========  utilities  ========== *
+ * ================================================== */
+@layer utilities {
+  .box-shadow {
+    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.3);
+  }
+}
+/* =======  End of utilities  ======= */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Jost";
+
+  background: var(--bg-dark);
+
+  /* Paragraph Default */
+  @apply paragraph-default;
+
+  scroll-behavior: smooth !important;
+}
+
+.border-round-gradient {
+  border: 0.88px solid;
+
+  background: linear-gradient(0deg, var(--bg-dark), var(--bg-dark)) padding-box,
+    linear-gradient(180deg, #0bdaba -19.75%, #7841e7 100%) border-box;
+
+  border-color: transparent;
+}
+
+/**================================================== *
+ * ==========  hero  ========== *
+ * ================================================== */
+.hero {
+  background-image: url("./../public/images/_header_bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.ball01,
+.ball1,
+.ball4,
+.ball2,
+.ball9,
+.ball5,
+.ball0,
+.frame1,
+.frame2 {
+  position: absolute;
+}
+.ball01 {
+  top: 24.5%;
+  left: 6.5%;
+}
+.ball1 {
+  top: 41.5%;
+  left: 3.5%;
+}
+.ball4 {
+  top: 40%;
+  left: 14%;
+}
+.ball2 {
+  top: 51%;
+  left: 20.5%;
+}
+.ball9 {
+  top: 30%;
+  right: 5%;
+}
+.ball5 {
+  top: 45%;
+  right: 22%;
+}
+.ball0 {
+  top: 20%;
+  right: 19%;
+}
+.frame1 {
+  top: 30%;
+  left: 28%;
+}
+.frame2 {
+  top: 15%;
+  right: 32.5%;
+}
+
+@media (max-width: 1280px) {
+  .ball2 {
+    top: 55%;
+  }
+  .ball0 {
+    right: 5%;
+  }
+}
+
+/* =======  End of hero  ======= */
+
+/**================================================== *
+ * ==========  Roadmap  ========== *
+ * ================================================== */
+
+.collumn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+  display: block;
+  height: calc(100% / 5 * 5);
+  border: 1px solid var(--bg-gray);
+}
+
+.collumn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--bg-gray);
+}
+
+.steap::after {
+  content: "";
+  position: absolute;
+  /* left: 100%; */
+  background: var(--bg-gray);
+  height: 2px;
+  width: 4rem;
+}
+
+ul li::marker {
+  color: var(--color-primary);
+}
+
+@media (max-width: 767.98px) {
+  .collumn::before,
+  .collumn::after {
+    content: none;
+  }
+  .steap::after {
+    height: 0px;
+    width: 0rem;
+  }
+}
+
+/* =======  End of Roadmap  ======= */
+
+/**================================================== *
+ * ==========  community  ========== *
+ * ================================================== */
+
+.community {
+  background-image: url("../public/images/community_bg_1.png"),
+    url("../public/images/community_bg_2.png");
+  background-position: top left, top right;
+  background-repeat: no-repeat;
+}
+
+/* =======  End of community  ======= */
+
+/**================================================== *
+ * ==========  leaderboard  ========== *
+ * ================================================== */
+
+.leaderboard {
+  background-image: url("../public/images/circle_01.png"),
+    url("../public/images/circle_02.png");
+  background-position: top left, 88% bottom;
+  background-repeat: no-repeat;
+}
+
+/* =======  End of leaderboard  ======= */
+
+/**================================================== *
+ * ==========  Footer  ========== *
+ * ================================================== */
+.footer-bg {
+  background-image: url("../public/images/community_bg_1.png"),
+    url("../public/images/community_bg_2.png");
+  background-position: top left, top right;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* =======  End of Footer  ======= */
