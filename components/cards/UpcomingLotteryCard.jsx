@@ -9,7 +9,7 @@ const UpcomingLotteryCard = ({ title, tickets, price, avt_img }) => {
           className="rounded-[10px] hover:scale-95 transition duration-500 ease-in-out"
           src={avt_img}
           alt={title}
-          placeholder="blur"
+          priority // Add the priority property
         />
         <label className="rounded-[15px] p-[10px_20px] font-[14px] leading-[18px] text-white uppercase bg-[#DC3446] -mt-5 z-10">
           Upcoming
@@ -28,7 +28,7 @@ const UpcomingLotteryCard = ({ title, tickets, price, avt_img }) => {
           <h6 className="heading-6 font-normal">
             Ticket Price ={" "}
             <span className="text-[color:var(--color-primary)]">
-              {price} ETH
+              {price} BNB
             </span>
           </h6>
         </div>
