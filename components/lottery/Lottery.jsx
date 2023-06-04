@@ -30,7 +30,7 @@ const Lottery = () => {
               ["2nd", "10"],
               ["3rd", "3"],
               ["4th-28th", "1"],
-              ["29th-50th", "0.5"],
+              ["29th-49th", "0.5"],
               ["50th-100th", "0.32"],
             ].map(([place, bnb], i) => (
               <p key={i} className="border-r pr-2 last:border-0">
