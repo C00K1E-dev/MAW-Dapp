@@ -18,9 +18,8 @@ const Lottery = () => {
             <Heading2>Mint and Win NFT Lottery Platform</Heading2>
           </div>
           <p className="mt-[15px]">
-Welcome to Mint and Win, where valuable prizes await you! With 1000 exclusive NFTs, we&apos;re giving away 100 incredible prizes. Even if you don&apos;t win, stay tuned for exciting plans involving non-winning tickets. Join us and mint your NFTs promptly. Good luck on your rewarding journey with Mint and Win!
-</p>
-
+          Welcome to Mint and Win, where valuable prizes await you! With 1000 exclusive NFTs, we're giving away 100 incredible prizes. Even if you don't win, stay tuned for exciting plans involving non-winning tickets. Join us and mint your NFTs promptly. Good luck on your rewarding journey with Mint and Win!
+          </p>
           <p className="mt-[10px]">
           We eagerly anticipate your participation. Here is the list of prizes:
           </p>
@@ -31,7 +30,7 @@ Welcome to Mint and Win, where valuable prizes await you! With 1000 exclusive NF
               ["2nd", "10"],
               ["3rd", "3"],
               ["4th-28th", "1"],
-              ["29th-50th", "0.5"],
+              ["29th-49th", "0.5"],
               ["50th-100th", "0.32"],
             ].map(([place, bnb], i) => (
               <p key={i} className="border-r pr-2 last:border-0">
