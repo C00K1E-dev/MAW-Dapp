@@ -9,10 +9,10 @@ const Utility = () => {
     <section className="mt-[65px] md:mt-[115px] px-4 sm:px-0" id="utility">
       <div className="max-w-[1296px] m-auto">
         <div className="w-full lg:w-1/2 m-auto text-center">
-          <Heading2>Utility</Heading2>
+          <Heading2>Utilities</Heading2>
           <p className="mt-[10px]">
-            Mint and Win NFT offers real-world, game-changing advantages that
-            maximize your investment.
+            Mint and Win NFT offers game-changing advantages that
+            maximizes your investments.
           </p>
         </div>
 
