@@ -9,7 +9,7 @@ import Heading5 from "../headings/Heading5";
 const Team = () => {
   return (
     <section
-      className="mt-[70px] md:mt-[120px] py-[65px] md:py-[105px] px-4 2xl:px-0 bg-[color:var(--bg-gray)]"
+      className="mt-[70px] md:mt-[120px] py-[65px] md:py-[105px] px-4 2xl:px-0 bg-[color:var(--bg-dark)]"
       id="team"
     >
       <div className="max-w-[1296px] m-auto">
