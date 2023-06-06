@@ -12,6 +12,7 @@ import NavBar from "../components/NavBar";
 import Roadmap from "../components/roadmap/Roadmap";
 import Team from "../components/team/Team";
 import Upcoming from "../components/upcoming/Upcoming";
+import VIP from "../components/VIP/VIP";
 
 const Home = () => (
   <div>
@@ -27,8 +28,9 @@ const Home = () => (
       <Hero />
       <About />
       <Lottery />
-      <Upcoming />
       <LeaderBoard />
+      <Upcoming />
+      <VIP />
       <Utility />
       <Partners />
       <Roadmap />
