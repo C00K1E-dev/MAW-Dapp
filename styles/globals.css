@@ -125,10 +125,12 @@ body {
 /**================================================== *
  * ==========  hero  ========== *
  * ================================================== */
-.hero {
+ .hero {
   background-image: url("./../public/images/_header_bg.png");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover; /* Added property */
+  height: 100vh; /* Added property */
 }
 .ball01,
 .ball1,
