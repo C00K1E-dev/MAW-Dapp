@@ -30,8 +30,8 @@ const Home = () => (
       <Lottery />
       <LeaderBoard />
       <Upcoming />
-      <VIP />
       <Utility />
+      <VIP />
       <Partners />
       <Roadmap />
       <Community />

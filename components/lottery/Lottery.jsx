@@ -6,7 +6,7 @@ import Heading5 from "../headings/Heading5";
 
 const Lottery = () => {
   return (
-    <section className="mt-[70px] sm:mt-[115px] px-4 xl:px-0" id="lottery">
+    <section className="mt-[70px] sm:mt-[115px] px-4 xl:px-0" id="Lottery">
       <div className="max-w-[1296px] m-auto flex flex-col lg:flex-row items-center gap-0 md:gap-5 lg:gap-0">
         <LotteryCard />
 
