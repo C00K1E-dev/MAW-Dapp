@@ -67,7 +67,21 @@
 
   /* @TODO: Button style */
   .btn {
-    @apply inline-flex items-center justify-center uppercase text-[16px] sm:text-[18px] leading-[19px] sm:leading-[23px] font-semibold rounded-[5px] px-[15px] sm:px-[30px] py-[10px] sm:py-[15px] gap-1 hover:shadow-[4px_4px_9px_var(--bg-gray)] ease-out hover:translate-y-1 transition-all;
+    @apply inline-flex items-center justify-center uppercase font-semibold rounded-[5px] gap-1 hover:shadow-[4px_4px_9px_var(--bg-gray)] ease-out hover:translate-y-1 transition-all;
+    font-size: clamp(12px, 2.5vw, 24px);
+    padding: clamp(2px 8px, 5vw 10vw, 10px 20px);
+  }
+    @media (min-width: 1024px) {
+    .btn {
+      font-size: 12px; /* or whatever size you prefer */
+      padding: 2px 8px; /* or whatever size you prefer */
+    }
+  }
+  @media (min-width: 1440px) {
+    .btn {
+      font-size: 16px;  /* adjust as necessary */
+      padding: 10px 20px;  /* adjust as necessary */
+    }
   }
   
   .btn--primary {
@@ -283,3 +297,16 @@ ul li::marker {
 }
 
 /* =======  End of Footer  ======= */
+
+
+/* =======  Lottery text container @1024  ======= */
+@media (min-width: 1024px) {
+  .lottery-text-container {
+    /* Add your custom styles here */
+    /* For example, you can reduce the font size and adjust the padding */
+    font-size: 16px;
+    padding: 20px;
+  }
+}
+
+/* =======  END of Lottery text container @1024  ======= */

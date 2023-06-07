@@ -42,10 +42,10 @@ const Roadmap = () => {
                 </div>
                 <div className="w-11/12 md:w-1/2 mt-10 md:mt-0">
                   <div className="flex flex-col p-[30px] rounded-[10px] bg-[color:var(--bg-gray)] transition duration-300 hover:box-shadow">
-                    <Heading6>Phase {roadmap.phase.number}</Heading6>
+                    <Heading6 style={{ fontSize: "clamp(16px, 4vw, 24px)" }}>Phase {roadmap.phase.number}</Heading6>
                     <ul className="list-disc ml-[18px] figure-caption mt-[10px]">
                       {roadmap.phase?.titles.map((title) => (
-                        <li key={title}>{title}</li>
+                        <li key={title} style={{ fontSize: "clamp(12px, 2.5vw, 20px)" }}>{title}</li>
                       ))}
                     </ul>
                   </div>

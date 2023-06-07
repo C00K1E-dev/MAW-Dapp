@@ -28,7 +28,7 @@ const NavBar = () => {
   return (
     // <nav className="fixed top-0 w-full flex flex-col z-50 py-[25px] backdrop-blur-xl">
     <nav
-      className={`fixed top-0 w-full z-50 py-[13px] px-4 tablet:px-0 2xl:px-0 tablet:backdrop-blur-xl ${
+      className={`fixed top-0 w-full z-50 py-[5px] px-4 tablet:px-0 2xl:px-0 tablet:backdrop-blur-xl ${
         windowHeight > 50 && "backdrop-blur-xl"
       }`}
     >
