@@ -26,7 +26,7 @@ const aboutData = [
 
 const About = () => {
   return (
-    <section className="-mt-[150px] px-4 2xl:px-0 z-20 relative" id="about">
+    <section className="-mt-[60px] px-4 2xl:px-0 z-20 relative" id="about">
       <div className="max-w-[1296px] m-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
           {aboutData.map((item) => (
