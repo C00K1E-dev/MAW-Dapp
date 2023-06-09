@@ -5,12 +5,12 @@ import Heading2 from "../headings/Heading2";
 const Upcoming = () => {
   return (
     <div>
-      <div className="bg-[color:var(--bg-dark)] text-center p-[60px_0_295px] md:p-[105px_0_345px]">
+      <div className="bg-[color:var(--bg-dark)] text-center p-[15px_0_75px] md:p-[30px_0_100px]">
         <Heading2>Upcoming Collections</Heading2>
       </div>
 
-      <div className="max-w-[1296px] m-auto -mt-64 px-4 2xl:px-0">
-        <div className="flex justify-between flex-wrap gap-2">
+      <div className="max-w-[1296px] m-auto px-4 2xl:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
           {upcomingData.map((item) => (
             <UpcomingLotteryCard key={item.id} {...item} />
           ))}
