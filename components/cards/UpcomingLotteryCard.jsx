@@ -1,16 +1,30 @@
 import Image from "next/image";
 import Heading5 from "../headings/Heading5";
 
-const UpcomingLotteryCard = ({ title, tickets, price, avt_img }) => {
+const UpcomingLotteryCard = ({ title, tickets, price, avt_img, avt_mp4, currency }) => {
   return (
     <div className="inline-flex flex-col bg-[#2A3246] rounded-[10px]">
       <div className="inline-flex flex-col items-center p-[10px]">
-        <Image
-          className="rounded-[10px] hover:scale-95 transition duration-500 ease-in-out"
-          src={avt_img}
-          alt={title}
-          priority // Add the priority property
-        />
+        {avt_mp4 ? (
+          <video
+            className="rounded-[10px] hover:scale-95 transition duration-500 ease-in-out"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={avt_mp4} type="video/mp4" />
+          </video>
+        ) : (
+          <Image
+            className="rounded-[10px] hover:scale-95 transition duration-500 ease-in-out"
+            src={avt_img}
+            alt={title}
+            priority
+            width={300}
+            height={200}
+          />
+        )}
         <label className="rounded-[15px] p-[10px_20px] font-[14px] leading-[18px] text-white uppercase bg-[#DC3446] -mt-5 z-10">
           Upcoming
         </label>
@@ -28,7 +42,7 @@ const UpcomingLotteryCard = ({ title, tickets, price, avt_img }) => {
           <h6 className="heading-6 font-normal">
             Ticket Price ={" "}
             <span className="text-[color:var(--color-primary)]">
-              {price} BNB
+              {price} {currency}
             </span>
           </h6>
         </div>
