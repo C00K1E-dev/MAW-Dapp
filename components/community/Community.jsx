@@ -18,38 +18,30 @@ const Community = () => {
               key={item.id}
               className="w-[130px] md:w-[307px] inline-flex flex-col items-center text-center gap-4 md:gap-6 border border-[#475579] rounded-[185px] p-[40px_20px] md:p-[80px_40px]"
             >
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
                 className="btn-community w-[60px] md:w-[80px] h-[60px] md:h-[80px] bg-[#4B597B] text-[30px] md:text-[40px] text-white"
+                onClick={() => window.open(item.link, "_blank")}
               >
                 {item.icon}
-              </a>
-              <Link href={item.link}>
-                <a>
-                  <Heading4>{item.title}</Heading4>
-                </a>
-              </Link>
+              </button>
+              <Heading4>
+                <Link href={item.link} passHref>
+                  <span className="link-styling">{item.title}</span>
+                </Link>
+              </Heading4>
               <p className="px-0 md:px-5 text-white">{item.desc}</p>
               {item.title === "Discord" ? (
-                <a
-                  href="https://discord.gg/bK6mwDSgxc"
+                <button
                   className="btn-community w-[50px] h-[50px] bg-[color:var(--color-primary)] text-[30px] text-black"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => window.open("https://discord.gg/bK6mwDSgxc", "_blank")}
                 >
                   <BsArrowRight />
-                </a>
+                </button>
               ) : (
-                <Link href={item.link}>
-                  <a
-                    className="btn-community w-[50px] h-[50px] bg-[color:var(--color-primary)] text-[30px] text-black"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                <Link href={item.link} passHref>
+                  <button className="btn-community w-[50px] h-[50px] bg-[color:var(--color-primary)] text-[30px] text-black">
                     <BsArrowRight />
-                  </a>
+                  </button>
                 </Link>
               )}
             </div>

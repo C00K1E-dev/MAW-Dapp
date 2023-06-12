@@ -6,9 +6,7 @@ const NavItems = ({ title, url, open, setOpen }) => {
       className="text-white text-[18px] leading-[23px] font-semibold transition duration-300 hover:text-[color:var(--color-primary)]"
       onClick={() => setOpen(!open)}
     >
-      <Link href={url}>
-        <a>{title}</a>
-      </Link>
+      <Link href={url}>{title}</Link>
     </li>
   );
 };

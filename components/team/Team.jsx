@@ -38,10 +38,10 @@ const Team = () => {
                   />
                 </div>
                 <div className="absolute bottom-0 right-[32px] w-10 h-10 rounded-full flex items-center justify-center bg-[#009AE5] text-white z-10">
-                  <Link href={"/"}>
-                    <a>
+                  <Link href={"/"} passHref>
+                    <div>
                       <FaLinkedinIn />
-                    </a>
+                    </div>
                   </Link>
                 </div>
               </div>

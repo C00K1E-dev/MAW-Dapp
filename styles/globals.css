@@ -140,48 +140,48 @@ body {
  * ==========  hero  ========== *
  * ================================================== */
  .hero {
-  background-image: url("./../public/images/_header_bg.png");
+  background-image: url("./../public/images/header_bg.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; /* Added property */
   height: 100vh; /* Added property */
 }
-.ball01,
-.ball1,
-.ball4,
-.ball2,
-.ball9,
-.ball5,
-.ball0,
+.coin1,
+.coin3,
+.coin5,
+.coin4,
+.coin7,
+.coin6,
+.coin2,
 .frame1,
-.frame2 {
+.coin8 {
   position: absolute;
 }
-.ball01 {
+.coin1 {
   top: 24.5%;
   left: 6.5%;
 }
-.ball1 {
+.coin3 {
   top: 41.5%;
   left: 3.5%;
 }
-.ball4 {
+.coin5 {
   top: 40%;
   left: 14%;
 }
-.ball2 {
+.coin4 {
   top: 51%;
   left: 20.5%;
 }
-.ball9 {
+.coin7 {
   top: 30%;
   right: 5%;
 }
-.ball5 {
+.coin6 {
   top: 45%;
   right: 22%;
 }
-.ball0 {
+.coin2 {
   top: 20%;
   right: 19%;
 }
@@ -189,16 +189,16 @@ body {
   top: 30%;
   left: 28%;
 }
-.frame2 {
+.coin8 {
   top: 15%;
   right: 32.5%;
 }
 
 @media (max-width: 1280px) {
-  .ball2 {
+  .coin4 {
     top: 55%;
   }
-  .ball0 {
+  .coin2 {
     right: 5%;
   }
 }

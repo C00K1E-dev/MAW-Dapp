@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
+import Image from "next/image";
 import Logo from "../public/images/logo.png";
 import WalletButton from "./WalletButton";
 import NavItems from "./navItems/NavItems";
@@ -26,7 +26,6 @@ const NavBar = () => {
   };
 
   return (
-    // <nav className="fixed top-0 w-full flex flex-col z-50 py-[25px] backdrop-blur-xl">
     <nav
       className={`fixed top-0 w-full z-50 py-[5px] px-4 tablet:px-0 2xl:px-0 tablet:backdrop-blur-xl ${
         windowHeight > 50 && "backdrop-blur-xl"
@@ -35,10 +34,10 @@ const NavBar = () => {
       {/* navbar brand */}
       <div className="max-w-[1296px] m-auto tablet:ml-4 flex flex-row tablet:flex-col items-center tablet:items-start gap-7 xl:gap-[45px] 2xl:gap-[150px] relative">
         <div className="flex items-center cursor-pointer">
-          <Link href="/">
-            <a>
-              <Image src={Logo} objectFit="fill" alt="Nav Bar Brand" />
-            </a>
+          <Link href="/" passHref>
+            <div style={{ width: "200px", height: "50px", position: "relative" }}>
+              <Image src={Logo} layout="fill" objectFit="contain" alt="Nav Bar Brand" />
+            </div>
           </Link>
         </div>
         <div

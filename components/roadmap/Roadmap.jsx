@@ -56,8 +56,8 @@ const Roadmap = () => {
         </div>
 
         <div className="text-center mt-[10px]">
-          <Link href={"/"}>
-            <a>To be announced</a>
+          <Link href="/">
+            <a className="link-button">To be announced</a>
           </Link>
         </div>
       </div>

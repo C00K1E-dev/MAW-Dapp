@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
 import btn_icon from "../../public/images/icon/btn_icon.png";
-import video from "../../public/videos/thumbnailvid.mp4";
+import video from "../../public/videos/thumbnailvid.webm";
 import MintButton from "../MintButton";
 import Heading4 from "../headings/Heading4";
 import Heading6 from "../headings/Heading6";
