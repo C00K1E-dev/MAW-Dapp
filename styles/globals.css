@@ -310,3 +310,41 @@ ul li::marker {
 }
 
 /* =======  END of Lottery text container @1024  ======= */
+
+/* ======= TOKEN  ======= */
+.token-component {
+  background: var(--bg-dark);
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  padding: 80px; /* Increase the padding to create more space */
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.token-description-container, .token-presale-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.token-name {
+  color: var(--color-primary);
+  font-size: 2rem;
+}
+
+.token-description {
+  color: var(--color-secondary);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.token-price {
+  color: var(--color-secondary);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+

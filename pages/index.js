@@ -13,6 +13,7 @@ import Roadmap from "../components/roadmap/Roadmap";
 import Team from "../components/team/Team";
 import Upcoming from "../components/upcoming/Upcoming";
 import VIP from "../components/VIP/VIP";
+import Token from "../components/token/token";
 
 const Home = () => (
   <div>
@@ -30,13 +31,14 @@ const Home = () => (
       <Lottery />
       <LeaderBoard />
       <Upcoming />
-      <Utility />
       <VIP />
-      <Partners />
+      <Token />
+      <Utility />
       <Roadmap />
       <Community />
       <Team />
       <Faq />
+      <Partners />
       <Footer />
     </main>
   </div>

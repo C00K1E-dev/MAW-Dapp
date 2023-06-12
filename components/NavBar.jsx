@@ -59,10 +59,8 @@ const NavBar = () => {
             <ul className="flex flex-row tablet:flex-col gap-3 xl:gap-[20px]">
               {[
                 ["Home", "#hero"],
-                ["Collection", "#Lottery"],
-                ["Leaderboard", "#leaderBoard"],
-                ["Utility", "#utility"],
-                ["VIP", "#vip"],
+                ["Collections", "#Lottery"],
+                ["Token", "#token"],
                 ["Roadmap", "#roadmap"],
                 ["Team", "#team"],
                 ["FAQ", "#faq"],
