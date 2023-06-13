@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import Heading2 from "../headings/Heading2";
 

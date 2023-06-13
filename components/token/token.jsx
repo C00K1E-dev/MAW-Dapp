@@ -27,7 +27,7 @@ const Token = () => {
               <li>Development Fund: 5% (7.5 million tokens)</li>
               <li>Reserve: 10% (15 million tokens)</li>
             </ul>
-            <p className="mt-[10px]">
+            <p className="mt-[15px]">
               Learn more about our tokenomics here:
             </p>
 

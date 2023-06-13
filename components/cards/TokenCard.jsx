@@ -22,7 +22,7 @@ const TokenCard = () => {
         <Heading4>MAW Token</Heading4>
         <div className="flex justify-center gap-2 mt-[20px]">
           <Heading6 clr="text-white">
-            <span className="text-[color:var(--color-primary)]">10 milion </span>
+            <span className="text-[color:var(--color-primary)]">15 milion </span>
              Available in this presale phase
           </Heading6>
         </div>

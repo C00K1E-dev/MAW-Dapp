@@ -34,11 +34,9 @@ const NavBar = () => {
       {/* navbar brand */}
       <div className="max-w-[1296px] m-auto tablet:ml-4 flex flex-row tablet:flex-col items-center tablet:items-start gap-7 xl:gap-[45px] 2xl:gap-[150px] relative">
         <div className="flex items-center cursor-pointer">
-          <Link href="/" passHref>
-            <div style={{ width: "200px", height: "50px", position: "relative" }}>
-              <Image src={Logo} layout="fill" objectFit="contain" alt="Nav Bar Brand" />
-            </div>
-          </Link>
+          <div className="logo-container" style={{ width: "116px", height: "50px", position: "relative" }}>
+            <Image src={Logo} alt="Nav Bar Brand" width={116} height={50} />
+          </div>
         </div>
         <div
           tabIndex={0}
