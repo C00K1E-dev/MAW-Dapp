@@ -8,7 +8,7 @@ import coin5 from "../../public/images/hero/coin5.webp";
 import coin6 from "../../public/images/hero/coin6.webp";
 import coin7 from "../../public/images/hero/coin7.webp";
 import coin8 from "../../public/images/hero/coin8.webp";
-import DiscordButton from "../DiscordButton";
+import DiscordButton from "../buttons/DiscordButton";
 import Heading2 from "../headings/Heading2";
 import Heading5 from "../headings/Heading5";
 

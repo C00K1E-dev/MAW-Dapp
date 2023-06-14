@@ -11,9 +11,6 @@ const Token = () => {
         </div>
 
         <div className="max-w-[1296px] m-auto flex flex-col lg:flex-row items-center gap-0 md:gap-5 lg:gap-0">
-          <TokenCard />
-
-          <div className="w-1/12 hidden lg:block"></div>
 
           <div className="w-full md:w-10/12 lg:w-6/12 mt-[35px] md:mt-[55px]">
             <Heading5>Mint and Win Token</Heading5>
@@ -37,6 +34,11 @@ const Token = () => {
               </a>
             </div>
           </div>
+
+          <div className="w-1/12 hidden lg:block"></div>
+
+          <TokenCard />
+
         </div>
       </div>
     </section>

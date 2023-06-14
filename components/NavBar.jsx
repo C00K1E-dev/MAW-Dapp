@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import Image from "next/image";
 import Logo from "../public/images/logo.png";
-import WalletButton from "./WalletButton";
+import WalletButton from "./buttons/WalletButton";
 import NavItems from "./navItems/NavItems";
 import Social from "./social/Social";
 
