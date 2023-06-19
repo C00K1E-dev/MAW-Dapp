@@ -9,25 +9,26 @@ const data = {
   datasets: [
     {
       label: 'Tokenomics Distribution',
-      data: [15, 30, 15, 30, 30, 10, 10],
+      data: [15 , 30, 15, 30, 30, 10, 10],
       backgroundColor: [
-        '#0adab9',     // Presale
-        '#bfc6d7',     // Staking Rewards
-        '#6a7ba8',     // Team
-        '#181830',     // Marketing
-        '#454c5f',     // Liquidity Pools
-        '#ffcc00',     // Development Fund (Updated color)
-        '#ff6666'      // Reserve (Updated color)
+        '#000000',     
+        '#01161d',     
+        '#022b3b',     
+        '#034353',     
+        '#045d6b',     
+        '#057484',     
+        '#0adab9',     
       ],
       borderColor: [
-        '#0adab9',     // Presale
-        '#bfc6d7',     // Staking Rewards
-        '#6a7ba8',     // Team
-        '#181830',     // Marketing
-        '#454c5f',     // Liquidity Pools
-        '#ffcc00',     // Development Fund (Updated color)
-        '#ff6666'      // Reserve (Updated color)
+        '#0adab9',     
+        '#0adab9',     
+        '#0adab9',     
+        '#0adab9',     
+        '#0adab9',     
+        '#0adab9',     
+        '#0adab9',     
       ],
+      
       
       borderWidth: 1,
     },
