@@ -1,9 +1,7 @@
 import TokenCard from "../cards/TokenCard";
 import Heading2 from "../headings/Heading2";
 import Heading5 from "../headings/Heading5";
-import DoughnutChart from "../chart/DoughnutChart";
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
+import ApacheChart from "../chart/ApacheChart";
 
 const Token = () => {
   return (
@@ -15,18 +13,16 @@ const Token = () => {
 
         <div className="max-w-[1296px] m-auto flex flex-col lg:flex-row items-center gap-0 md:gap-5 lg:gap-0">
 
-          <div className="w-full md:w-10/12 lg:w-6/12 mt-[35px] md:mt-[55px]">
-            <Heading5>Mint and Win Token</Heading5>
-            <div className="mt-[30px] md:mt-[40px]">
-            <DoughnutChart />
-          </div>
-            
-
+          <div className="w-full md:w-10/12 lg:w-6/12 mt-[-40px] md:mt-[-100px]">
+            <div className="flex flex-col items-center"> {/* Center the title */}
+              <Heading5>Mint and Win Token</Heading5>
+              <div className="mt-[-100px] md:mt-[20px]" style={{ width: '100%', height: '500px' }}>
+                <ApacheChart />
+              </div>
+            </div>
           </div>
 
           <div className="w-1/12 hidden lg:block"></div>
-
-          
 
           <TokenCard />
 

@@ -28,6 +28,6 @@ export const communityData = [
     icon: <BsMedium />,
     title: "Medium",
     desc: "Read our blogs and articles",
-    link: "/",
+    link: "https://medium.com/@mintandwin",
   },
 ];

@@ -1,4 +1,3 @@
-'use client';
 import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import Heading2 from "../headings/Heading2";
@@ -27,7 +26,9 @@ const Community = () => {
               </button>
               <Heading4>
                 <Link href={item.link} passHref>
-                  <span className="link-styling">{item.title}</span>
+                  <a className="link-styling" target="_blank" rel="noopener noreferrer">
+                    {item.title}
+                  </a>
                 </Link>
               </Heading4>
               <p className="px-0 md:px-5 text-white">{item.desc}</p>
@@ -40,9 +41,9 @@ const Community = () => {
                 </button>
               ) : (
                 <Link href={item.link} passHref>
-                  <button className="btn-community w-[50px] h-[50px] bg-[color:var(--color-primary)] text-[30px] text-black">
+                  <a className="btn-community w-[50px] h-[50px] bg-[color:var(--color-primary)] text-[30px] text-black" target="_blank" rel="noopener noreferrer">
                     <BsArrowRight />
-                  </button>
+                  </a>
                 </Link>
               )}
             </div>
