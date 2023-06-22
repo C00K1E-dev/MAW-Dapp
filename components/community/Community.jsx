@@ -46,7 +46,7 @@ const Community = () => {
               {item.title === "Discord" ? (
                 <button
                   className="btn-community w-[50px] h-[50px] bg-[color:var(--color-primary)] text-[30px] text-black"
-                  onClick={() => window.open("https://discord.gg/bK6mwDSgxc", "_blank")}
+                  onClick={() => window.open("https://discord.gg/7a5Ye6NcHF", "_blank")}
                 >
                   <BsArrowRight />
                 </button>

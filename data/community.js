@@ -7,7 +7,7 @@ export const communityData = [
     icon: <FaTwitter />,
     title: "Twitter",
     desc: "News and products update",
-    link: "/",
+    link: "https://twitter.com/MAW_MintandWin",
   },
   {
     id: "2",
@@ -21,7 +21,7 @@ export const communityData = [
     icon: <FaDiscord />,
     title: "Discord",
     desc: "Chat with the community",
-    link: "/",
+    link: "https://discord.gg/7a5Ye6NcHF",
   },
   {
     id: "4",

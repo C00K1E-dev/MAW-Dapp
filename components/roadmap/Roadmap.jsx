@@ -56,9 +56,9 @@ const Roadmap = () => {
         </div>
 
         <div className="text-center mt-[10px]">
-          <Link href="/">
-            <a className="link-button">To be announced</a>
-          </Link>
+          <p>
+            ENTERING METAVERSE
+          </p>
         </div>
       </div>
     </section>

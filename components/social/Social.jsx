@@ -4,8 +4,8 @@ import { FaDiscord, FaInstagram, FaTelegram, FaTiktok, FaTwitter } from "react-i
 const Social = () => (
   <div className="flex gap-2 xl:gap-3 2xl:gap-3 text-white">
     {[
-      ["1", FaTwitter, "https://twitter.com/"],
-      ["3", FaDiscord, "https://discord.gg/bK6mwDSgxc"],
+      ["1", FaTwitter, "https://twitter.com/MAW_MintandWin"],
+      ["3", FaDiscord, "https://discord.gg/7a5Ye6NcHF"],
       ["2", FaTelegram, "https://t.me/mintandwin"],
     ].map(([id, SocialIcon, href]) => (
       <a

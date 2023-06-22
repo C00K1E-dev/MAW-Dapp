@@ -1,6 +1,7 @@
 import Heading2 from "../headings/Heading2";
 import styles from "../../styles/vipstyle.module.css";
 
+
 const VIP = () => {
   return (
     <div className="max-w-[1296px] m-auto" id="vip">
@@ -9,8 +10,8 @@ const VIP = () => {
           <Heading2>VIP</Heading2>
         </div>
         <p className="mt-[10px]">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, de do eiusmod tempor incidunt ut laboreet dolore
-          magna aliqua
+          Mint and win offers special access levels and privileges for participants that hold certain NFTs.
+          These special access levels may provide eraly acces to events, exclusive NFT drops or other unique benefits.
         </p>
       </div>
 
@@ -19,10 +20,10 @@ const VIP = () => {
           <span></span>
           <div className={styles.content}>
             <h2>Exclusive</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, de do eiusmod tempor incidunt ut laboreet dolore
-              magna aliqua
-            </p>
+            <ul>
+              <li>NFT Drops</li>
+              <li>3 MAW tokens/everyday</li>
+            </ul>
             <a href="#">MINT</a>
           </div>
         </div>
@@ -30,10 +31,11 @@ const VIP = () => {
           <span></span>
           <div className={styles.content}>
             <h2>DeLuxe</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, de do eiusmod tempor incidunt ut laboreet dolore
-              magna aliqua
-            </p>
+            <ul>
+              <li>Acces to DeLuxe Collections</li>
+              <li>NFT Drops</li>
+              <li>5 MAW tokens/everyday</li>
+            </ul>
             <a href="#">MINT</a>
           </div>
         </div>
@@ -41,10 +43,12 @@ const VIP = () => {
           <span></span>
           <div className={styles.content}>
             <h2>Ultimate</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, de do eiusmod tempor incidunt ut laboreet dolore
-              magna aliqua
-            </p>
+            <ul>
+              <li>Acces to Ultimate Collections</li>
+              <li>NFT Drops</li>
+              <li>Access to Jackpot Raffle</li>
+              <li>10 MAW tokens/everyday</li>
+            </ul>
             <a href="#">MINT</a>
           </div>
         </div>
