@@ -14,7 +14,7 @@ export const communityData = [
     icon: <FaTelegramPlane />,
     title: "Telegram",
     desc: "Announcements and community",
-    link: "/",
+    link: "https://t.me/mintandwin",
   },
   {
     id: "3",

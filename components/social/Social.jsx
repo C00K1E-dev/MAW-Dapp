@@ -6,7 +6,7 @@ const Social = () => (
     {[
       ["1", FaTwitter, "https://twitter.com/"],
       ["3", FaDiscord, "https://discord.gg/bK6mwDSgxc"],
-      ["2", FaTelegram, "https://t.me/"],
+      ["2", FaTelegram, "https://t.me/mintandwin"],
     ].map(([id, SocialIcon, href]) => (
       <a
         key={id}

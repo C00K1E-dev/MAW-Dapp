@@ -18,12 +18,23 @@ const Community = () => {
               key={item.id}
               className="w-[130px] md:w-[307px] inline-flex flex-col items-center text-center gap-4 md:gap-6 border border-[#475579] rounded-[185px] p-[40px_20px] md:p-[80px_40px]"
             >
-              <button
-                className="btn-community w-[60px] md:w-[80px] h-[60px] md:h-[80px] bg-[#4B597B] text-[30px] md:text-[40px] text-white"
-                onClick={() => window.open(item.link, "_blank")}
-              >
-                {item.icon}
-              </button>
+              {item.title === "Telegram" ? (
+                <a
+                  className="btn-community w-[60px] md:w-[80px] h-[60px] md:h-[80px] bg-[#4B597B] text-[30px] md:text-[40px] text-white"
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.icon}
+                </a>
+              ) : (
+                <button
+                  className="btn-community w-[60px] md:w-[80px] h-[60px] md:h-[80px] bg-[#4B597B] text-[30px] md:text-[40px] text-white"
+                  onClick={() => window.open(item.link, "_blank")}
+                >
+                  {item.icon}
+                </button>
+              )}
               <Heading4>
                 <Link href={item.link} passHref>
                   <a className="link-styling" target="_blank" rel="noopener noreferrer">
