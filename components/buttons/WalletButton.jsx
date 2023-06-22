@@ -97,7 +97,7 @@ const WalletButton = ({ children, clr, hrf = "/", contractAddress }) => {
 
   return (
     <Link href={hrf}>
-      <a className={`btn ${clr || " btn--primary"}`} onClick={connected ? null : connectToMetamask}>
+      <a className={`btn ${clr || " btn--primary"}`} onTouchStart={connected ? null : connectToMetamask}>
         {connected ? "Connected" : children}
       </a>
     </Link>
