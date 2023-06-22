@@ -10,7 +10,6 @@ const WalletButton = ({ children, clr, hrf = "/", contractAddress }) => {
 
   useEffect(() => {
     checkConnectionStatus();
-    window.ethereum.on("disconnect", handleDisconnect);
   }, []);
 
   async function checkConnectionStatus() {
@@ -28,6 +27,18 @@ const WalletButton = ({ children, clr, hrf = "/", contractAddress }) => {
         setProvider(provider);
         setAddress(isConnected ? accounts[0] : null);
         setConnected(isConnected);
+
+        // Add event listener for disconnect and account changes
+        window.ethereum.on("disconnect", handleDisconnect);
+        window.ethereum.on("accountsChanged", function (accounts) {
+          if (accounts.length === 0) {
+            setConnected(false);
+            setAddress(null);
+          } else {
+            setConnected(true);
+            setAddress(accounts[0]);
+          }
+        });
       } catch (error) {
         console.error(error);
       }
@@ -58,17 +69,6 @@ const WalletButton = ({ children, clr, hrf = "/", contractAddress }) => {
         setProvider(provider);
         setAddress(address);
         setConnected(true);
-
-        // Add event listener for account changes
-        window.ethereum.on("accountsChanged", function (accounts) {
-          if (accounts.length === 0) {
-            setConnected(false);
-            setAddress(null);
-          } else {
-            setConnected(true);
-            setAddress(accounts[0]);
-          }
-        });
       } catch (error) {
         console.error(error);
       }
