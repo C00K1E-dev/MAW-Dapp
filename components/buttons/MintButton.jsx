@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import PopupMessage from "../PopupMessage";
 
@@ -441,50 +441,64 @@ const abi = [
     }
   ]
 
-const web3 = new Web3(Web3.givenProvider);
-const winNft = new web3.eth.Contract(abi, "0xC4Cc97Dba3D21f1D42F6e679563B25238187E76b");
+  const contractAddress = "0xC4Cc97Dba3D21f1D42F6e679563B25238187E76b";
 
-function MintButton() {
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState("");
 
-  const quantity = 1;
-
-  const handleMint = async () => {
-    const accounts = await web3.eth.getAccounts();
-
-    if (accounts.length === 0) {
-      setPopupMessage("Please connect your wallet first.");
-      setShowPopup(true);
-      return;
-    }
-
-    const nftPrice = await winNft.methods.NFT_PRICE().call();
-    const totalPrice = nftPrice * quantity;
-
-    await winNft.methods.mintNFT(quantity).send({
-      from: accounts[0],
-      value: totalPrice,
-    });
-
-    setPopupMessage("Your NFT has been minted successfully!");
-    setShowPopup(true);
-  };
-
-  return (
-    <div>
-      <button className={`btn ${ " btn--primary"}`} onClick={handleMint}>
-        Mint Ticket
-      </button>
-
-      {showPopup && (
-        <PopupMessage
-          message={popupMessage}
-          onClose={() => setShowPopup(false)}
-        />
-      )}
-    </div>
-  );
-}
-
-export default MintButton;
+  function MintButton() {
+    const [showPopup, setShowPopup] = useState(false);
+    const [popupMessage, setPopupMessage] = useState("");
+    const [web3, setWeb3] = useState(null);
+  
+    useEffect(() => {
+      if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+        setWeb3(new Web3(window.ethereum));
+      }
+    }, []);
+  
+    const quantity = 1;
+  
+    const handleMint = async () => {
+      try {
+        if (!web3) {
+          setPopupMessage("Please connect your wallet first.");
+          setShowPopup(true);
+          return;
+        }
+    
+        const accounts = await web3.eth.requestAccounts();
+    
+        const winNft = new web3.eth.Contract(abi, contractAddress);
+        const nftPrice = BigInt(await winNft.methods.NFT_PRICE().call());
+        const totalPrice = nftPrice * BigInt(quantity);
+    
+        await winNft.methods.mintNFT(quantity).send({
+          from: accounts[0],
+          value: totalPrice.toString(),
+        });
+    
+        setPopupMessage("Your NFT has been minted successfully!");
+        setShowPopup(true);
+      } catch (error) {
+        console.error(error);
+        setPopupMessage("An error occurred while minting your NFT.");
+        setShowPopup(true);
+      }
+    };
+  
+    return (
+      <div>
+        <button className="btn btn--primary" onClick={handleMint}>
+          Mint Ticket
+        </button>
+  
+        {showPopup && (
+          <PopupMessage
+            message={popupMessage}
+            onClose={() => setShowPopup(false)}
+          />
+        )}
+      </div>
+    );
+  }
+  
+  export default MintButton;
