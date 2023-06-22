@@ -6,60 +6,13 @@ const WalletButton = ({ children, clr, hrf = "/", contractAddress }) => {
   const [connected, setConnected] = useState(false);
   const [provider, setProvider] = useState(null);
   const [address, setAddress] = useState(null);
+  const [isMetaMaskMobileInstalled, setIsMetaMaskMobileInstalled] = useState(false);
 
   useEffect(() => {
-    if (window.ethereum) {
-      handleEthereum();
-    } else {
-      window.addEventListener("ethereum#initialized", handleEthereum, {
-        once: true,
-      });
-
-      // If the event is not dispatched by the end of the timeout,
-      // the user probably doesn't have MetaMask installed.
-      setTimeout(handleEthereum, 3000); // 3 seconds
-    }
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isMetaMaskMobile = userAgent.includes("metamaskmobile");
+    setIsMetaMaskMobileInstalled(isMetaMaskMobile);
   }, []);
-
-  function handleEthereum() {
-    const { ethereum } = window;
-    if (ethereum && ethereum.isMetaMask) {
-      console.log("Ethereum successfully detected!");
-      // Instantiate the MetaMask SDK
-      const MMSDK = new MetaMaskSDK({ ethereum });
-
-      // Get provider
-      const provider = MMSDK.getProvider();
-
-      // Check if there is a connected account
-      provider
-        .request({ method: "eth_requestAccounts" })
-        .then((accounts) => {
-          const isConnected = accounts.length > 0;
-
-          // Set state
-          setProvider(provider);
-          setAddress(isConnected ? accounts[0] : null);
-          setConnected(isConnected);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-
-      // Add event listener for account changes
-      provider.on("accountsChanged", function (accounts) {
-        if (accounts.length === 0) {
-          setConnected(false);
-          setAddress(null);
-        } else {
-          setConnected(true);
-          setAddress(accounts[0]);
-        }
-      });
-    } else {
-      console.log("Please install MetaMask!");
-    }
-  }
 
   async function connectToMetamask() {
     if (window.ethereum) {
@@ -69,24 +22,20 @@ const WalletButton = ({ children, clr, hrf = "/", contractAddress }) => {
         // Check if MetaMask is already connected
         if (ethereum.selectedAddress !== null) {
           console.log("MetaMask is already connected");
+          setConnected(true);
+          setAddress(ethereum.selectedAddress);
           return;
         }
 
         // Request account access
-        await ethereum.request({ method: "eth_requestAccounts" });
+        const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+        const address = accounts[0];
 
         // Instantiate the MetaMask SDK
         const MMSDK = new MetaMaskSDK({ ethereum });
 
         // Get provider
         const provider = MMSDK.getProvider();
-
-        // Get address
-        const accounts = await provider.request({
-          method: "eth_requestAccounts",
-        });
-
-        const address = accounts[0];
 
         // Set state
         setProvider(provider);
@@ -111,12 +60,21 @@ const WalletButton = ({ children, clr, hrf = "/", contractAddress }) => {
     }
   }
 
+  async function disconnectFromMetamask() {
+    if (provider) {
+      provider.removeAllListeners("accountsChanged");
+    }
+
+    setAddress(null);
+    setConnected(false);
+  }
+
   return (
     <Link href={hrf}>
       <a
-        className={`btn ${clr || " btn--primary"}`}
+        className={`btn ${clr || "btn--primary"}`}
         onTouchStart={connected ? null : connectToMetamask}
-        onClick={connectToMetamask} // Add onClick event handler
+        onClick={connected ? disconnectFromMetamask : connectToMetamask}
       >
         {connected ? "Connected" : children}
       </a>
