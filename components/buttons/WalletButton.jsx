@@ -6,18 +6,19 @@ const WalletButton = ({ children, clr, hrf = "/", contractAddress }) => {
   const [connected, setConnected] = useState(false);
   const [provider, setProvider] = useState(null);
   const [address, setAddress] = useState(null);
-  const [isMetaMaskMobileInstalled, setIsMetaMaskMobileInstalled] = useState(false);
-
-  useEffect(() => {
-    const userAgent = navigator.userAgent.toLowerCase();
-    const isMetaMaskMobile = userAgent.includes("metamaskmobile");
-    setIsMetaMaskMobileInstalled(isMetaMaskMobile);
-  }, []);
 
   async function connectToMetamask() {
-    if (isMetaMaskMobileInstalled) {
-      // Redirect to MetaMask Mobile App using deep links
-      window.location.href = 'https://metamask.app.link/dapp/www.mintandwin.com/'; // Note: this is just an example link, check the official documentation for the correct deep link.
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    // Inform the user
+    alert("We are attempting to open the MetaMask app. Please give permission if prompted.");
+
+    if (/iphone|ipad|ipod/.test(userAgent)) {
+      // Handling for iOS devices
+      window.location.href = 'https://metamask.app.link/dapp/www.mintandwin.com/'; // Replace with actual iOS deep link
+    } else if (/android/.test(userAgent)) {
+      // Handling for Android devices
+      window.location.href = 'https://metamask.app.link/dapp/www.mintandwin.com/'; // Replace with actual Android deep link
     } else if (window.ethereum) {
       try {
         const { ethereum } = window;
