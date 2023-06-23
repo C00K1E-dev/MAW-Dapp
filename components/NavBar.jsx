@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import Image from "next/image";
 import Logo from "../public/images/logo.png";
-import WalletButton from "./buttons/WalletButton";
+import Web3ConnectButton from './buttons/Web3ConnectButton';
 import NavItems from "./navItems/NavItems";
 import Social from "./social/Social";
 
@@ -77,7 +77,7 @@ const NavBar = () => {
             {/* Social icons */}
             <Social />
             {/* button */}
-            <WalletButton>Connect Wallet</WalletButton>
+            <Web3ConnectButton />
           </div>
         </div>
       </div>
