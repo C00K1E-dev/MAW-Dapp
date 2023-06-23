@@ -53,6 +53,7 @@ const Web3ConnectButton = () => {
         <a
           className="btn btn--primary"
           onClick={!connected ? handleConnect : null}
+          onTouchStart={!connected ? handleConnect : null}
         >
           {connected ? 'Connected' : 'Connect Wallet'}
         </a>
