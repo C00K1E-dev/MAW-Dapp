@@ -15,7 +15,10 @@ const WalletButton = ({ children, clr, hrf = "/", contractAddress }) => {
   }, []);
 
   async function connectToMetamask() {
-    if (window.ethereum) {
+    if (isMetaMaskMobileInstalled) {
+      // Redirect to MetaMask Mobile App using deep links
+      window.location.href = 'https://metamask.app.link/dapp/www.mintandwin.com/'; // Note: this is just an example link, check the official documentation for the correct deep link.
+    } else if (window.ethereum) {
       try {
         const { ethereum } = window;
 
