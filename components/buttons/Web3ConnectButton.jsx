@@ -17,7 +17,7 @@ const wagmiConfig = createConfig({
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
 const Web3ConnectButton = () => {
-  const { open } = useWeb3Modal(); // Remove 'close' from destructured assignment
+  const { open } = useWeb3Modal();
   const [connected, setConnected] = useState(false);
 
   const handleConnect = async () => {
@@ -47,13 +47,22 @@ const Web3ConnectButton = () => {
     };
   }, []);
 
+  const handleClick = (event) => {
+    if (!connected) {
+      handleConnect();
+    } else {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+
   return (
     <WagmiConfig config={wagmiConfig}>
       <Link href="#">
         <a
           className="btn btn--primary"
-          onClick={!connected ? handleConnect : null}
-          onTouchStart={!connected ? handleConnect : null}
+          onClick={handleClick}
+          onTouchStart={handleClick}
         >
           {connected ? 'Connected' : 'Connect Wallet'}
         </a>
