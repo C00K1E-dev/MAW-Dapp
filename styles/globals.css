@@ -309,6 +309,12 @@ ul li::marker {
   }
 }
 
+@media (max-width: 767px) {
+  width: 100%;
+  padding: 20px;
+}
+
+
 /* =======  END of Lottery text container @1024  ======= */
 
 /* ======= TOKEN  ======= */
