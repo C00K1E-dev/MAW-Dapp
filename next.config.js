@@ -1,22 +1,23 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
     newNextLinkBehavior: false,
   },
   webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(webm)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            publicPath: '/_next',
-            name: 'static/media/[name].[hash].[ext]',
+    config.module.rules.push(
+      {
+        test: /\.(webm|mp4)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '/_next',
+              name: 'static/media/[name].[hash].[ext]',
+            },
           },
-        },
-      ],
-    });
+        ],
+      }
+    );
 
     return config;
   },
