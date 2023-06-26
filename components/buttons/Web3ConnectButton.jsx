@@ -6,7 +6,7 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { arbitrum, mainnet, polygon } from 'wagmi/chains';
 
 const chains = [arbitrum, mainnet, polygon];
-const projectId = 'YOUR_WALLETCONNECT_CLOUD_ID';
+const projectId = 'aca932c97e3f9bc59a1636dc1aeae670';
 
 const { publicClient } = configureChains(chains);
 const wagmiConfig = createConfig({
