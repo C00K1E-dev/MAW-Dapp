@@ -23,7 +23,9 @@ const Web3ConnectButton = () => {
   const handleConnect = async () => {
     try {
       const provider = await open();
-      setConnected(!!provider);
+      if (provider) {
+        setConnected(true); // Update the connected state
+      }
     } catch (error) {
       console.error("Failed to connect", error);
     }
@@ -47,22 +49,13 @@ const Web3ConnectButton = () => {
     };
   }, []);
 
-  const handleClick = (event) => {
-    if (!connected) {
-      handleConnect();
-    } else {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  };
-
   return (
     <WagmiConfig config={wagmiConfig}>
       <Link href="#">
         <a
           className="btn btn--primary"
-          onClick={handleClick}
-          onTouchStart={handleClick}
+          onClick={!connected ? handleConnect : null}
+          onTouchStart={!connected ? handleConnect : null}
         >
           {connected ? 'Connected' : 'Connect Wallet'}
         </a>
