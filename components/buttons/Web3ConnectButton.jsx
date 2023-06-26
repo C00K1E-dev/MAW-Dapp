@@ -17,7 +17,7 @@ const wagmiConfig = createConfig({
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
 const Web3ConnectButton = () => {
-  const { open, close } = useWeb3Modal();
+  const { open } = useWeb3Modal(); // Remove 'close' from destructured assignment
   const [connected, setConnected] = useState(false);
 
   const handleConnect = async () => {
