@@ -1,30 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { EthereumClient, WalletConnectProvider } from '@walletconnect/client';
-import { Web3Modal, useWeb3Modal } from 'web3modal';
+import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
+import { Web3Modal, useWeb3Modal } from '@web3modal/react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { arbitrum, mainnet, polygon } from 'wagmi/chains';
 
 const chains = [arbitrum, mainnet, polygon];
 const projectId = 'aca932c97e3f9bc59a1636dc1aeae670';
 
-const { publicClient } = configureChains(chains);
+const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
 const wagmiConfig = createConfig({
   autoConnect: true,
-  connectors: [
-    {
-      name: 'walletconnect',
-      provider: new WalletConnectProvider({
-        rpc: { [mainnet.chainId]: mainnet.rpcUrls[0] }, // Replace with your desired chain configuration
-        qrcodeModalOptions: {
-          mobileLinks: ['metamask', 'trust', 'rainbow', 'argent'],
-        },
-        bridge: 'https://bridge.walletconnect.org',
-        qrcode: true,
-      }),
-      default: true,
-    },
-  ],
+  connectors: w3mConnectors({ projectId, version: 2, chains }),
   publicClient,
 });
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
@@ -35,30 +22,27 @@ const Web3ConnectButton = () => {
 
   const handleConnect = async () => {
     try {
-      await open();
+      const provider = await open();
+      setConnected(!!provider);
     } catch (error) {
-      console.error('Failed to connect', error);
+      console.error("Failed to connect", error);
     }
   };
 
   useEffect(() => {
-    const updateConnectionStatus = (accounts) => {
-      setConnected(accounts.length > 0);
-    };
-
-    const updateChainId = (chainId) => {
-      window.location.reload();
-    };
-
     if (window.ethereum) {
-      window.ethereum.on('accountsChanged', updateConnectionStatus);
-      window.ethereum.on('chainChanged', updateChainId);
+      window.ethereum.on('accountsChanged', (accounts) => {
+        setConnected(accounts.length > 0);
+      });
+
+      window.ethereum.on('chainChanged', (chainId) => {
+        window.location.reload();
+      });
     }
 
     return () => {
       if (window.ethereum) {
-        window.ethereum.removeListener('accountsChanged', updateConnectionStatus);
-        window.ethereum.removeListener('chainChanged', updateChainId);
+        window.ethereum.removeAllListeners();
       }
     };
   }, []);
@@ -74,7 +58,7 @@ const Web3ConnectButton = () => {
           {connected ? 'Connected' : 'Connect Wallet'}
         </a>
       </Link>
-      <Web3Modal ethereumClient={ethereumClient} />
+      <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
     </WagmiConfig>
   );
 };
