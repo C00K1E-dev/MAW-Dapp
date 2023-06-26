@@ -6,7 +6,7 @@ const nextConfig = {
   webpack: (config) => {
     config.module.rules.push(
       {
-        test: /\.(webm|mp4)$/i,
+        test: /\.(mp4)$/i,
         use: [
           {
             loader: 'file-loader',
