@@ -1,7 +1,7 @@
 import thumbnail2 from "../public/videos/thumbnail2.mp4";
 import thumbnail3 from "../public/videos/thumbnail3.mp4";
 import thumbnail4 from "../public/videos/thumbnail4.mp4";
-import upcoming4 from "../public/images/upcoming/upcoming4.png";
+import thumbnail5 from "../public/videos/thumbnail5.mp4";
 
 export const upcomingData = [
   {
@@ -30,7 +30,7 @@ export const upcomingData = [
   },
   {
     id: "4",
-    avt_img: upcoming4,
+    avt_mp4: thumbnail5,
     title: "Dot Win",
     tickets: "1000",
     price: 0.2,
