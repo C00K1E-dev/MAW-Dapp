@@ -21,7 +21,7 @@ const Home = () => (
       <title>
         Mint and Win
       </title>
-      <meta name="description" content="Createdted by Softivus" />
+      <meta name="google-site-verification" content="jAp8jtSY-cZHgCHVYvP_0tz6uFbowEEXinYB1JKwr8s" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <main>
