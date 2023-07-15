@@ -34,7 +34,7 @@ const CookieConsent = () => {
     <PopupMessage
       message={
         <>
-          We collect cookies to analyze our website traffic and performance. <span className="green-text">WE NEVER COLLECT ANY PERSONAL DATA.</span> By using this website, you agree to our{" "}
+          We collect cookies to analyze our website traffic and performance. WE NEVER COLLECT ANY PERSONAL DATA. By using this website, you agree to our{" "}
           <button className="btn-link privacy-btn" onClick={() => handleClick("Privacy")}>Privacy Policy</button>,{" "}
           <button className="btn-link terms-btn" onClick={() => handleClick("Terms")}>Terms</button>, and{" "}
           <button className="btn-link disclaimer-btn" onClick={() => handleClick("Disclaimer")}>Disclaimer</button>.
