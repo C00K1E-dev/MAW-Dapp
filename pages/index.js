@@ -1,4 +1,6 @@
+import React from "react";
 import Head from "next/head";
+import CookieConsent from "../components/CookieConsent"; 
 import About from "../components/about/About";
 import Community from "../components/community/Community";
 import Faq from "../components/faq/Faq";
@@ -26,6 +28,7 @@ const Home = () => (
     </Head>
     <main>
       <NavBar />
+      <CookieConsent />
       <Hero />
       <About />
       <Lottery />

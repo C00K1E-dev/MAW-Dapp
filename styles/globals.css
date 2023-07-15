@@ -64,6 +64,9 @@
   .heading-6 {
     @apply text-[16px] md:text-[18px] leading-[23px] font-semibold;
   }
+  .green-text {
+    color: #0adab9;
+  }
 
   /* @TODO: Button style */
   .btn {
@@ -100,6 +103,22 @@
   .input-form {
     @apply w-full focus-visible:outline-none p-[20px_120px_20px_30px] md:p-[20px_150px_20px_30px] rounded-[10px] border border-[#7C92C8] bg-[#2D364D] text-white placeholder:text-[#7C92C8];
   }
+  .btn-link {
+    color: #0adab9;
+  }
+  
+  .privacy-btn {
+    /* Additional styles specific to the Privacy Policy button */
+  }
+  
+  .terms-btn {
+    /* Additional styles specific to the Terms button */
+  }
+  
+  .disclaimer-btn {
+    /* Additional styles specific to the Disclaimer button */
+  }
+  
 }
 /* =======  End of Custom components  ======= */
 
