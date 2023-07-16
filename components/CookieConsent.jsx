@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PopupMessage from "./PopupMessage";
+import PopupMessage2 from "./PopupMessage2";
 
 const CookieConsent = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -31,16 +31,17 @@ const CookieConsent = () => {
   }
 
   return (
-    <PopupMessage
+    <PopupMessage2
       message={
         <>
-          We collect cookies to analyze our website traffic and performance. WE NEVER COLLECT ANY PERSONAL DATA. By using this website, you agree to our{" "}
+          This website uses cookies to monitor performance and traffic. WE NEVER STORE ANY PERSONAL DATA. By using this website, you agree to our{" "}
           <button className="btn-link privacy-btn" onClick={() => handleClick("Privacy")}>Privacy Policy</button>,{" "}
           <button className="btn-link terms-btn" onClick={() => handleClick("Terms")}>Terms</button>, and{" "}
           <button className="btn-link disclaimer-btn" onClick={() => handleClick("Disclaimer")}>Disclaimer</button>.
         </>
       }
       onClose={handleClose}
+      agreeButtonLabel="I Agree"
     />
   );
 };

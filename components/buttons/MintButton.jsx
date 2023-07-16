@@ -443,62 +443,79 @@ const abi = [
 
   const contractAddress = "0xC4Cc97Dba3D21f1D42F6e679563B25238187E76b";
 
+function MintButton() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
+  const [web3, setWeb3] = useState(null);
+  const [connectedWallet, setConnectedWallet] = useState(null);
 
-  function MintButton() {
-    const [showPopup, setShowPopup] = useState(false);
-    const [popupMessage, setPopupMessage] = useState("");
-    const [web3, setWeb3] = useState(null);
-  
-    useEffect(() => {
-      if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
-        setWeb3(new Web3(window.ethereum));
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+      setWeb3(new Web3(window.ethereum));
+    }
+  }, []);
+
+  const quantity = 1;
+
+  const checkWalletConnection = async () => {
+    try {
+      const accounts = await web3.eth.getAccounts();
+      if (accounts.length > 0) {
+        setConnectedWallet(accounts[0]);
+      } else {
+        setConnectedWallet(null);
       }
-    }, []);
-  
-    const quantity = 1;
-  
-    const handleMint = async () => {
-      try {
-        if (!web3) {
-          setPopupMessage("Please connect your wallet first.");
-          setShowPopup(true);
-          return;
-        }
-    
-        const accounts = await web3.eth.requestAccounts();
-    
-        const winNft = new web3.eth.Contract(abi, contractAddress);
-        const nftPrice = BigInt(await winNft.methods.NFT_PRICE().call());
-        const totalPrice = nftPrice * BigInt(quantity);
-    
-        await winNft.methods.mintNFT(quantity).send({
-          from: accounts[0],
-          value: totalPrice.toString(),
-        });
-    
-        setPopupMessage("Your NFT has been minted successfully!");
+    } catch (error) {
+      console.error("Failed to check wallet connection", error);
+      setConnectedWallet(null);
+    }
+  };
+
+  const handleMint = async () => {
+    try {
+      if (!web3) {
+        setPopupMessage("Please connect your wallet first.");
         setShowPopup(true);
-      } catch (error) {
-        console.error(error);
-        setPopupMessage("An error occurred while minting your NFT.");
-        setShowPopup(true);
+        return;
       }
-    };
-  
-    return (
-      <div>
-        <button className="btn btn--primary" onClick={handleMint}>
-          Mint Ticket
-        </button>
-  
-        {showPopup && (
-          <PopupMessage
-            message={popupMessage}
-            onClose={() => setShowPopup(false)}
-          />
-        )}
-      </div>
-    );
-  }
-  
-  export default MintButton;
+
+      // Check if the user is connected to a wallet
+      await checkWalletConnection();
+      if (!connectedWallet) {
+        setPopupMessage("Please connect your wallet first.");
+        setShowPopup(true);
+        return;
+      }
+
+      const winNft = new web3.eth.Contract(abi, contractAddress);
+      const nftPrice = BigInt(await winNft.methods.NFT_PRICE().call());
+      const totalPrice = nftPrice * BigInt(quantity);
+
+      await winNft.methods.mintNFT(quantity).send({
+        from: connectedWallet,
+        value: totalPrice.toString(),
+      });
+
+      setPopupMessage("Your NFT has been minted successfully!");
+      setShowPopup(true);
+    } catch (error) {
+      console.error(error);
+      setPopupMessage("An error occurred while minting your NFT.");
+      setShowPopup(true);
+    }
+  };
+
+  return (
+    <div>
+      <button className="btn btn--primary" onClick={handleMint}>
+        Mint Ticket
+      </button>
+
+      {showPopup && (
+        <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />
+      )}
+    </div>
+  );
+}
+
+export default MintButton;
