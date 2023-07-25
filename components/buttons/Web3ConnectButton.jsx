@@ -28,7 +28,6 @@ function Web3ConnectButton() {
       <WagmiConfig config={wagmiConfig}>
         <Web3Button icon="hide" label="Connect Wallet" balance="show" />
       </WagmiConfig>
-
       <Web3Modal
         themeMode="dark"
         themeVariables={{
@@ -39,11 +38,9 @@ function Web3ConnectButton() {
           '--w3m-accent-fill-color': '#1a1f2c',
           '--w3m-accent-color': '#0adab9',
           '--w3m-font-family': 'jost',
-          
-        }}
+          }}
         projectId={projectId}
         ethereumClient={ethereumClient}
-        
       />
     </>
   );
