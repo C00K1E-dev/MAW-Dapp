@@ -377,4 +377,12 @@ ul li::marker {
   margin-bottom: 20px;
 }
 
-
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines of text */
+  -webkit-box-orient: vertical;
+  font-size: 18px;
+  line-height: 22px;
+  max-height: 44px; /* 2 lines * 22px line height */
+  overflow: hidden;
+}
