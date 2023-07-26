@@ -62,8 +62,8 @@
   .heading-5 {
     @apply text-[18px] sm:text-[24px] leading-[23px] sm:leading-[31px] font-semibold;
   }
-  .heading-contract {
-    @apply text-[18px] sm:text-[24px] leading-[23px] sm:leading-[31px] font-semibold;
+  .contract-address {
+    color :#cc6868
   }
   .heading-6 {
     @apply text-[16px] md:text-[18px] leading-[23px] font-semibold;
@@ -375,14 +375,4 @@ ul li::marker {
   color: var(--color-secondary);
   font-size: 1.5rem;
   margin-bottom: 20px;
-}
-
-.clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limit to 2 lines of text */
-  -webkit-box-orient: vertical;
-  font-size: 18px;
-  line-height: 22px;
-  max-height: 44px; /* 2 lines * 22px line height */
-  overflow: hidden;
 }
