@@ -17,9 +17,7 @@ const Token = () => {
           <div className="w-full md:w-10/12 lg:w-6/12 mt-[-40px] md:mt-[-100px]">
             <div className="flex flex-col items-center"> {/* Center the title */}
               <Heading5>Mint and Win Token</Heading5>
-              <div className="contract-address responsive-address"> {/* Separate div for contract address */}
-                0x4546dFFA8dC8D1D7044BEC469650a95306C2C086
-              </div>
+              <Headingcontract>0x4546dFFA8dC8D1D7044BEC469650a95306C2C086</Headingcontract>
               <div className="mt-[-100px] md:mt-[20px]" style={{ width: '100%', height: '500px' }}>
                 <ApacheChart />
               </div>
