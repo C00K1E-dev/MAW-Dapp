@@ -21,7 +21,8 @@ const VIP = () => {
           <div className={styles.content}>
             <h2>Exclusive</h2>
             <ul>
-              <li>NFT Drops</li>
+              <li>Acces to Exclusive Collections</li>
+              <li>NFT Drops from Exclusive Collections</li>
               <li>3 MAW tokens/everyday</li>
             </ul>
             <a href="#">MINT</a>
@@ -32,8 +33,8 @@ const VIP = () => {
           <div className={styles.content}>
             <h2>DeLuxe</h2>
             <ul>
-              <li>Acces to DeLuxe Collections</li>
-              <li>NFT Drops</li>
+              <li>Acces to Exclusive and DeLuxe Collections</li>
+              <li>NFT Drops from DeLuxe Collection</li>
               <li>5 MAW tokens/everyday</li>
             </ul>
             <a href="#">MINT</a>
@@ -44,8 +45,8 @@ const VIP = () => {
           <div className={styles.content}>
             <h2>Ultimate</h2>
             <ul>
-              <li>Acces to Ultimate Collections</li>
-              <li>NFT Drops</li>
+              <li>Acces to Exclusive, DeLuxe and Ultimate Collections</li>
+              <li>NFT Drops from Ultimate Collections</li>
               <li>Access to Jackpot Raffle</li>
               <li>10 MAW tokens/everyday</li>
             </ul>
