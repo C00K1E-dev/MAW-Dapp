@@ -6,7 +6,7 @@ import Heading6 from "../headings/Heading6";
 
 const Roadmap = () => {
   return (
-    <section className="mt-[65px] md:mt-[100px] px-4 xl:px-0 roadmap" id="roadmap">
+    <section className="mt-[65px] md:mt-[100px] px-4 xl:px-0" id="roadmap">
       <div className="max-w-[930px] m-auto">
         <div className="w-full lg:w-1/2 m-auto text-center">
           <Heading2>Roadmap</Heading2>

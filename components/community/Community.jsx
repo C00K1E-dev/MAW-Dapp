@@ -7,7 +7,7 @@ import { communityData } from "../../data/community";
 
 const Community = () => {
   return (
-    <section className="mt-[70px] md:mt-[120px] px-4 2xl:px-0 community">
+    <section className="mt-[70px] md:mt-[120px] px-4 2xl:px-0">
       <div className="max-w-[1296px] m-auto">
         <div className="w-full lg:w-1/2 m-auto text-center">
           <Heading2>Join Our Community</Heading2>

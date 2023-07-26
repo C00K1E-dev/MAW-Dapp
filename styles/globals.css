@@ -268,10 +268,7 @@ body {
 /**================================================== *
  * ==========  Roadmap  ========== *
  * ================================================== */
- .roadmap {
-  background-image: url("../public/images/roadmap.png");
-  background-size: 100%;
-}
+
 .collumn::before {
   content: "";
   position: absolute;
@@ -327,22 +324,21 @@ ul li::marker {
  * ================================================== */
 
 .community {
-  background-image: url("../public/images/utility.png");
+  background-image: url("../public/images/community_bg_1.png"),
+    url("../public/images/community_bg_2.png");
   background-position: top left, top right;
   background-repeat: no-repeat;
 }
+
 /* =======  End of community  ======= */
-.vip {
-  background-image: url("../public/images/vip.png");
-  background-position: top left, top right;
-  background-repeat: no-repeat;
-}
+
 /**================================================== *
  * ==========  leaderboard  ========== *
  * ================================================== */
 
 .leaderboard {
-  background-image: url("../public/images/leaderboard.png");
+  background-image: url("../public/images/circle_01.png"),
+    url("../public/images/circle_02.png");
   background-position: top left, 88% bottom;
   background-repeat: no-repeat;
 }
@@ -364,12 +360,6 @@ ul li::marker {
 
 
 /* =======  Lottery text container @1024  ======= */
-
-.lottery {
-  background-image: url("../public/images/lottery.png");
-  background-position: top left, top right;
-  background-repeat: no-repeat;
-}
 @media (min-width: 1024px) {
   .lottery-text-container {
     /* Add your custom styles here */
@@ -386,23 +376,8 @@ ul li::marker {
 
 
 /* =======  END of Lottery text container @1024  ======= */
-.utility {
-  background-image: url("../public/images/utility.png");
-  background-position: top left, top right;
-  background-repeat: no-repeat;
-}
 
-.upcoming {
-  background-image: url("../public/images/utility.png");
-  background-position: top left, top right;
-  background-repeat: no-repeat;
-}
 /* ======= TOKEN  ======= */
-.token {
-  background-image: url("../public/images/lottery.png");
-  background-position: top left, top right;
-  background-repeat: no-repeat;
-}
 .token-component {
   background: var(--bg-dark);
   border-radius: 15px;
