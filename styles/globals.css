@@ -68,37 +68,37 @@
  /* Responsive font sizes for .heading-contract */
 @media (max-width: 320px) {
   .heading-contract {
-    font-size: 12px;
+    font-size: 8px;
   }
 }
 
 @media (min-width: 321px) and (max-width: 375px) {
   .heading-contract {
-    font-size: 14px;
+    font-size: 10px;
   }
 }
 
 @media (min-width: 376px) and (max-width: 425px) {
   .heading-contract {
-    font-size: 16px;
+    font-size: 12px;
   }
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
   .heading-contract {
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .heading-contract {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
   .heading-contract {
-    font-size: 22px;
+    font-size: 18px;
   }
 }
 
