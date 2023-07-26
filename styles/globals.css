@@ -109,6 +109,7 @@
   }
   .btn-link {
     color: #0adab9;
+    font-size: clamp(12px, 2.5vw, 24px);
   }
   
   .privacy-btn {
@@ -341,6 +342,47 @@ ul li::marker {
 /* =======  END of Lottery text container @1024  ======= */
 
 /* ======= TOKEN  ======= */
+/* For screen width up to 320px */
+@media (max-width: 320px) {
+  .responsive-address {
+    font-size: 12px;
+  }
+}
+
+/* For screen width between 321px and 375px */
+@media (min-width: 321px) and (max-width: 375px) {
+  .responsive-address {
+    font-size: 14px;
+  }
+}
+
+/* For screen width between 376px and 425px */
+@media (min-width: 376px) and (max-width: 425px) {
+  .responsive-address {
+    font-size: 16px;
+  }
+}
+
+/* For screen width between 426px and 768px */
+@media (min-width: 426px) and (max-width: 768px) {
+  .responsive-address {
+    font-size: 20px;
+  }
+}
+
+/* For screen width between 769px and 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .responsive-address {
+    font-size: 20px;
+  }
+}
+
+/* For screen width between 1025px and 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .responsive-address {
+    font-size: 22px;
+  }
+}
 .token-component {
   background: var(--bg-dark);
   border-radius: 15px;
