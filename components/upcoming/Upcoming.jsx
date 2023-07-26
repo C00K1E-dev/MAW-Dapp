@@ -5,7 +5,7 @@ import Heading2 from "../headings/Heading2";
 const Upcoming = () => {
   return (
     <div>
-      <div className="bg-[color:var(--bg-dark)] text-center p-[15px_0_75px] md:p-[30px_0_100px]">
+      <div className="upcoming text-center p-[15px_0_75px] md:p-[30px_0_100px]">
         <Heading2>Upcoming Collections</Heading2>
         <p className="mt-[10px]">
           Here you can view our upcoming collections.

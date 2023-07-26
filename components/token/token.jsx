@@ -6,7 +6,7 @@ import Headingcontract from "../headings/HeadingContract";
 
 const Token = () => {
   return (
-    <section className="mt-[70px] sm:mt-[115px] px-4 xl:px-0" id="token">
+    <section className="mt-[70px] sm:mt-[115px] px-4 xl:px-0 token" id="token">
       <div className="max-w-[1296px] m-auto">
         <div className="text-center mb-20"> {/* Add mb-8 for margin-bottom */}
           <Heading2>Token</Heading2>

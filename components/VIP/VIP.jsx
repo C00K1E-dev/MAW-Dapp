@@ -4,7 +4,7 @@ import styles from "../../styles/vipstyle.module.css";
 
 const VIP = () => {
   return (
-    <div className="max-w-[1296px] m-auto" id="vip">
+    <div className="max-w-[1296px] m-auto vip" id="vip">
       <div className="w-full lg:w-1/2 m-auto text-center">
         <div className={styles.vipTitle}>
           <Heading2>VIP</Heading2>

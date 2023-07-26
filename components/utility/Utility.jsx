@@ -6,7 +6,7 @@ import { utilityData } from "../../data/utility";
 
 const Utility = () => {
   return (
-    <section className="mt-[65px] md:mt-[115px] px-4 sm:px-0" id="utility">
+    <section className="mt-[65px] md:mt-[115px] px-4 sm:px-0 utility" id="utility">
       <div className="max-w-[1296px] m-auto">
         <div className="w-full lg:w-1/2 m-auto text-center">
           <Heading2>Utility</Heading2>
