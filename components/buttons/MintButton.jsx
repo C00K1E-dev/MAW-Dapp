@@ -569,44 +569,23 @@ const abi = [
     const [isConnected, setIsConnected] = useState(false);
   
     useEffect(() => {
-      const initializeEthereumClient = async () => {
-        if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
-          const web3 = new Web3(window.ethereum);
-          setEthereumClient(web3);
-  
-          // Check if the user is connected to a wallet
-          const isConnected = await checkWalletConnection(web3);
-          setIsConnected(isConnected);
-        }
-      };
-  
-      initializeEthereumClient();
-  
-      // Listen for changes in the Ethereum provider's state (e.g., user connects or disconnects wallet)
-      window.ethereum.on("accountsChanged", handleAccountsChanged);
-  
-      return () => {
-        // Clean up the event listener when the component unmounts
-        window.ethereum.off("accountsChanged", handleAccountsChanged);
-      };
+      if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+        const web3 = new Web3(window.ethereum);
+        setEthereumClient(web3);
+      }
     }, []);
   
-    const handleAccountsChanged = async (accounts) => {
-      const isConnected = accounts.length > 0;
-      setIsConnected(isConnected);
-    };
+    const quantity = 1;
   
-    const checkWalletConnection = async (web3) => {
+    const checkWalletConnection = async () => {
       try {
-        const accounts = await web3.eth.getAccounts();
+        const accounts = await ethereumClient.eth.getAccounts();
         return accounts.length > 0;
       } catch (error) {
         console.error("Failed to check wallet connection", error);
         return false;
       }
     };
-  
-    const quantity = 1;
   
     const handleMint = async () => {
       try {
@@ -615,25 +594,27 @@ const abi = [
           setShowPopup(true);
           return;
         }
-  
+    
+        // Check if the user is connected to a wallet
+        const isConnected = await checkWalletConnection();
         if (!isConnected) {
           setPopupMessage("Please connect your wallet first.");
           setShowPopup(true);
           return;
         }
-  
+    
         const winNft = new ethereumClient.eth.Contract(abi, contractAddress);
         const nftPrice = BigInt(await winNft.methods.NFT_PRICE().call());
         const totalPrice = nftPrice * BigInt(quantity);
-  
+    
         const accounts = await ethereumClient.eth.getAccounts();
         const fromAddress = accounts[0]; // Use the first account as the 'from' address
-  
+    
         await winNft.methods.mintNFT(quantity).send({
           from: fromAddress,
           value: totalPrice.toString(),
         });
-  
+    
         setPopupMessage("Your NFT has been minted successfully!");
         setShowPopup(true);
       } catch (error) {
@@ -642,7 +623,6 @@ const abi = [
         setShowPopup(true);
       }
     };
-  
     return (
       <div>
         <button className="btn btn--primary" onClick={handleMint}>
