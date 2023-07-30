@@ -6,7 +6,7 @@ import MintButton from "../buttons/MintButton";
 import Heading4 from "../headings/Heading4";
 import Heading6 from "../headings/Heading6";
 import PopupMessage from "../PopupMessage"; // Import PopupMessage component
-
+import NFTsButton from "../buttons/NFTsButton";
 const LotteryCard = () => {
   const videoRef = useRef(null);
 
@@ -53,6 +53,8 @@ const LotteryCard = () => {
               Congratulations! You have successfully minted a ticket.
             </PopupMessage>
           </MintButton>
+          <div className="mt-4"></div>
+          <NFTsButton />
         </div>
       </div>
     </div>
