@@ -578,15 +578,6 @@ const NFTsButton = () => {
       if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
         const web3 = new Web3(window.ethereum);
         setEthereumClient(web3);
-
-        try {
-          // Request user permission to access the Ethereum provider (e.g., MetaMask)
-          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-          setConnected(accounts.length > 0);
-        } catch (error) {
-          console.error("User denied access to Ethereum provider or not connected.", error);
-          setConnected(false);
-        }
       }
     };
 
@@ -623,6 +614,7 @@ const NFTsButton = () => {
       }
     };
   }, [ethereumClient]);
+
 
   const fetchCollectionName = async () => {
     try {
