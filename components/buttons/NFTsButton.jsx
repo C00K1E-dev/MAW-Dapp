@@ -564,7 +564,7 @@ const abi = [
 const contractAddress = "0x27e25A7630a9C68c97aF93c394EE788E6c0160F8";
 const baseIpfsUrl = "https://bafybeibdf2ow6opelj2xcfkrfgbrzz42bzruudwxemo3zb7rtdsmgo26ra.ipfs.dweb.link/";
 
-function NFTsButton() {
+const NFTsButton = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [ethereumClient, setEthereumClient] = useState(null);
@@ -578,6 +578,15 @@ function NFTsButton() {
       if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
         const web3 = new Web3(window.ethereum);
         setEthereumClient(web3);
+
+        try {
+          // Request user permission to access the Ethereum provider (e.g., MetaMask)
+          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+          setConnected(accounts.length > 0);
+        } catch (error) {
+          console.error("User denied access to Ethereum provider or not connected.", error);
+          setConnected(false);
+        }
       }
     };
 
@@ -602,15 +611,15 @@ function NFTsButton() {
     };
 
     // Add a check for ethereumClient before attaching the event listener
-    if (ethereumClient && ethereumClient.currentProvider) {
+    if (ethereumClient && typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
       updateWalletConnection();
-      ethereumClient.currentProvider.on("accountsChanged", updateWalletConnection);
+      window.ethereum.on("accountsChanged", updateWalletConnection);
     }
 
     // Clean up the event listener on unmount
     return () => {
-      if (ethereumClient && ethereumClient.currentProvider) {
-        ethereumClient.currentProvider.off("accountsChanged", updateWalletConnection);
+      if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+        window.ethereum.removeListener("accountsChanged", updateWalletConnection);
       }
     };
   }, [ethereumClient]);
@@ -759,6 +768,6 @@ function NFTsButton() {
       )}
     </div>
   );
-}
+};
 
 export default NFTsButton;

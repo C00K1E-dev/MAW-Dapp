@@ -562,7 +562,7 @@ const abi = [
 
   const contractAddress = "0x27e25A7630a9C68c97aF93c394EE788E6c0160F8";
 
-  function MintButton() {
+  const MintButton = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [popupMessage, setPopupMessage] = useState("");
     const [ethereumClient, setEthereumClient] = useState(null);
@@ -576,6 +576,22 @@ const abi = [
         setIsConnected(isConnected);
       };
   
+      const initializeEthereumClient = async () => {
+        if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+          const web3 = new Web3(window.ethereum);
+          setEthereumClient(web3);
+  
+          try {
+            // Request user permission to access the Ethereum provider (e.g., MetaMask)
+            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+            setIsConnected(accounts.length > 0);
+          } catch (error) {
+            console.error("User denied access to Ethereum provider or not connected.", error);
+            setIsConnected(false);
+          }
+        }
+      };
+  
       if (ethereumClient) {
         window.ethereum.on("accountsChanged", handleAccountsChanged);
   
@@ -584,32 +600,9 @@ const abi = [
           window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
         };
       }
-    }, [ethereumClient]);
   
-    const initializeEthereumClient = async () => {
-      if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
-        const web3 = new Web3(window.ethereum);
-        setEthereumClient(web3);
-  
-        // Check if the user is connected to a wallet
-        const isConnected = await checkWalletConnection(web3);
-        setIsConnected(isConnected);
-      }
-    };
-  
-    useEffect(() => {
       initializeEthereumClient();
-    }, []);
-  
-    const checkWalletConnection = async (web3) => {
-      try {
-        const accounts = await web3.eth.getAccounts();
-        return accounts.length > 0;
-      } catch (error) {
-        console.error("Failed to check wallet connection", error);
-        return false;
-      }
-    };
+    }, [ethereumClient]);
   
     const handleMint = async () => {
       try {
@@ -619,7 +612,6 @@ const abi = [
           return;
         }
   
-        // Check if the user is connected to a wallet
         if (!isConnected) {
           setPopupMessage("Please connect your wallet first.");
           setShowPopup(true);
@@ -656,6 +648,6 @@ const abi = [
         {showPopup && <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />}
       </div>
     );
-  }
+  };
   
   export default MintButton;
