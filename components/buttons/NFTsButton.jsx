@@ -570,6 +570,8 @@ function NFTsButton() {
   const [ethereumClient, setEthereumClient] = useState(null);
   const [collectionName, setCollectionName] = useState("");
   const [ownerTokenIds, setOwnerTokenIds] = useState([]);
+  const [connected, setConnected] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const initializeEthereumClient = async () => {
@@ -582,15 +584,36 @@ function NFTsButton() {
     initializeEthereumClient();
   }, []);
 
-  const checkWalletConnection = async () => {
-    try {
-      const accounts = await ethereumClient?.eth.getAccounts();
-      return accounts && accounts.length > 0;
-    } catch (error) {
-      console.error("Failed to check wallet connection", error);
-      return false;
+  useEffect(() => {
+    const checkWalletConnection = async () => {
+      try {
+        const accounts = await ethereumClient?.eth.getAccounts();
+        return accounts && accounts.length > 0;
+      } catch (error) {
+        console.error("Failed to check wallet connection", error);
+        return false;
+      }
+    };
+
+    // Update the connected state whenever the wallet connection changes
+    const updateWalletConnection = async () => {
+      const isConnected = await checkWalletConnection();
+      setConnected(isConnected);
+    };
+
+    // Add a check for ethereumClient before attaching the event listener
+    if (ethereumClient && ethereumClient.currentProvider) {
+      updateWalletConnection();
+      ethereumClient.currentProvider.on("accountsChanged", updateWalletConnection);
     }
-  };
+
+    // Clean up the event listener on unmount
+    return () => {
+      if (ethereumClient && ethereumClient.currentProvider) {
+        ethereumClient.currentProvider.off("accountsChanged", updateWalletConnection);
+      }
+    };
+  }, [ethereumClient]);
 
   const fetchCollectionName = async () => {
     try {
@@ -614,6 +637,8 @@ function NFTsButton() {
 
       const isConnected = await checkWalletConnection();
       if (!isConnected) {
+        setOwnerTokenIds([]);
+        setLoading(false);
         return;
       }
 
@@ -622,8 +647,21 @@ function NFTsButton() {
       const ownerAddress = accounts[0];
       const tokenIds = await nftContract.methods.getTokenIdsByOwner(ownerAddress).call();
       setOwnerTokenIds(tokenIds);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching owner's token IDs:", error);
+      setOwnerTokenIds([]);
+      setLoading(false);
+    }
+  };
+
+  const checkWalletConnection = async () => {
+    try {
+      const accounts = await ethereumClient?.eth.getAccounts();
+      return accounts && accounts.length > 0;
+    } catch (error) {
+      console.error("Failed to check wallet connection", error);
+      return false;
     }
   };
 
@@ -703,12 +741,14 @@ function NFTsButton() {
 
   useEffect(() => {
     fetchCollectionName();
-    fetchOwnerTokenIds();
-  }, [ethereumClient]);
+    if (connected) {
+      fetchOwnerTokenIds();
+    }
+  }, [ethereumClient, connected]);
 
   return (
     <div>
-      {ownerTokenIds.length > 0 && (
+      {!loading && connected && (
         <button className="btn btn--primary" onClick={fetchNFTData}>
           View Your NFTs
         </button>
