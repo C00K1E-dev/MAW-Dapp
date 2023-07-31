@@ -639,18 +639,18 @@ function NFTsButton() {
       if (!ethereumClient) {
         return "DEFAULT_VIDEO_URL";
       }
-  
+
       // Check if the user is connected to a wallet
       const isConnected = await checkWalletConnection();
       if (!isConnected) {
         return "DEFAULT_VIDEO_URL";
       }
-  
+
       const nftContract = new ethereumClient.eth.Contract(abi, contractAddress);
       const nftDataFunction = nftContract.methods.nftData(tokenId);
       const nftData = await nftDataFunction.call();
       const videoUrl = `${baseIpfsUrl}${tokenId}.mp4`; // Append the token ID to the URL
-  
+
       return videoUrl;
     } catch (error) {
       console.error("Error fetching video URL:", error);
@@ -668,7 +668,7 @@ function NFTsButton() {
         setShowPopup(true);
         return;
       }
-  
+
       // Check if the user is connected to a wallet
       const isConnected = await checkWalletConnection();
       if (!isConnected) {
@@ -676,38 +676,26 @@ function NFTsButton() {
         setShowPopup(true);
         return;
       }
-  
+
       if (ownerTokenIds.length === 0) {
         setPopupMessage("You don't own any NFTs.");
         setShowPopup(true);
         return;
       }
-  
+
       // Fetch the NFT data for each token ID
       for (const tokenIdWithN of ownerTokenIds) {
         const tokenId = tokenIdWithN.toString();
         const videoUrl = await fetchVideoUrl(tokenId);
         const nft = { tokenId, videoUrl, collectionName }; // Include collectionName in each nft object
         nfts.push(nft);
-  
+
         // Add a delay of 1 second before fetching the next video URL
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
-  
-      // Create JSX elements for each NFT
-      const nftsDisplay = nfts.map((nft) => (
-        <div key={nft.tokenId}>
-          <p>Collection Name: {collectionName}</p>
-          <p>Token ID: {nft.tokenId}</p>
-          <video controls width="320" height="240">
-            <source src={nft.videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      ));
-  
-      setNFTsData(nfts); // Store the fetched NFT data in state
-      setPopupMessage(nftsDisplay); // Set the fetched NFT data as the popup message
+
+      // Store the fetched NFT data in state
+      setNFTsData(nfts);
       setShowPopup(true); // Display the fetched NFT data in the popup
     } catch (error) {
       console.error("Error fetching NFT data:", error);
