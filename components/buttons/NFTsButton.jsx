@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import PopupMessageNFT from "../PopupMessageNFT";
 
+
 const abi = [
   {
     "inputs": [],
@@ -567,8 +568,6 @@ function NFTsButton() {
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [ethereumClient, setEthereumClient] = useState(null);
-  const [nftsData, setNFTsData] = useState([]);
-  const [isConnected, setIsConnected] = useState(false);
   const [collectionName, setCollectionName] = useState("");
   const [ownerTokenIds, setOwnerTokenIds] = useState([]);
 
@@ -613,7 +612,6 @@ function NFTsButton() {
         return;
       }
 
-      // Check if the user is connected to a wallet
       const isConnected = await checkWalletConnection();
       if (!isConnected) {
         return;
@@ -621,11 +619,8 @@ function NFTsButton() {
 
       const nftContract = new ethereumClient.eth.Contract(abi, contractAddress);
       const accounts = await ethereumClient.eth.getAccounts();
-      const ownerAddress = accounts[0]; // Use the first account as the owner address
-
-      // Call your contract's function to get token IDs owned by the user
+      const ownerAddress = accounts[0];
       const tokenIds = await nftContract.methods.getTokenIdsByOwner(ownerAddress).call();
-      console.log("Token IDs owned by the user:", tokenIds); // Debugging statement
       setOwnerTokenIds(tokenIds);
     } catch (error) {
       console.error("Error fetching owner's token IDs:", error);
@@ -634,13 +629,10 @@ function NFTsButton() {
 
   const fetchVideoUrl = async (tokenId) => {
     try {
-      // Implement the logic to fetch the video URL for the given tokenId
-      // For example, you can fetch the data from your smart contract's `nftData` function
       if (!ethereumClient) {
         return "DEFAULT_VIDEO_URL";
       }
 
-      // Check if the user is connected to a wallet
       const isConnected = await checkWalletConnection();
       if (!isConnected) {
         return "DEFAULT_VIDEO_URL";
@@ -649,18 +641,17 @@ function NFTsButton() {
       const nftContract = new ethereumClient.eth.Contract(abi, contractAddress);
       const nftDataFunction = nftContract.methods.nftData(tokenId);
       const nftData = await nftDataFunction.call();
-      const videoUrl = `${baseIpfsUrl}${tokenId}.mp4`; // Append the token ID to the URL
+      const videoUrl = `${baseIpfsUrl}${tokenId}.mp4`;
 
       return videoUrl;
     } catch (error) {
       console.error("Error fetching video URL:", error);
-      // Return a default or placeholder video URL in case of an error
       return "DEFAULT_VIDEO_URL";
     }
   };
 
   const fetchNFTData = async () => {
-    let nfts = []; // Declare nfts here
+    let nfts = [];
 
     try {
       if (!ethereumClient) {
@@ -669,7 +660,6 @@ function NFTsButton() {
         return;
       }
 
-      // Check if the user is connected to a wallet
       const isConnected = await checkWalletConnection();
       if (!isConnected) {
         setPopupMessage("Please connect your wallet first.");
@@ -683,18 +673,14 @@ function NFTsButton() {
         return;
       }
 
-      // Fetch the NFT data for each token ID
       for (const tokenIdWithN of ownerTokenIds) {
         const tokenId = tokenIdWithN.toString();
         const videoUrl = await fetchVideoUrl(tokenId);
-        const nft = { tokenId, videoUrl, collectionName }; // Include collectionName in each nft object
+        const nft = { tokenId, videoUrl, collectionName };
         nfts.push(nft);
-
-        // Add a delay of 1 second before fetching the next video URL
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
 
-      // Create JSX elements for each NFT
       const nftsDisplay = nfts.map((nft) => (
         <div key={nft.tokenId}>
           <p>Collection Name: {collectionName}</p>
@@ -706,9 +692,8 @@ function NFTsButton() {
         </div>
       ));
 
-      setNFTsData(nfts); // Store the fetched NFT data in state
-      setPopupMessage(nftsDisplay); // Set the fetched NFT data as the popup message
-      setShowPopup(true); // Display the fetched NFT data in the popup
+      setPopupMessage(nftsDisplay);
+      setShowPopup(true);
     } catch (error) {
       console.error("Error fetching NFT data:", error);
       setPopupMessage("An error occurred while fetching your NFTs.");
@@ -723,9 +708,11 @@ function NFTsButton() {
 
   return (
     <div>
-      <button className="btn btn--primary" onClick={fetchNFTData}>
-        View Your NFTs
-      </button>
+      {ownerTokenIds.length > 0 && (
+        <button className="btn btn--primary" onClick={fetchNFTData}>
+          View Your NFTs
+        </button>
+      )}
 
       {showPopup && (
         <PopupMessageNFT message={popupMessage} onClose={() => setShowPopup(false)} />

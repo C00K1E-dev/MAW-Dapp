@@ -17,12 +17,6 @@ const wagmiConfig = createConfig({
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
 function Web3ConnectButton() {
-  const [isConnected, setIsConnected] = useState(false);
-
-  useEffect(() => {
-    setIsConnected(ethereumClient.connected);
-  }, []);
-
   return (
     <>
       <WagmiConfig config={wagmiConfig}>
@@ -38,7 +32,7 @@ function Web3ConnectButton() {
           '--w3m-accent-fill-color': '#1a1f2c',
           '--w3m-accent-color': '#0adab9',
           '--w3m-font-family': 'jost',
-          }}
+        }}
         projectId={projectId}
         ethereumClient={ethereumClient}
       />
