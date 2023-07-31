@@ -694,8 +694,20 @@ function NFTsButton() {
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
 
-      // Store the fetched NFT data in state
-      setNFTsData(nfts);
+      // Create JSX elements for each NFT
+      const nftsDisplay = nfts.map((nft) => (
+        <div key={nft.tokenId}>
+          <p>Collection Name: {collectionName}</p>
+          <p>Token ID: {nft.tokenId}</p>
+          <video controls width="320" height="240">
+            <source src={nft.videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      ));
+
+      setNFTsData(nfts); // Store the fetched NFT data in state
+      setPopupMessage(nftsDisplay); // Set the fetched NFT data as the popup message
       setShowPopup(true); // Display the fetched NFT data in the popup
     } catch (error) {
       console.error("Error fetching NFT data:", error);
