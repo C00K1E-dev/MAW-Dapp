@@ -573,34 +573,33 @@ const abi = [
         if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
           const web3 = new Web3(window.ethereum);
           setEthereumClient(web3);
-    
+  
           // Check if the user is connected to a wallet
           const isConnected = await checkWalletConnection(web3);
           setIsConnected(isConnected);
         }
       };
-    
+  
       initializeEthereumClient();
-    
+    }, []);
+  
+    useEffect(() => {
       // Listen for changes in the Ethereum provider's state (e.g., user connects or disconnects wallet)
       const handleAccountsChanged = async (accounts) => {
         const isConnected = accounts.length > 0;
         setIsConnected(isConnected);
       };
-      
-      window.ethereum.on("accountsChanged", handleAccountsChanged);
+  
+      if (ethereumClient) {
+        window.ethereum.on("accountsChanged", handleAccountsChanged);
+  
+        return () => {
+          // Clean up the event listener when the component unmounts
+          window.ethereum.off("accountsChanged", handleAccountsChanged);
+        };
+      }
+    }, [ethereumClient]);
     
-      return () => {
-        // Clean up the event listener when the component unmounts
-        window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
-      };
-    }, []);
-  
-    const handleAccountsChanged = async (accounts) => {
-      const isConnected = accounts.length > 0;
-      setIsConnected(isConnected);
-    };
-  
     const checkWalletConnection = async (web3) => {
       try {
         const accounts = await web3.eth.getAccounts();
