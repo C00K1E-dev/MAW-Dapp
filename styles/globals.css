@@ -502,3 +502,17 @@ ul li::marker {
     max-width: 1440px;
   }
 }
+
+
+/* Add this CSS to your global CSS file or inside a style tag in your component */
+/* Glassmorphism effect for scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(255, 255, 255, 0.2); /* Set the background color for the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0adab9; /* Set the background color for the scrollbar thumb */
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Add a border to the scrollbar thumb */
+}
