@@ -562,7 +562,6 @@ const abi = [
 
   const contractAddress = "0x27e25A7630a9C68c97aF93c394EE788E6c0160F8";
 
-
   const MintButton = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [popupMessage, setPopupMessage] = useState("");
@@ -571,6 +570,7 @@ const abi = [
     const quantity = 1;
   
     useEffect(() => {
+      // Listen for changes in the Ethereum provider's state (e.g., user connects or disconnects wallet)
       const handleAccountsChanged = async (accounts) => {
         const isConnected = accounts.length > 0;
         setIsConnected(isConnected);
@@ -587,6 +587,7 @@ const abi = [
         window.ethereum.on("accountsChanged", handleAccountsChanged);
   
         return () => {
+          // Clean up the event listener when the component unmounts
           window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
         };
       }
@@ -596,7 +597,13 @@ const abi = [
   
     const handleMint = async () => {
       try {
-        if (!ethereumClient || !isConnected) {
+        if (!ethereumClient) {
+          setPopupMessage("Please connect your wallet first.");
+          setShowPopup(true);
+          return;
+        }
+  
+        if (!isConnected) {
           setPopupMessage("Please connect your wallet first.");
           setShowPopup(true);
           return;
@@ -607,7 +614,7 @@ const abi = [
         const totalPrice = nftPrice * BigInt(quantity);
   
         const accounts = await ethereumClient.eth.getAccounts();
-        const fromAddress = accounts[0];
+        const fromAddress = accounts[0]; // Use the first account as the 'from' address
   
         await winNft.methods.mintNFT(quantity).send({
           from: fromAddress,
