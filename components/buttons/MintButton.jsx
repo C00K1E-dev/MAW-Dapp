@@ -569,32 +569,21 @@ const abi = [
     const [isConnected, setIsConnected] = useState(false);
   
     useEffect(() => {
-      const initializeEthereumClient = async () => {
-        if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
-          const web3 = new Web3(window.ethereum);
-          setEthereumClient(web3);
-    
-          // Check if the user is connected to a wallet
-          const isConnected = await checkWalletConnection(web3);
-          setIsConnected(isConnected);
-        }
-      };
-    
-      initializeEthereumClient();
-    
       // Listen for changes in the Ethereum provider's state (e.g., user connects or disconnects wallet)
       const handleAccountsChanged = async (accounts) => {
         const isConnected = accounts.length > 0;
         setIsConnected(isConnected);
       };
-      
-      window.ethereum.on("accountsChanged", handleAccountsChanged);
     
-      return () => {
-        // Clean up the event listener when the component unmounts
-        window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
-      };
-    }, []);
+      if (ethereumClient) {
+        window.ethereum.on("accountsChanged", handleAccountsChanged);
+    
+        return () => {
+          // Clean up the event listener when the component unmounts
+          ethereumClient.removeListener("accountsChanged", handleAccountsChanged);
+        };
+      }
+    }, [ethereumClient]);
   
     const handleAccountsChanged = async (accounts) => {
       const isConnected = accounts.length > 0;
