@@ -590,19 +590,10 @@ const abi = [
       if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
         const web3 = new Web3(window.ethereum);
         setEthereumClient(web3);
-    
-        try {
-          // Request user permission to access the Ethereum provider (e.g., MetaMask)
-          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-          if (accounts.length > 0) {
-            setIsConnected(true);
-          } else {
-            setIsConnected(false);
-          }
-        } catch (error) {
-          console.error("User denied access to Ethereum provider or not connected.", error);
-          setIsConnected(false);
-        }
+  
+        // Check if the user is connected to a wallet
+        const isConnected = await checkWalletConnection(web3);
+        setIsConnected(isConnected);
       }
     };
   
