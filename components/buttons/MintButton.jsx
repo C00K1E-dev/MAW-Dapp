@@ -570,18 +570,28 @@ const abi = [
     const [isConnected, setIsConnected] = useState(false);
   
     useEffect(() => {
-      if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
-        const web3 = new Web3(window.ethereum);
-        setEthereumClient(web3);
-      }
+      const initializeEthereumClient = async () => {
+        if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+          const web3 = new Web3(window.ethereum);
+          try {
+            // Request access to the user's Ethereum account
+            await window.ethereum.request({ method: "eth_requestAccounts" });
+            setEthereumClient(web3);
+          } catch (error) {
+            console.error("Failed to connect to the wallet", error);
+          }
+        }
+      };
+  
+      initializeEthereumClient();
     }, []);
   
     const quantity = 1;
   
     const checkWalletConnection = async () => {
       try {
-        const accounts = await ethereumClient.eth.getAccounts();
-        return accounts.length > 0;
+        const accounts = await ethereumClient?.eth.getAccounts();
+        return accounts && accounts.length > 0;
       } catch (error) {
         console.error("Failed to check wallet connection", error);
         return false;
@@ -595,7 +605,7 @@ const abi = [
           setShowPopup(true);
           return;
         }
-    
+  
         // Check if the user is connected to a wallet
         const isConnected = await checkWalletConnection();
         if (!isConnected) {
@@ -603,19 +613,19 @@ const abi = [
           setShowPopup(true);
           return;
         }
-    
+  
         const MAWTEST = new ethereumClient.eth.Contract(abi, contractAddress);
         const nftPrice = BigInt(await MAWTEST.methods.NFT_PRICE().call());
         const totalPrice = nftPrice * BigInt(quantity);
-    
+  
         const accounts = await ethereumClient.eth.getAccounts();
         const fromAddress = accounts[0]; // Use the first account as the 'from' address
-    
+  
         await MAWTEST.methods.mintNFT(quantity).send({
           from: fromAddress,
           value: totalPrice.toString(),
         });
-    
+  
         setPopupMessage("Your NFT has been minted successfully!");
         setShowPopup(true);
       } catch (error) {
@@ -624,6 +634,7 @@ const abi = [
         setShowPopup(true);
       }
     };
+  
     return (
       <div>
         <button className="btn btn--primary" onClick={handleMint}>
