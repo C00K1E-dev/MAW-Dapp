@@ -567,27 +567,51 @@ const abi = [
     const [showPopup, setShowPopup] = useState(false);
     const [popupMessage, setPopupMessage] = useState("");
     const [ethereumClient, setEthereumClient] = useState(null);
-    const [isConnected, setIsConnected] = useState(false);
+    const [connected, setConnected] = useState(false);
+    const quantity = 1;
   
     useEffect(() => {
       const initializeEthereumClient = async () => {
         if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
           const web3 = new Web3(window.ethereum);
-          try {
-            // Request access to the user's Ethereum account
-            await window.ethereum.request({ method: "eth_requestAccounts" });
-            setEthereumClient(web3);
-          } catch (error) {
-            console.error("Failed to connect to the wallet", error);
-          }
+          setEthereumClient(web3);
         }
       };
-  
+      
       initializeEthereumClient();
     }, []);
   
-    const quantity = 1;
+    useEffect(() => {
+      const checkWalletConnection = async () => {
+        try {
+          const accounts = await ethereumClient?.eth.getAccounts();
+          return accounts && accounts.length > 0;
+        } catch (error) {
+          console.error("Failed to check wallet connection", error);
+          return false;
+        }
+      };
   
+      // Update the connected state whenever the wallet connection changes
+      const updateWalletConnection = async () => {
+        const isConnected = await checkWalletConnection();
+        setConnected(isConnected);
+      };
+  
+      // Add a check for ethereumClient before attaching the event listener
+      if (ethereumClient && typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+        updateWalletConnection();
+        window.ethereum.on("accountsChanged", updateWalletConnection);
+      }
+  
+      // Clean up the event listener on unmount
+      return () => {
+        if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+          window.ethereum.removeListener("accountsChanged", updateWalletConnection);
+        }
+      };
+    }, [ethereumClient]);
+
     const checkWalletConnection = async () => {
       try {
         const accounts = await ethereumClient?.eth.getAccounts();
@@ -597,6 +621,7 @@ const abi = [
         return false;
       }
     };
+  
   
     const handleMint = async () => {
       try {
