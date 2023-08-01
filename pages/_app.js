@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }) {
       {ready ? (
     
       <WagmiConfig config={wagmiConfig}>
-        <Component {...pageProps} />
+        <Component {...pageProps} ethereumClient={ethereumClient} />
         </WagmiConfig>
          ) : null}
         <Web3Modal projectId={projectId} ethereumClient={ethereumClient}

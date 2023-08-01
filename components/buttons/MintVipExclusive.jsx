@@ -562,7 +562,7 @@ const abi = [
     }
   ]
 
-  export default function MintVipExclusive() {
+  export default function MintVipExclusive({ ethereumClient }) {
     const { isConnected } = useAccount();
     const [showPopup, setShowPopup] = useState(false);
     const [popupMessage, setPopupMessage] = useState("");
