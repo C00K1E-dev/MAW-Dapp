@@ -568,39 +568,39 @@ const abi = [
     const [popupMessage, setPopupMessage] = useState("");
     
     const handleMint = async () => {
-      if (isConnected) {
-        try {
-          const ethereumClient = new Web3(window.ethereum);
-          const MAWTEST = new ethereumClient.eth.Contract(abi, contractAddress);
-          const nftPrice = BigInt(await MAWTEST.methods.NFT_PRICE().call());
-          const quantity = 1; // Replace this with the desired quantity
-          const totalPrice = nftPrice * BigInt(quantity);
-    
-          const accounts = await ethereumClient.eth.getAccounts();
-          const fromAddress = accounts[0]; // Use the first account as the 'from' address
-    
-          await MAWTEST.methods.mintNFT(quantity).send({
-            from: fromAddress,
-            value: totalPrice.toString(),
-          });
-    
-          setPopupMessage("Your NFT has been minted successfully!");
-          setShowPopup(true);
-        } catch (error) {
-          console.error(error);
-          setPopupMessage("An error occurred while minting your NFT.");
+        if (isConnected) {
+          try {
+            const ethereumClient = new Web3(window.ethereum);
+            const MAWTEST = new ethereumClient.eth.Contract(abi, contractAddress);
+            const nftPrice = BigInt(await MAWTEST.methods.NFT_PRICE().call());
+            const quantity = 1; // Replace this with the desired quantity
+            const totalPrice = nftPrice * BigInt(quantity);
+      
+            const accounts = await ethereumClient.eth.getAccounts();
+            const fromAddress = accounts[0]; // Use the first account as the 'from' address
+      
+            await MAWTEST.methods.mintNFT(quantity).send({
+              from: fromAddress,
+              value: totalPrice.toString(),
+            });
+      
+            setPopupMessage("Your NFT has been minted successfully!");
+            setShowPopup(true);
+          } catch (error) {
+            console.error(error);
+            setPopupMessage(`An error occurred while minting your NFT: ${error.message}`);
+            setShowPopup(true);
+          }
+        } else {
+          setPopupMessage("Please connect your wallet first.");
           setShowPopup(true);
         }
-      } else {
-        setPopupMessage("Please connect your wallet first.");
-        setShowPopup(true);
-      }
-    };
+      };
   
     return (
       <div>
         <button className="btn btn--primary" onClick={handleMint}>
-          Mint Ticket
+          Mint Test
         </button>
   
         {showPopup && (
