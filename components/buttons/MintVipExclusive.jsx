@@ -567,6 +567,7 @@ const abi = [
     const [showPopup, setShowPopup] = useState(false);
     const [popupMessage, setPopupMessage] = useState("");
     
+    
     const handleMint = async () => {
         if (isConnected) {
           try {
