@@ -626,7 +626,7 @@ const abi = [
     };
     return (
       <div>
-       <button className="btn btn--primary" onClick={handleMint} onTouch={handleMint}>
+        <button className="btn btn--primary" onClick={handleMint}>
           Mint Ticket
         </button>
   
