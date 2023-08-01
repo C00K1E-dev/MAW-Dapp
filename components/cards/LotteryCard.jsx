@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import btn_icon from "../../public/images/icon/btn_icon.png";
 import video from "../../public/videos/thumbnailvid.mp4";
-import MintButton from "../buttons/MintButton";
+import MintVipExclusive from "../buttons/MintVipExclusive";
 import Heading4 from "../headings/Heading4";
 import Heading6 from "../headings/Heading6";
 import PopupMessage from "../PopupMessage"; // Import PopupMessage component
@@ -45,14 +45,14 @@ const LotteryCard = () => {
           </Heading6>
         </div>
         <div className="my-[30px]">
-          <MintButton>
+          <MintVipExclusive>
             <Image src={btn_icon} alt="btn_icon" />
             Mint Tickets
             {/* Add PopupMessage component as child component */}
             <PopupMessage>
               Congratulations! You have successfully minted a ticket.
             </PopupMessage>
-          </MintButton>
+          </MintVipExclusive>
           <div className="mt-4"></div>
           <NFTsButton />
         </div>

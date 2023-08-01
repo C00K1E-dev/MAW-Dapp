@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 
 const chains = [arbitrum, mainnet, polygon, bscTestnet, avalanche];
 const projectId = 'aca932c97e3f9bc59a1636dc1aeae670';
-
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
 const wagmiConfig = createConfig({
   autoConnect: true,
