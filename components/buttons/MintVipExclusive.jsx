@@ -571,7 +571,7 @@ const abi = [
     const handleMint = async () => {
         if (isConnected) {
           try {
-            const ethereumClient = new Web3(window.ethereum);
+            
             const MAWTEST = new ethereumClient.eth.Contract(abi, contractAddress);
             const nftPrice = BigInt(await MAWTEST.methods.NFT_PRICE().call());
             const quantity = 1; // Replace this with the desired quantity
