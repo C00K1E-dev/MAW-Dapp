@@ -16,7 +16,7 @@ const wagmiConfig = createConfig({
 });
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
-export default function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -26,12 +26,23 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       {ready ? (
-        <WagmiConfig config={wagmiConfig}>
-          <Component {...pageProps} />
+    
+      <WagmiConfig config={wagmiConfig}>
+        <Component {...pageProps} />
         </WagmiConfig>
-      ) : null}
-
-      <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+         ) : null}
+        <Web3Modal projectId={projectId} ethereumClient={ethereumClient}
+          themeMode="dark"
+          themeVariables={{
+            '--w3m-logo-image-url': './images/walletlogo.png',
+            '--w3m-overlay-backdrop-filter': 'blur(5px)',
+            '--w3m-overlay-background-color': 'rgba(0, 0, 0, 0.1)',
+            '--w3m-background-color': '#0adab9',
+            '--w3m-accent-fill-color': '#1a1f2c',
+            '--w3m-accent-color': '#0adab9',
+            '--w3m-font-family': 'jost',
+          }}
+        />
     </>
   );
 }
