@@ -587,45 +587,40 @@ const abi = [
     const [popupMessage, setPopupMessage] = useState("");
   
     const handleMint = async () => {
-        if (isConnected) {
-          if (typeof window.ethereum !== 'undefined') {
-            try {
-              const web3 = new Web3(window.ethereum);
-              const MAWTEST = new web3.eth.Contract(abi, contractAddress);
-              const nftPrice = BigInt(await MAWTEST.methods.NFT_PRICE().call());
-              const quantity = 1;
-              const totalPrice = nftPrice * BigInt(quantity);
-      
-              const accounts = await web3.eth.getAccounts();
-              const fromAddress = accounts[0];
-      
-              const data = MAWTEST.methods.mintNFT(quantity).encodeABI(); // Get ABI-encoded function call
-      
-              const tx = {
-                from: fromAddress,
-                to: contractAddress,
-                value: totalPrice.toString(),
-                data: data,
-              };
-      
-              await web3.eth.sendTransaction(tx); // Manually send the transaction
-      
-              setPopupMessage("Your NFT has been minted successfully!");
-              setShowPopup(true);
-            } catch (error) {
-              console.error(error);
-              setPopupMessage(`An error occurred while minting your NFT: ${error.message}`);
-              setShowPopup(true);
-            }
-          } else {
-            setPopupMessage("Please install an Ethereum-compatible wallet or extension like MetaMask to use this feature.");
-            setShowPopup(true);
-          }
-        } else {
-          setPopupMessage("Please connect your wallet first.");
+      if (isConnected) {
+        try {
+          const web3 = new Web3(ethereumClient.provider); // Use ethereumClient.provider instead of window.ethereum
+          const MAWTEST = new web3.eth.Contract(abi, contractAddress);
+          const nftPrice = BigInt(await MAWTEST.methods.NFT_PRICE().call());
+          const quantity = 1;
+          const totalPrice = nftPrice * BigInt(quantity);
+    
+          const accounts = await web3.eth.getAccounts();
+          const fromAddress = accounts[0];
+    
+          const data = MAWTEST.methods.mintNFT(quantity).encodeABI(); // Get ABI-encoded function call
+    
+          const tx = {
+            from: fromAddress,
+            to: contractAddress,
+            value: totalPrice.toString(),
+            data: data,
+          };
+    
+          await web3.eth.sendTransaction(tx); // Manually send the transaction
+    
+          setPopupMessage("Your NFT has been minted successfully!");
+          setShowPopup(true);
+        } catch (error) {
+          console.error(error);
+          setPopupMessage(`An error occurred while minting your NFT: ${error.message}`);
           setShowPopup(true);
         }
-      };
+      } else {
+        setPopupMessage("Please connect your wallet first.");
+        setShowPopup(true);
+      }
+    };
   
     return (
         <div>
