@@ -4,7 +4,7 @@ import LotteryCard from "../cards/LotteryCard";
 import Heading2 from "../headings/Heading2";
 import Heading3 from "../headings/Heading3";
 
-const Lottery = () => (
+const Lottery = ({ ethereumClient }) => (
     <section className="mt-[70px] sm:mt-[115px] px-4 xl:px-0" id="Lottery">
         <div className="max-w-[1296px] m-auto text-center mb-8">
             <Heading2>Collections</Heading2>
@@ -30,7 +30,7 @@ const Lottery = () => (
                     </div>
                 </div>
                 <div className="w-1/12 hidden lg:block"></div>
-                <LotteryCard />
+                <LotteryCard ethereumClient={ethereumClient} />
             </div>
         </div>
     </section>

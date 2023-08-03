@@ -7,7 +7,7 @@ import Heading4 from "../headings/Heading4";
 import Heading6 from "../headings/Heading6";
 import PopupMessage from "../PopupMessage"; // Import PopupMessage component
 import NFTsButton from "../buttons/NFTsButton";
-const LotteryCard = () => {
+const LotteryCard = ({ethereumClient}) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const LotteryCard = () => {
           </Heading6>
         </div>
         <div className="my-[30px]">
-          <MintButton>
+          <MintButton ethereumClient={ethereumClient} >
             <Image src={btn_icon} alt="btn_icon" />
             Mint Tickets
             {/* Add PopupMessage component as child component */}
