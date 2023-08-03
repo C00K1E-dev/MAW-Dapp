@@ -4,6 +4,7 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { arbitrum, avalanche, bscTestnet, mainnet, polygon } from 'wagmi/chains';
 import { Web3Modal } from '@web3modal/react';
 import { useEffect, useState } from "react";
+import MintButton from '../components/buttons/MintButton';
 
 const chains = [arbitrum, mainnet, polygon, bscTestnet, avalanche];
 const projectId = 'aca932c97e3f9bc59a1636dc1aeae670';
@@ -28,6 +29,7 @@ export default function App({ Component, pageProps }) {
     
       <WagmiConfig config={wagmiConfig}>
         <Component {...pageProps} ethereumClient={ethereumClient} />
+        <MintButton {...pageProps} ethereumClient={ethereumClient} />
         </WagmiConfig>
          ) : null}
         <Web3Modal projectId={projectId} ethereumClient={ethereumClient}
