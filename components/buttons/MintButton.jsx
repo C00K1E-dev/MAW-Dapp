@@ -6,7 +6,7 @@ import { parseEther } from 'viem';
 import PopupMessage from "../PopupMessage";
 
 function MintNFT({ ethereumClient }) {
-  console.log(ethereumClient);
+ 
 
   const [popupMessage, setPopupMessage] = useState("");
   const [showPopup, setShowPopup] = useState(false);
