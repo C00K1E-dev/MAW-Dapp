@@ -62,7 +62,7 @@ function MintNFT({ ethereumClient }) {
   return (
     <div>
       <button className="btn btn--primary" disabled={!write || isLoading} onClick={handleMint} >
-        {isLoading ? 'Minting...' : 'Mint'}
+        {isLoading ? 'testMinting...' : 'testMint'}
       </button>
       
       {showPopup && <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />}
