@@ -54,7 +54,7 @@ const LotteryCard = ({ethereumClient}) => {
             </PopupMessage>
           </MintButton>
           <div className="mt-4"></div>
-          <NFTsButton />
+          <NFTsButton ethereumClient={ethereumClient} />
         </div>
       </div>
     </div>
