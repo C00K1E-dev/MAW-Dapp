@@ -24,10 +24,16 @@ import Modal from '../components/modal/Modal';
 
 const chains = [arbitrum, mainnet, polygon, bscTestnet, avalanche];
 const projectId = 'aca932c97e3f9bc59a1636dc1aeae670';
+const metadata ={
+  name: 'Mint And Win',
+  description: 'We deploy on various blockchains Non Fungible Tokens as raffle tickets for art, collectibles, and other rare goods.',
+  url: 'https://mintandwin.com',
+  icons: ['https://drive.google.com/file/d/1tmB8amL2_iFptSxoWCmUSZB7VKwzjy-w/view?usp=drive_link'],
+};
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
 const wagmiConfig = createConfig({
   autoConnect: true,
-  connectors: w3mConnectors({ projectId, chains }),
+  connectors: w3mConnectors({ projectId, chains, metadata }),
   publicClient,
 });
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
