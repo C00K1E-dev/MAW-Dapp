@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import tokenImage from "../../public/images/tokenImage.png"; // Import an image for your token
-import BuyButton from "../buttons/BuyButton"; 
+
 import Heading4 from "../headings/Heading4";
 import Heading6 from "../headings/Heading6";
 import PopupMessage from "../PopupMessage"; // Import PopupMessage component
@@ -33,9 +33,7 @@ const TokenCard = () => {
           </Heading6>
         </div>
         <div className="my-[30px]">
-          <BuyButton onClick={() => setShowPopup(true)}>
-            Buy Tokens
-          </BuyButton>
+          
           {showPopup && (
             <PopupMessage
               message="Congratulations! You have successfully bought tokens."
