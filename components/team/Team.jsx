@@ -37,13 +37,15 @@ const Team = () => {
                     alt={singleTeam.name}
                   />
                 </div>
-                <div className="absolute bottom-0 right-[32px] w-10 h-10 rounded-full flex items-center justify-center bg-[#009AE5] text-white z-10">
-  <Link href="https://www.linkedin.com/in/andrei-galea-a2a8b9278/" passHref>
-    <a target="_blank" rel="noopener noreferrer">
-      <FaLinkedinIn />
-    </a>
-  </Link>
-</div>
+                {singleTeam.linkedin && (
+                  <div className="absolute bottom-0 right-[32px] w-10 h-10 rounded-full flex items-center justify-center bg-[#009AE5] text-white z-10">
+                    <Link href={singleTeam.linkedin} passHref>
+                      <a target="_blank" rel="noopener noreferrer">
+                        <FaLinkedinIn />
+                      </a>
+                    </Link>
+                  </div>
+                )}
               </div>
               <div className="text-center mt-3 md:mt-[15px]">
                 <Heading5 clr="text-white">{singleTeam.name}</Heading5>
