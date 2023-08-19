@@ -1581,6 +1581,19 @@
     "@ethersproject/properties" "^5.7.0"
     "@ethersproject/strings" "^5.7.0"
 
+"@haensl/react-hooks@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.npmjs.org/@haensl/react-hooks/-/react-hooks-1.13.0.tgz"
+  integrity sha512-lIAMiKekXO7ARWDKjQpR3nyTjOHjsZJH3u2WpBsIUuCEOEh1U0uYPwksG/0awJEy10DRd8KrLHu63rHMd9fRcw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@haensl/services" "^1.3.0"
+
+"@haensl/services@^1.3.0":
+  version "1.4.6"
+  resolved "https://registry.npmjs.org/@haensl/services/-/services-1.4.6.tgz"
+  integrity sha512-tXGTp1/Wx/qYF8Qjb/CDVMiGxTu7LbQ5w5j+vScu+V/M82qFa153PvNMOXVhThNcnrG6AqyyqTtczMYlFGvBcQ==
+
 "@hapi/hoek@^9.0.0":
   version "9.3.0"
   resolved "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.3.0.tgz"
@@ -7300,6 +7313,11 @@ isexe@^2.0.0:
   resolved "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
+ismounted@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.npmjs.org/ismounted/-/ismounted-0.1.8.tgz"
+  integrity sha512-Ts0B3pibn1QxcpyHJZKle4NZe3rXEPnEaUK4o2uyzQQ6Sea8lgbbowVU8pZ8C6jrXyBRWW1LU+x9Nr+h5edVWg==
+
 isobject@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/isobject/-/isobject-2.1.0.tgz"
@@ -9595,7 +9613,7 @@ react-shallow-renderer@^16.15.0:
     object-assign "^4.1.1"
     react-is "^16.12.0 || ^17.0.0 || ^18.0.0"
 
-react@*, "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 15", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16.8, react@>=16.8.0, react@>=17, react@>=17.0.0, react@18.2.0:
+react@*, "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 15", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.8, react@>=16.8.0, react@>=17, react@>=17.0.0, react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
