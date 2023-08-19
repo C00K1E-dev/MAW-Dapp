@@ -1,7 +1,7 @@
 import team1 from "../public/images/team/team1.png";
 import team2 from "../public/images/team/team2.png";
 import team33 from "../public/images/team/team33.png";
-import team4 from "../public/images/team/team4.png";
+
 
 export const teamData = [
   {
@@ -9,23 +9,21 @@ export const teamData = [
     img: team1,
     name: "Andrei Galea",
     designation: "Product Owner",
+    linkedin: "https://www.linkedin.com/in/andrei-galea-a2a8b9278/",
   },
   {
     id: "2",
     img: team2,
-    name: "Dianne Russell",
+    name: "Darius Galea",
     designation: "CMO",
+    linkedin: "https://www.linkedin.com/in/darius-galea-a3072418b/",
   },
   {
     id: "3",
     img: team33,
-    name: "Brooklyn Simmons",
+    name: "Mariana Lup",
     designation: "Digital Marketer",
+    
   },
-  {
-    id: "4",
-    img: team4,
-    name: "Galea Andrei",
-    designation: "3D Art",
-  },
+
 ];

@@ -6,7 +6,6 @@ import Community from "../components/community/Community";
 import Faq from "../components/faq/Faq";
 import Footer from "../components/footer/Footer";
 import Hero from "../components/hero/Hero";
-import LeaderBoard from "../components/leaderBoard/LeaderBoard";
 import Lottery from "../components/lottery/Lottery";
 import Utility from "../components/utility/Utility";
 import Partners from "../components/partners/Partners";
@@ -21,6 +20,7 @@ import { arbitrum, avalanche, bscTestnet, mainnet, polygon } from 'wagmi/chains'
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
 import Modal from '../components/modal/Modal';
+
 
 const chains = [arbitrum, mainnet, polygon, bscTestnet, avalanche];
 const projectId = 'aca932c97e3f9bc59a1636dc1aeae670';
@@ -73,7 +73,6 @@ const Home = () => {
           <Hero />
           <About />
           <Lottery ethereumClient={ethereumClient} />
-          <LeaderBoard />
           <Upcoming />
           <VIP />
           <Token />
@@ -87,7 +86,7 @@ const Home = () => {
           <Modal isOpen={isModalOpen} closeModal={closeModal} />
         </main>
       </WagmiConfig>
-    </div>
+      </div>
   );
 };
 
