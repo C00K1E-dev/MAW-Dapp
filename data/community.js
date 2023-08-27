@@ -1,10 +1,11 @@
 import { BsMedium } from "react-icons/bs";
-import { FaDiscord, FaTelegramPlane, FaTwitter } from "react-icons/fa";
+import { FaDiscord, FaTelegramPlane } from "react-icons/fa";
+import CustomTwitterIcon from "../components/icons/CustomTwitterIcon";
 
 export const communityData = [
   {
     id: "1",
-    icon: <FaTwitter />,
+    icon: <CustomTwitterIcon />,
     title: "Twitter",
     desc: "News and products update",
     link: "https://twitter.com/MAW_MintandWin",
