@@ -1,5 +1,5 @@
-import { FaDiscord } from "react-icons/fa";
-import DiscordButton from "../buttons/DiscordButton";
+import { FaTelegram } from "react-icons/fa";
+import TelegramButton from "../buttons/TelegramButton";
 import LotteryCard from "../cards/LotteryCard";
 import Heading2 from "../headings/Heading2";
 import Heading3 from "../headings/Heading3";
@@ -26,7 +26,7 @@ const Lottery = ({ ethereumClient }) => (
                         ))}
                     </div>
                     <div className="mt-[30px] md:mt-[40px]">
-                        <DiscordButton><FaDiscord className="text-[24px]" />JOIN OUR DISCORD</DiscordButton>
+                        <TelegramButton><FaTelegram className="text-[24px]" />JOIN OUR Telegram</TelegramButton>
                     </div>
                 </div>
                 <div className="w-1/12 hidden lg:block"></div>

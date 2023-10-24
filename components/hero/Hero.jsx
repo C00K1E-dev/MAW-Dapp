@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FaDiscord } from "react-icons/fa";
+import { FaTelegram } from "react-icons/fa";
 import coin2 from "../../public/images/hero/coin2.webp";
 import coin1 from "../../public/images/hero/coin1.webp";
 import coin3 from "../../public/images/hero/coin3.webp";
@@ -8,7 +8,7 @@ import coin5 from "../../public/images/hero/coin5.webp";
 import coin6 from "../../public/images/hero/coin6.webp";
 import coin7 from "../../public/images/hero/coin7.webp";
 import coin8 from "../../public/images/hero/coin8.webp";
-import DiscordButton from "../buttons/DiscordButton";
+import TelegramButton from "../buttons/TelegramButton";
 import Heading2 from "../headings/Heading2";
 import Heading5 from "../headings/Heading5";
 
@@ -38,10 +38,10 @@ const Hero = () => {
           rare goods.
         </p>
         <div className="mt-[35px]">
-          <DiscordButton>
-            <FaDiscord className="text-[24px]" />
-            JOIN OUR DISCORD
-          </DiscordButton>
+          <TelegramButton>
+            <FaTelegram className="text-[24px]" />
+            JOIN OUR Telegram
+          </TelegramButton>
         </div>
       </div>
 

@@ -6,8 +6,8 @@ const Social = () => (
   <div className="flex gap-2 xl:gap-3 2xl:gap-3 text-white">
     {[
       ["1", CustomTwitterIcon, "https://twitter.com/MAW_MintandWin"],
-      ["3", FaDiscord, "https://discord.gg/7a5Ye6NcHF"],
       ["2", FaTelegram, "https://t.me/mintandwin"],
+      ["3", FaDiscord, "https://discord.gg/7a5Ye6NcHF"],
     ].map(([id, SocialIcon, href]) => (
       <a
         key={id}
