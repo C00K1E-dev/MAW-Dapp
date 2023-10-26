@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FaLinkedinIn } from "react-icons/fa";
 import { teamData } from "../../data/team";
 
@@ -39,11 +38,9 @@ const Team = () => {
                 </div>
                 {singleTeam.linkedin && (
                   <div className="absolute bottom-0 right-[32px] w-10 h-10 rounded-full flex items-center justify-center bg-[#009AE5] text-white z-10">
-                    <Link href={singleTeam.linkedin} passHref>
-                      <a target="_blank" rel="noopener noreferrer">
-                        <FaLinkedinIn />
-                      </a>
-                    </Link>
+                    <a href={singleTeam.linkedin} target="_blank" rel="noopener noreferrer">
+                      <FaLinkedinIn />
+                    </a>
                   </div>
                 )}
               </div>

@@ -16,13 +16,13 @@ import Upcoming from "../components/upcoming/Upcoming";
 import VIP from "../components/VIP/VIP";
 import Token from "../components/token/token";
 import { Web3Modal } from '@web3modal/react';
-import { arbitrum, avalanche, bscTestnet, mainnet, polygon } from 'wagmi/chains';
+import { arbitrum, avalanche, bscTestnet, mainnet, polygon, bsc, } from 'wagmi/chains';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
 import Modal from '../components/modal/Modal';
 
 
-const chains = [arbitrum, mainnet, polygon, bscTestnet, avalanche];
+const chains = [arbitrum, mainnet, polygon, bscTestnet, avalanche, bsc];
 const projectId = 'aca932c97e3f9bc59a1636dc1aeae670';
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
 const wagmiConfig = createConfig({

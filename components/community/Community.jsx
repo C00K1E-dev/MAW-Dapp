@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { BsArrowRight } from "react-icons/bs";
 import Heading2 from "../headings/Heading2";
 import Heading4 from "../headings/Heading4";
@@ -35,13 +34,7 @@ const Community = () => {
                   {item.icon}
                 </button>
               )}
-              <Heading4>
-                <Link href={item.link} passHref>
-                  <a className="link-styling" target="_blank" rel="noopener noreferrer">
-                    {item.title}
-                  </a>
-                </Link>
-              </Heading4>
+              <Heading4>{item.title}</Heading4>
               <p className="px-0 md:px-5 text-white">{item.desc}</p>
               {item.title === "Discord" ? (
                 <button
@@ -51,11 +44,9 @@ const Community = () => {
                   <BsArrowRight />
                 </button>
               ) : (
-                <Link href={item.link} passHref>
-                  <a className="btn-community w-[50px] h-[50px] bg-[color:var(--color-primary)] text-[30px] text-black" target="_blank" rel="noopener noreferrer">
-                    <BsArrowRight />
-                  </a>
-                </Link>
+                <a href={item.link} target="_blank" rel="noopener noreferrer" className="btn-community w-[50px] h-[50px] bg-[color:var(--color-primary)] text-[30px] text-black">
+                  <BsArrowRight />
+                </a>
               )}
             </div>
           ))}

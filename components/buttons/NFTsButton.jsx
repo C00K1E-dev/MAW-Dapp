@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PopupMessageNFT from "../PopupMessageNFT";
 import { useAccount, useContractRead } from "wagmi";
 import { testabi, NFT_CONTRACT_ADDRESS } from "../contracts/1stCollection";
 
 const abi = testabi;
 const contractAddress = NFT_CONTRACT_ADDRESS;
-const baseIpfsUrl = "https://bafybeibdf2ow6opelj2xcfkrfgbrzz42bzruudwxemo3zb7rtdsmgo26ra.ipfs.dweb.link/";
+const baseIpfsUrl = "https://bafybeihs4qgpvyutu3wdsc6kufy3z7lox5nwzetusso63snbfvhf2qw4fa.ipfs.nftstorage.link/";
 
 const NFTsButton = ({ ethereumClient }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -15,7 +15,6 @@ const NFTsButton = ({ ethereumClient }) => {
   const [loading, setLoading] = useState(true);
   const { address, isConnected } = useAccount();
 
-  // Define the contract and the functions you want to call
   const nftContract = {
     address: contractAddress,
     abi: abi,
@@ -27,17 +26,16 @@ const NFTsButton = ({ ethereumClient }) => {
     args: [],
   };
 
-  const getOwnerTokenIds = (ownerAddress) => ({
+  const getOwnerTokenIds = useCallback((ownerAddress) => ({
     ...nftContract,
     functionName: "getTokenIdsByOwner",
     args: [ownerAddress],
-  });
+  }), [nftContract]);
 
-  // Fetch collection name using useContractRead
   const { data: collectionNameData } = useContractRead(getCollectionName);
   const { data: ownedTokenIdsData } = useContractRead(getOwnerTokenIds(address));
 
-  const fetchNFTData = async () => {
+  const fetchNFTData = useCallback(async () => {
     try {
       if (!address) {
         setPopupMessage("Please connect your wallet first.");
@@ -53,7 +51,21 @@ const NFTsButton = ({ ethereumClient }) => {
         return;
       }
 
-      // Fetch and set the NFT data
+      const fetchVideoUrl = async (tokenId) => {
+        try {
+          if (!address) {
+            return "DEFAULT_VIDEO_URL";
+          }
+
+          const videoUrl = `${baseIpfsUrl}${tokenId}.mp4`;
+
+          return videoUrl;
+        } catch (error) {
+          console.error("Error fetching video URL:", error);
+          return "DEFAULT_VIDEO_URL";
+        }
+      };
+
       const nfts = await Promise.all(
         ownedTokenIdsData.map(async (tokenId) => {
           const videoUrl = await fetchVideoUrl(tokenId);
@@ -69,22 +81,7 @@ const NFTsButton = ({ ethereumClient }) => {
       setShowPopup(true);
       setLoading(false);
     }
-  };
-
-  const fetchVideoUrl = async (tokenId) => {
-    try {
-      if (!address) {
-        return "DEFAULT_VIDEO_URL";
-      }
-
-      const videoUrl = `${baseIpfsUrl}${tokenId}.mp4`;
-
-      return videoUrl;
-    } catch (error) {
-      console.error("Error fetching video URL:", error);
-      return "DEFAULT_VIDEO_URL";
-    }
-  };
+  }, [address, ownedTokenIdsData, collectionNameData]);
 
   useEffect(() => {
     if (collectionNameData) {
@@ -99,46 +96,35 @@ const NFTsButton = ({ ethereumClient }) => {
 
   useEffect(() => {
     if (address && isConnected && ownedTokenIdsData) {
-      setLoading(true); // Reset loading state before fetching NFT data
+      setLoading(true);
       fetchNFTData();
     }
-  }, [address, isConnected, ownedTokenIdsData]);
+  }, [address, isConnected, ownedTokenIdsData, fetchNFTData]);
 
   useEffect(() => {
-    // Create the display content for the popup message
-    if (nftsData.length > 0 && showPopup) {
-      const nftsDisplay = nftsData.map((nft) => {
-        // Construct the display content for each NFT
-        return (
-          <div key={nft.tokenId}>
-            <p>Collection Name: {nft.collectionName}</p>
-            <p>Token ID: {nft.tokenId.toString()}</p>
-            <video controls width="320" height="240">
-              <source src={nft.videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        );
-      });
-  
-      // Show the popup with the NFTs data
+    if (showPopup && nftsData.length > 0) {
+      const nftsDisplay = nftsData.map((nft) => (
+        <div key={nft.tokenId}>
+          <p>Collection Name: {nft.collectionName}</p>
+          <p>Token ID: {nft.tokenId.toString()}</p>
+          <video controls width="320" height="240">
+            <source src={nft.videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      ));
+
       setPopupMessage(nftsDisplay);
     }
   }, [nftsData, showPopup]);
 
   return (
     <div>
-      {!loading && address && nftsData.length > 0 ? (
+      {!loading && address && isConnected ? (
         <button className="btn btn--primary" onClick={handleButtonClick}>
           View Your NFTs
         </button>
-      ) : (
-        !loading && address && isConnected && ownedTokenIdsData && (
-          <button className="btn btn--primary" onClick={handleButtonClick}>
-            View Your NFTs
-          </button>
-        )
-      )}
+      ) : null}
 
       {showPopup && (
         <PopupMessageNFT message={popupMessage} onClose={() => setShowPopup(false)} />
