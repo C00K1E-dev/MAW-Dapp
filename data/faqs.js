@@ -76,7 +76,7 @@ export const faqData = [
     id: 13,
     question: "Are there special access levels or privileges?",
     answer:
-      " Yes, Mint and Win offers special access levels and privileges for participants who meet specific criteria or hold certain tokens. These special access levels may provide early access to events, exclusive NFT drops, or other unique benefits. Stay tuned for more information on how to qualify for special access.!",
+      " Yes, Mint and Win offers special access levels and privileges for participants who meet specific criteria or hold certain tokens. These special access levels may provide early access to events, exclusive NFT drops, or other unique benefits. Stay tuned for more information on how to qualify for special access!",
   },
   {
     id: 14,

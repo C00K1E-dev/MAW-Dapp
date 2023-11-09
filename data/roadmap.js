@@ -1,7 +1,7 @@
 export const roadmapData = [
   {
     id: "1",
-    questionNumber: "2023 Q2-Q4",
+    questionNumber: "2023 Q4",
     phase: {
       number: "1",
       titles: [
@@ -22,7 +22,6 @@ export const roadmapData = [
         "Launch a marketing campaign to build awareness of MAW",
         "List MAW on major exchanges to increase liquidity and accessibility",
         "Partner with influencers and other projects in the crypto space",
-        "Attend industry events and conferences to showcase the project",
       ],
     },
   },

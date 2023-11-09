@@ -56,9 +56,9 @@ const Roadmap = () => {
         </div>
 
         <div className="text-center mt-[10px]">
-          <p>
+          <Heading3>
             ENTERING METAVERSE
-          </p>
+          </Heading3>
         </div>
       </div>
     </section>

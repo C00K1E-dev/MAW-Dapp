@@ -23,23 +23,31 @@ function MintNFT({ ethereumClient }) {
 
   const handleMint = async () => {
     try {
-      if (!address) {
+      if (!address || !isConnected) {
         setPopupMessage("Please connect your wallet first.");
         setShowPopup(true);
         return;
       }
-  
-      if (!isConnected) {
-        setPopupMessage("Please connect your wallet first.");
-        setShowPopup(true);
-        return;
-      }
-  
-      await write({
+
+      const result = await write({
         args: [],
         value: parseEther('0.13'),
       });
-  
+
+      if (result.error) {
+        setPopupMessage("An error occurred during the contract execution.");
+        setShowPopup(true);
+        return;
+      }
+
+      if (result.data) {
+        const { events, transactionHash } = result.data;
+        setPopupMessage(`Your NFT has been minted successfully! Transaction Hash: ${transactionHash}`);
+        setShowPopup(true);
+        console.log("Events:", events);
+        console.log("Transaction Hash:", transactionHash);
+      }
+
     } catch (error) {
       console.error('Error in handleMint:', error);
       setPopupMessage("An error occurred while minting your NFT.");
@@ -49,8 +57,7 @@ function MintNFT({ ethereumClient }) {
 
   useEffect(() => {
     if (isSuccess) {
-      setPopupMessage("Your NFT has been minted successfully!");
-      setShowPopup(true);
+      // No need to set the popup message here
     }
   }, [isSuccess]);
 
