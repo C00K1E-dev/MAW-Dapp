@@ -5,7 +5,7 @@ import { testabi, NFT_CONTRACT_ADDRESS } from "../contracts/1stCollection";
 
 const abi = testabi;
 const contractAddress = NFT_CONTRACT_ADDRESS;
-const baseIpfsUrl = "https://bafybeicbpcny4rbvp7o5ldynzaoqvyhosrpg4i7fzulvvfwnpvt6clmxdu.ipfs.nftstorage.link/";
+const baseIpfsUrl = "https://https://silver-elegant-aphid-155.mypinata.cloud/ipfs/QmcjALMQb2m9uVCGPECJTMhCmFx4J5D6piiCdyUadSoDYU/";
 
 const NFTsButton = ({ ethereumClient }) => {
   const [showPopup, setShowPopup] = useState(false);
