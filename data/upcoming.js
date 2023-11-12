@@ -17,7 +17,7 @@ export const upcomingData = [
     avt_mp4: thumbnail3,
     title: "Solana Fortune",
     tickets: "1000",
-    price: 2.25,
+    price: 1.25,
     currency: "SOL",
   },
   {
@@ -33,6 +33,6 @@ export const upcomingData = [
     avt_mp4: thumbnail5,
     title: "Dot Win",
     tickets: "1000",
-    price: 0.2,
+    price: 6,
   },
 ];
