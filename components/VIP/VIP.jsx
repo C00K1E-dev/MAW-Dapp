@@ -11,7 +11,7 @@ const VIP = () => {
         </div>
         <p className="mt-[10px]">
           Mint and win offers special access levels and privileges for participants that hold certain NFTs.
-          These special access levels may provide eraly acces to events, exclusive NFT drops or other unique benefits.
+          These special access levels may provide early access to events, exclusive NFT drops or other unique benefits.
         </p>
       </div>
 
@@ -21,7 +21,7 @@ const VIP = () => {
           <div className={styles.content}>
             <h2>Exclusive</h2>
             <ul>
-              <li>Acces to Exclusive Collections</li>
+              <li>Access to Exclusive Collections</li>
               <li>NFT Drops from Exclusive Collections</li>
               <li>3 MAW tokens/everyday</li>
             </ul>
@@ -33,7 +33,7 @@ const VIP = () => {
           <div className={styles.content}>
             <h2>DeLuxe</h2>
             <ul>
-              <li>Acces to Exclusive and DeLuxe Collections</li>
+              <li>Access to Exclusive and DeLuxe Collections</li>
               <li>NFT Drops from DeLuxe Collection</li>
               <li>5 MAW tokens/everyday</li>
             </ul>
@@ -45,9 +45,10 @@ const VIP = () => {
           <div className={styles.content}>
             <h2>Ultimate</h2>
             <ul>
-              <li>Acces to Exclusive, DeLuxe and Ultimate Collections</li>
+              <li>Access to Exclusive, DeLuxe and Ultimate Collections</li>
               <li>NFT Drops from Ultimate Collections</li>
               <li>Access to Jackpot Raffle</li>
+              <li>Revenue share</li>
               <li>10 MAW tokens/everyday</li>
             </ul>
             <a href="#">MINT</a>
