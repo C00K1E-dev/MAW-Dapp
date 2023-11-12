@@ -34,5 +34,6 @@ export const upcomingData = [
     title: "Dot Win",
     tickets: "1000",
     price: 6,
+    currency: "DOT",
   },
 ];
