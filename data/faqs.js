@@ -21,13 +21,13 @@ export const faqData = [
     id: 4,
     question: "How will i get rewarded if I won?",
     answer:
-      "Our audited Smart Contracts will do all the work, and in case of winning, you will be rewarded automatically.",
+      "Using Chainnlink as oracle our Smart Contracts will do all the work, and in case of winning, you will be rewarded automatically.",
   },
   {
     id: 5,
-    question: "Are the Smart Contracts audited?",
+    question: "Are the Smart Contracts verified?",
     answer:
-      "Yes, in collaboration with ChainGPT, all of the smart contracts are audited!",
+      "Yes, in collaboration with Chainlink, the smart contracts are verified or they have implemented chainlink's VRF service (Verifiable Random Function).",
 
   },
   {
@@ -44,9 +44,9 @@ export const faqData = [
   },
   {
     id: 8,
-    question: "What is the total supply of the MAW token?",
+    question: "What is the max supply of the MAW token?",
     answer:
-      "The total supply of the MAW token is set at 150 million tokens. This limited supply ensures scarcity and potential value for token holders.",
+      "The max supply of the MAW token is set at 150 million tokens. This limited supply ensures scarcity and potential value for token holders.",
   },
   {
     id: 9,
@@ -64,7 +64,7 @@ export const faqData = [
     id: 11,
     question: "How can I trust the fairness of the platform?",
     answer:
-      "Mint and Win takes fairness seriously. Our audited Smart Contracts ensure transparency and impartiality in the selection of winners, providing a trustless environment for participants.",
+      "Mint and Win takes fairness seriously. Using Cahinlink as an Oracle our Smart Contracts ensure transparency and impartiality in the selection of winners, providing a trustless environment for participants.",
   },
   {
     id: 12,

@@ -61,6 +61,7 @@ const NavBar = () => {
                 ["Roadmap", "#roadmap"],
                 ["Team", "#team"],
                 ["FAQ", "#faq"],
+                ["DeFi(SOON)", "#defi"],
               ].map(([title, url]) => (
                 <NavItems
                   key={title}
