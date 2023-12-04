@@ -47,7 +47,6 @@ const VIP = () => {
             <ul>
               <li>Access to Exclusive, DeLuxe and Ultimate Collections</li>
               <li>NFT Drops from Ultimate Collections</li>
-              <li>Access to Jackpot Raffle</li>
               <li>Revenue share</li>
               <li>10 MAW tokens/everyday</li>
             </ul>

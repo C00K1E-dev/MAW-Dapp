@@ -14,12 +14,12 @@ const aboutData = [
   },
   {
     id: "02",
-    title: "Mint NFT Ticket",
+    title: "Mint NFT",
     img: ticket,
   },
   {
     id: "03",
-    title: "See your prize",
+    title: "See your reward",
     img: draw,
   },
 ];
