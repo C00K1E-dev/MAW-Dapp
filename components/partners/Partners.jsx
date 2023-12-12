@@ -6,7 +6,7 @@ const Partners = () => {
     <section className="mt-[55px] sm:mt-[110px] px-4 2xl:px-0">
       <div className="max-w-[1296px] m-auto">
         <div className="text-center">
-          <Heading2>Investors And Partners</Heading2>
+          <Heading2>Collaborators And Partners</Heading2>
         </div>
         <div className="flex flex-wrap justify-center gap-5 mt-[35px] md:mt-[55px]">
           {[...Array(4)].map((item, i) => (
