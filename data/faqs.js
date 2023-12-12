@@ -21,7 +21,7 @@ export const faqData = [
     id: 4,
     question: "How will i get rewarded if I won?",
     answer:
-      "Using Chainnlink as oracle our Smart Contracts will do all the work, and in case of winning, you will be rewarded automatically.",
+      "Using Chainlink as oracle our Smart Contracts will do all the work, and in case of winning, you will be rewarded automatically.",
   },
   {
     id: 5,
