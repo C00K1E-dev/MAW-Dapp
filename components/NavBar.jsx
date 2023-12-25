@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import Image from "next/image";
 import Logo from "../public/images/logo.png";
-import Web3ConnectButton from './buttons/Web3ConnectButton';
 import NavItems from "./navItems/NavItems";
 import Social from "./social/Social";
+
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -78,7 +78,7 @@ const NavBar = () => {
             {/* Social icons */}
             <Social />
             {/* button */}
-            <Web3ConnectButton />
+            <w3m-button />
           </div>
         </div>
       </div>
