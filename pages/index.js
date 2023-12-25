@@ -32,10 +32,6 @@ const metadata = {
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata });
 
 createWeb3Modal({metadata, wagmiConfig, projectId, chains, themeMode:'dark', themeVariables: {
-  '--w3m-logo-image-url': './images/walletlogo.png',
-  '--w3m-overlay-backdrop-filter': 'blur(5px)',
-  '--w3m-overlay-background-color': 'rgba(0, 0, 0, 0.1)',
-  '--w3m-background-color': '#0adab9',
   '--w3m-accent-fill-color': '#1a1f2c',
   '--w3m-accent': '#0adab9',
   '--w3m-font-family': 'jost',

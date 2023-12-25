@@ -78,7 +78,7 @@ const NavBar = () => {
             {/* Social icons */}
             <Social />
             {/* button */}
-            <w3m-button />
+            <w3m-button/>
           </div>
         </div>
       </div>
