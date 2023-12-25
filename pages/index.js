@@ -24,10 +24,10 @@ import Modal from '../components/modal/Modal';
 const chains = [bscTestnet,mainnet,polygon,avalanche,arbitrum,bsc,optimism,fantom,];
 const projectId = "aca932c97e3f9bc59a1636dc1aeae670";
 const metadata = {
-	name: "Next Starter Template",
-	description: "A Next.js starter template with Web3Modal v3 + Wagmi",
-	url: "https://web3modal.com",
-	icons: ["https://avatars.githubusercontent.com/u/37784886"],
+	name: "Mint and Win",
+	description: "A rewarding NFT journey",
+	url: "https://mintandwin.com",
+	icons: './images/walletlogo.png',
 };
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata });
 
