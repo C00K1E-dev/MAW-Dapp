@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="max-w-[1296px] m-auto">
         <div className="flex flex-col sm:flex-row items-center justify-between py-[30px]">
           <p className="text-center">
-            Copyright © 2023, Mint and Win - All Rights Reserved
+            Copyright © 2024, Mint and Win - All Rights Reserved
           </p>
 
           <div className="copy-right mt-2 md:mt-0">

@@ -9,7 +9,7 @@ const Partners = () => {
           <Heading2>Collaborators And Partners</Heading2>
         </div>
         <div className="flex flex-wrap justify-center gap-5 mt-[35px] md:mt-[55px]">
-          {[...Array(4)].map((item, i) => (
+          {[...Array(5)].map((item, i) => (
             <Image
               key={i}
               src={`/images/partners/partners${i + 1}.png`}

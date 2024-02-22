@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import tokenImage from "../../public/images/tokenImage.png"; // Import an image for your token
-
 import Heading4 from "../headings/Heading4";
 import Heading6 from "../headings/Heading6";
-import PopupMessage from "../PopupMessage"; // Import PopupMessage component
+import PinkSaleButton from "../buttons/PinkSale";
 
 const TokenCard = () => {
   const [showPopup, setShowPopup] = useState(false); // Create the showPopup state variable
@@ -23,7 +22,7 @@ const TokenCard = () => {
         <div className="flex justify-center gap-2 mt-[20px]">
           <Heading6 clr="text-white">
             <span className="text-[color:var(--color-primary)]">15 milion </span>
-             Available in this presale phase
+            Available in this presale phase
           </Heading6>
         </div>
         <div className="border-y border-[#4A587B] mt-4 p-[10px_0_8px]">
@@ -33,13 +32,7 @@ const TokenCard = () => {
           </Heading6>
         </div>
         <div className="my-[30px]">
-          
-          {showPopup && (
-            <PopupMessage
-              message="Congratulations! You have successfully bought tokens."
-              onClose={() => setShowPopup(false)}
-            />
-          )}
+          <PinkSaleButton/>
         </div>
       </div>
     </div>

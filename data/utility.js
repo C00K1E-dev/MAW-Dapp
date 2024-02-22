@@ -30,6 +30,6 @@ export const utilityData = [
     img: jackpot,
     title: "Jackpot",
     details:
-      "5% of Royalties from resales is distributed towards Jackpot fund. Ultimate VIPs are entitled to participate in the Jackpot raffle.",
+      "5% of royalties from resales is directed towards a special fund. Ultimate VIPs have the chance to enter an exclusive reward opportunity associated with this fund.",
   },
 ];

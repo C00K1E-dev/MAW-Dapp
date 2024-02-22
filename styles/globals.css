@@ -11,6 +11,8 @@
   /* color  */
   --color-primary: #0adab9;
   --color-secondary: #bfc6d7;
+  --color-pinksale: #f29bc4;
+  --color-pinksaleText: #0D0D0D;
 
   --color-gray: #6a7ba8;
   --color-dark: #181830;
@@ -127,7 +129,10 @@
       padding: 10px 20px;  /* adjust as necessary */
     }
   }
-  
+    
+  .btn--primary2 {
+      @apply bg-[color:var(--color-pinksale)] text-[color:var(--color-pinksaleText)];
+    }
   .btn--primary {
     @apply bg-[color:var(--color-primary)] text-[color:var(--color-dark)];
   }
