@@ -3,13 +3,13 @@ export const faqData = [
     id: 1,
     question: "What is Mint and Win?",
     answer:
-      "Mint and Win is an exciting platform that offers participants the chance to win valuable prizes through a raffle-style event. With a collection of exclusive NFTs, Mint and Win hosts a community-driven experience where everyone has a fair opportunity to win. Join us for the thrill of the game and the possibility of claiming remarkable rewards.",
+      "Mint and Win is an exciting platform that offers participants the opportunity to earn valuable rewards through a community-driven event. Featuring a collection of exclusive NFTs, Mint and Win provides a fair and inclusive experience where everyone has a chance to earn rewards. Come join us for an engaging experience and the possibility of claiming remarkable rewards.",
   },
   {
     id: 2,
     question: "How can I participate in Mint and Win?",
     answer:
-      "To participate, you can mint exclusive NFTs using the MAW token or other coins and tokens during designated events. Each minted NFT represents a chance to big gains.",
+      "To participate, you can mint exclusive NFTs using the MAW token or other coins and tokens during designated events. Each minted NFT represents a chance to reap great rewards.",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const faqData = [
     id: 4,
     question: "How will i get rewarded if I won?",
     answer:
-      "Using Chainlink as oracle our Smart Contracts will do all the work, and in case of winning, you will be rewarded automatically.",
+      "Utilizing Chainlink as an oracle, our Smart Contracts handle all processes, and in case of successful participation, you will be automatically rewarded.",
   },
   {
     id: 5,
@@ -56,15 +56,15 @@ export const faqData = [
   },
   {
     id: 10,
-    question: "What can I do with non-winning NFTs?",
+    question: "What are the options for non-rewarded NFTs?",
     answer:
-      "Non-winning NFTs can still hold value and serve as unique collectibles. Additionally, we have exciting plans to introduce special features and utilities for non-winning NFTs in the future. Stay tuned for updates!",
+      "Non-rewarded NFTs retain value as unique collectibles. Moreover, we have exciting plans for introducing exclusive features and utilities for these NFTs in the future. Keep an eye out for updates",
   },
   {
     id: 11,
     question: "How can I trust the fairness of the platform?",
     answer:
-      "Mint and Win takes fairness seriously. Using Cahinlink as an Oracle our Smart Contracts ensure transparency and impartiality in the selection of winners, providing a trustless environment for participants.",
+      "Mint and Win prioritizes fairness. With Chainlink as an Oracle, our Smart Contracts guarantee transparency and impartiality in selecting recipients, creating a trustworthy environment for all participants.",
   },
   {
     id: 12,
