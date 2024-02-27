@@ -12,6 +12,7 @@ import TelegramButton from "../buttons/TelegramButton";
 import Heading2 from "../headings/Heading2";
 import Heading5 from "../headings/Heading5";
 
+
 const Hero = () => {
   return (
     <section className="hero relative px-4 xl:px-0" id="hero">
@@ -28,7 +29,7 @@ const Hero = () => {
         <Image src={coin4} alt="coin4" />
       </div>
       <div className="max-w-[636px] m-auto text-center p-[291px_0_270px] md:p-[291px_0_370px] z-10 relative">
-        <Heading5>Unlock Rewards with Mint and Win!</Heading5>
+        <Heading2>Unlock Rewards with Mint and Win!</Heading2>
         <div>
         <p className="mt-[10px] text-white">Step into the world of Mint and Win, where exciting opportunities await!</p>
         <div>

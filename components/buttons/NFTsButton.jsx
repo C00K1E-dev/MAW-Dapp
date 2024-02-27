@@ -46,13 +46,6 @@ const NFTsButton = ({ ethereumClient }) => {
         return;
       }
 
-      if (!ownedTokenIdsData || ownedTokenIdsData.length === 0) {
-        setPopupMessage("You don't own any NFTs.");
-        setShowPopup(true);
-        setLoading(false);
-        return;
-      }
-
       // Fetch and set the NFT data
       const nfts = await Promise.all(
         ownedTokenIdsData.map(async (tokenId) => {
@@ -92,9 +85,22 @@ const NFTsButton = ({ ethereumClient }) => {
     }
   }, [collectionNameData]);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
+    if (!address) {
+      setPopupMessage("Please connect your wallet first.");
+      setShowPopup(true);
+      return;
+    }
+
+    if (!ownedTokenIdsData || ownedTokenIdsData.length === 0) {
+      setPopupMessage("You don't own any NFTs.");
+      setShowPopup(true);
+      return;
+    }
+
     setShowPopup(true);
-    fetchNFTData();
+    setLoading(true); // Reset loading state before fetching NFT data
+    await fetchNFTData();
   };
 
   useEffect(() => {
@@ -128,17 +134,9 @@ const NFTsButton = ({ ethereumClient }) => {
 
   return (
     <div>
-      {!loading && address && nftsData.length > 0 ? (
-        <button className="btn btn--primary" onClick={handleButtonClick}>
-          View Your NFTs
-        </button>
-      ) : (
-        !loading && address && isConnected && ownedTokenIdsData && (
-          <button className="btn btn--primary" onClick={handleButtonClick}>
-            View Your NFTs
-          </button>
-        )
-      )}
+      <button className="btn btn--primary" onClick={handleButtonClick}>
+        View Your NFTs
+      </button>
 
       {showPopup && (
         <PopupMessageNFT message={popupMessage} onClose={() => setShowPopup(false)} />
