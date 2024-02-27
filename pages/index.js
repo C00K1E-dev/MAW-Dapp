@@ -25,7 +25,7 @@ const chains = [bscTestnet,mainnet,polygon,avalanche,arbitrum,bsc,optimism,fanto
 const projectId = "aca932c97e3f9bc59a1636dc1aeae670";
 const metadata = {
 	name: "Mint and Win",
-	description: "A rewarding NFT journey",
+	description: "Mint and Win",
 	url: "https://mintandwin.com",
 	icons: './images/walletlogo.png',
 };
