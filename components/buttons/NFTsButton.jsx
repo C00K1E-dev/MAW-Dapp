@@ -37,6 +37,7 @@ const NFTsButton = ({ ethereumClient }) => {
   const { data: collectionNameData } = useContractRead(getCollectionName);
   const { data: ownedTokenIdsData } = useContractRead(getOwnerTokenIds(address));
 
+
   const fetchNFTData = async () => {
     try {
       if (!address) {
@@ -53,6 +54,8 @@ const NFTsButton = ({ ethereumClient }) => {
           return { tokenId, videoUrl, collectionName: collectionNameData };
         })
       );
+
+      console.log(nfts)
 
       setNftsData(nfts);
       setLoading(false);
@@ -97,6 +100,8 @@ const NFTsButton = ({ ethereumClient }) => {
       setShowPopup(true);
       return;
     }
+
+    
 
     setShowPopup(true);
     setLoading(true); // Reset loading state before fetching NFT data

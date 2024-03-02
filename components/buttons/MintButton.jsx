@@ -1,65 +1,67 @@
-import React, { useState, useEffect } from "react";
-import { useAccount } from 'wagmi';
-import { testabi, NFT_CONTRACT_ADDRESS } from "../contracts/1stCollection";
-import { usePrepareContractWrite, useContractWrite } from 'wagmi';
+import React, { useState } from "react";
 import { parseEther } from 'viem';
+import { useAccount } from 'wagmi';
+import { prepareWriteContract, waitForTransaction, writeContract } from 'wagmi/actions';
 import PopupMessage from "../PopupMessage";
+import { NFT_CONTRACT_ADDRESS, testabi } from "../contracts/1stCollection";
 
-function MintNFT({ ethereumClient }) {
+function MintNFT() {
 
   const [popupMessage, setPopupMessage] = useState("");
   const [showPopup, setShowPopup] = useState(false);
- 
   const { address, isConnected } = useAccount();
-
-  const { config, error: prepareError, isError: isPrepareError } = usePrepareContractWrite({
-    address: NFT_CONTRACT_ADDRESS,
-    abi: testabi,
-    functionName: 'mintNFT',
-    value: parseEther('0.13'),
-  });
-
-  const { write, isLoading, isSuccess, isError, error, data } = useContractWrite(config);
+  const [isLoading, setisLoading] = useState(false)
 
   const handleMint = async () => {
+
+    setisLoading(true)
+
     try {
       if (!address) {
         setPopupMessage("Please connect your wallet first.");
         setShowPopup(true);
         return;
       }
-  
+
       if (!isConnected) {
         setPopupMessage("Please connect your wallet first.");
         setShowPopup(true);
         return;
       }
-  
-      await write({
-        args: [],
-        value: parseEther('0.13'),
-      });
-  
-    } catch (error) {
-      console.error('Error in handleMint:', error);
-      setPopupMessage("An error occurred while minting your NFT.");
-      setShowPopup(true);
-    }
-  };
 
-  useEffect(() => {
-    if (isSuccess) {
+      const { request: contractRqst } = await prepareWriteContract({
+        address: NFT_CONTRACT_ADDRESS,
+        abi: testabi,
+        functionName: 'mintNFT',
+        args: [],
+        value: parseEther('0.13')
+      })
+
+      const { hash: contractHash } = await writeContract(contractRqst)
+
+      await waitForTransaction({
+        hash: contractHash,
+        confirmations: 1
+      })
+
       setPopupMessage("Your NFT has been minted successfully!");
       setShowPopup(true);
+
+    } catch (error) {
+      console.error('Error in handleMint:', error.message);
+      // setPopupMessage(error.message);
+      // setShowPopup(true);
+    } finally {
+      setisLoading(false)
     }
-  }, [isSuccess]);
+  };
 
   return (
     <div>
       <button className="btn btn--primary" disabled={isLoading} onClick={handleMint} >
         {isLoading ? 'testMinting...' : 'testMint'}
       </button>
-      
+
       {showPopup && <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />}
     </div>
   );
