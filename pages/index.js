@@ -22,7 +22,7 @@ import Modal from '../components/modal/Modal';
 
 
 const chains = [bscTestnet,mainnet,polygon,avalanche,arbitrum,bsc,optimism,fantom,];
-const projectId = "aca932c97e3f9bc59a1636dc1aeae670";
+const projectId = "3bc9b13ede2c46a106c03bfadb9129e8";
 const metadata = {
 	name: "Mint and Win",
 	description: "Mint and Win",
