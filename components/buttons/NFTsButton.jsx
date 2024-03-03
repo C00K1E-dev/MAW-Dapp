@@ -29,7 +29,7 @@ const NFTsButton = () => {
           <div key={nft.tokenId}>
             <p>Collection Name: {nft.collectionName}</p>
             <p>Token ID: {nft.tokenId.toString()}</p>
-            <video controls autoPlay loop width="320" height="240">
+            <video controls width="320" height="240">
               <source src={nft.videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
