@@ -13,20 +13,20 @@ const NFTsButton = () => {
   const [popupMessage, setPopupMessage] = useState("");
   const [nftsData, setNftsData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { address, isConnected,  } = useAccount();
-  
+  const { address, isConnected } = useAccount();
 
   const nftContract = {
     address: contractAddress,
     abi: abi,
   };
 
+
   const fetchNFTData = async () => {
     try {
       console.log("Inside fetchNFTData");
-
+  
       // Fetch contract data
-      const [name, totalSupply, symbol, balance, getOwnedTokenIds] = await Promise.all([
+      const [name, totalSupply, symbol, balance, ownedTokenIdsData] = await Promise.all([
         readContract({
           ...nftContract,
           functionName: 'name',
@@ -50,34 +50,27 @@ const NFTsButton = () => {
           args: [address],
         }),
       ]);
-
-      console.log("Contract Data:", { name, totalSupply, symbol, balance, getOwnedTokenIds });
-
-      const { data: collectionNameData } = await readContract(name);
-
-      if (!collectionNameData || !name) {
-        setPopupMessage("Could not fetch NFT data.");
-        setShowPopup(true);
-        setLoading(false);
-        return;
+  
+      console.log("Contract Data:", { name, totalSupply, symbol, balance });
+      console.log("Owned Token IDs Data:", ownedTokenIdsData);
+  
+      // Ensure ownedTokenIdsData is an array
+      if (!Array.isArray(ownedTokenIdsData)) {
+        throw new Error("Owned Token IDs data is not an array.");
       }
-
-      const ownedTokenIdsData = getOwnedTokenIds || [];
-
-      console.log("Owned Token IDs:", ownedTokenIdsData);
-
+  
       const nfts = [];
       ownedTokenIdsData.forEach((tokenId) => {
         const videoUrl = `${baseIpfsUrl}${tokenId}.mp4`;
         nfts.push({
           tokenId: tokenId,
           videoUrl: videoUrl,
-          collectionName: collectionNameData,
+          collectionName: name,
         });
       });
-
+  
       console.log("NFTs:", nfts);
-
+  
       setNftsData(nfts);
       setLoading(false);
     } catch (error) {
@@ -114,6 +107,7 @@ const NFTsButton = () => {
               <div key={nft.tokenId}>
                 <p>Collection Name: {nft.collectionName}</p>
                 <p>Token ID: {nft.tokenId.toString()}</p>
+                <p>Video URL: {nft.videoUrl}</p>
                 <video controls width="320" height="240">
                   <source src={nft.videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
