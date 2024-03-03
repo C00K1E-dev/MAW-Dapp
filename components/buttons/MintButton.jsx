@@ -1,25 +1,20 @@
 import React, { useState } from "react";
 import { parseEther } from 'viem';
-import { useAccount, useContractWrite, usePrepareContractWrite } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { prepareWriteContract, waitForTransaction, writeContract } from 'wagmi/actions';
 import PopupMessage from "../PopupMessage";
 import { NFT_CONTRACT_ADDRESS, testabi } from "../contracts/1stCollection";
 
 
-function MintNFT({ ethereumClient }) {
+function MintNFT() {
 
   const [popupMessage, setPopupMessage] = useState("");
   const [showPopup, setShowPopup] = useState(false);
-
   const { address, isConnected } = useAccount();
-
-
   const [isLoading, setisLoading] = useState(false)
 
   const handleMint = async () => {
-
     setisLoading(true)
-
     try {
       if (!address) {
         setPopupMessage("Please connect your wallet first.");
@@ -33,7 +28,7 @@ function MintNFT({ ethereumClient }) {
         return;
       }
 
-      const { request: contractRqst } = await prepareWriteContract({
+      const { request: contractRequest } = await prepareWriteContract({
         address: NFT_CONTRACT_ADDRESS,
         abi: testabi,
         functionName: 'mintNFT',
@@ -41,7 +36,7 @@ function MintNFT({ ethereumClient }) {
         value: parseEther('0.13')
       })
 
-      const { hash: contractHash } = await writeContract(contractRqst)
+      const { hash: contractHash } = await writeContract(contractRequest)
 
       await waitForTransaction({
         hash: contractHash,
@@ -59,13 +54,6 @@ function MintNFT({ ethereumClient }) {
       setisLoading(false)
     }
   };
-
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     setPopupMessage("Your NFT has been minted successfully!");
-  //     setShowPopup(true);
-  //   }
-  // }, [isSuccess]);
 
   return (
     <div>

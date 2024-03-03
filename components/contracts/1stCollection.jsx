@@ -874,4 +874,4 @@ export const testabi =  [
   }
 ]
 
-export const NFT_CONTRACT_ADDRESS ="0xB84cfB363C19bb2213D900Cbc6a7fD9d9EebAB59";
+export const NFT_CONTRACT_ADDRESS ="0xa07fb2cE289445E195CBc9eE79B9A36a2eA9aa95";
