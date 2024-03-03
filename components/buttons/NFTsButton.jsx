@@ -20,11 +20,32 @@ const NFTsButton = () => {
     abi: abi,
   };
 
+  useEffect(() => {
+    // Create the display content for the popup message
+    if (nftsData.length > 0 && showPopup) {
+      const nftsDisplay = nftsData.map((nft) => {
+        // Construct the display content for each NFT
+        return (
+          <div key={nft.tokenId}>
+            <p>Collection Name: {nft.collectionName}</p>
+            <p>Token ID: {nft.tokenId.toString()}</p>
+            <video controls autoPlay loop width="320" height="240">
+              <source src={nft.videoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        );
+      });
+
+      // Show the popup with the NFTs data
+      setPopupMessage(nftsDisplay);
+    }
+  }, [nftsData, showPopup]);
 
   const fetchNFTData = async () => {
     try {
       console.log("Inside fetchNFTData");
-  
+
       // Fetch contract data
       const [name, totalSupply, symbol, balance, ownedTokenIdsData] = await Promise.all([
         readContract({
@@ -50,15 +71,23 @@ const NFTsButton = () => {
           args: [address],
         }),
       ]);
-  
+
       console.log("Contract Data:", { name, totalSupply, symbol, balance });
       console.log("Owned Token IDs Data:", ownedTokenIdsData);
-  
+
       // Ensure ownedTokenIdsData is an array
       if (!Array.isArray(ownedTokenIdsData)) {
         throw new Error("Owned Token IDs data is not an array.");
       }
-  
+
+      if (ownedTokenIdsData.length === 0) {
+        // User doesn't own any NFTs
+        setPopupMessage("You don't own any NFTs, or you DID NOT imported to your wallet!");
+        setShowPopup(true);
+        setLoading(false);
+        return;
+      }
+
       const nfts = [];
       ownedTokenIdsData.forEach((tokenId) => {
         const videoUrl = `${baseIpfsUrl}${tokenId}.mp4`;
@@ -68,11 +97,12 @@ const NFTsButton = () => {
           collectionName: name,
         });
       });
-  
+
       console.log("NFTs:", nfts);
-  
+
       setNftsData(nfts);
       setLoading(false);
+      setShowPopup(true); // Show popup after data is fetched
     } catch (error) {
       console.error("Error fetching NFT data:", error);
       setPopupMessage("An error occurred while fetching your NFTs.");
@@ -101,23 +131,7 @@ const NFTsButton = () => {
       )}
 
       {showPopup && (
-        <div>
-          {nftsData.length > 0 ? (
-            nftsData.map((nft) => (
-              <div key={nft.tokenId}>
-                <p>Collection Name: {nft.collectionName}</p>
-                <p>Token ID: {nft.tokenId.toString()}</p>
-                <p>Video URL: {nft.videoUrl}</p>
-                <video controls width="320" height="240">
-                  <source src={nft.videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            ))
-          ) : (
-            <PopupMessageNFT message={popupMessage} onClose={() => setShowPopup(false)} />
-          )}
-        </div>
+        <PopupMessageNFT message={popupMessage} onClose={() => setShowPopup(false)} />
       )}
     </div>
   );
