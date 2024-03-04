@@ -4,15 +4,22 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, install dependencies: 
 ```bash
-npm install
+pnpm install
 # or 
 yarn install
+```
+
+Run Build 
+```bash
+pnpm run build
+# or 
+yarn run build
 ```
 
 Run the development server:
 
 ```bash
-npm run dev
+pnpm run dev
 # or
 yarn dev
 ```
