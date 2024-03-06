@@ -1,8 +1,12 @@
 import Heading2 from "../headings/Heading2";
 import styles from "../../styles/vipstyle.module.css";
 
+import MintExclusive from "../buttons/MintExclusive";
+import MintDeluxe from "../buttons/MintDeluxe";
+import MintUltimate from "../buttons/MintUltimate";
 
-const VIP = () => {
+
+const VIP = ({ ethereumClient }) => {
   return (
     <div className="max-w-[1296px] m-auto" id="vip">
       <div className="w-full lg:w-1/2 m-auto text-center">
@@ -25,7 +29,9 @@ const VIP = () => {
               <li>NFT Drops from Exclusive Collections</li>
               <li>3 MAW tokens/everyday</li>
             </ul>
-            <a href="#">MINT(Soon)</a>
+
+            <MintExclusive ethereumClient={ethereumClient}> </MintExclusive>
+
           </div>
         </div>
         <div className={styles.box}>
@@ -37,7 +43,7 @@ const VIP = () => {
               <li>NFT Drops from DeLuxe Collection</li>
               <li>5 MAW tokens/everyday</li>
             </ul>
-            <a href="#">MINT(Soon)</a>
+            <MintDeluxe ethereumClient={ethereumClient}> </MintDeluxe>
           </div>
         </div>
         <div className={styles.box}>
@@ -50,7 +56,7 @@ const VIP = () => {
               <li>Revenue share</li>
               <li>10 MAW tokens/everyday</li>
             </ul>
-            <a href="#">MINT(Soon)</a>
+            <MintUltimate ethereumClient={ethereumClient}> </MintUltimate>
           </div>
         </div>
       </div>
