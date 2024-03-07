@@ -10,8 +10,10 @@ function ClaimTokens() {
 
   const { address, isConnected } = useAccount();
   const [isLoading, setisLoading] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [unclaimedTokens, setUnclaimedTokens] = useState(null);
+  const [lastClaim, setlastClaim] = useState(null);
 
   // Read unclaimed Tokens
   useEffect(() => {
@@ -31,8 +33,27 @@ function ClaimTokens() {
       }
     };
     readUnlcaimed();
-  }, [address, isConnected]);
+  }, [address, isConnected, popupMessage]);
 
+  // Read claim time in Epoch timestamp
+  useEffect(() => {
+    const readClaimTime = async () => {
+      try {
+        const result = await readContract({
+          address: NFT_CONTRACT_ADDRESS,
+          abi: testabi,
+          functionName: 'getLastClaim',
+          args: [address]
+        })
+
+        const value = result.toString();
+        setlastClaim(value);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    readClaimTime();
+  }, [address, isConnected]);
 
   // Claim Tokens
   const handleMint = async () => {
@@ -48,6 +69,12 @@ function ClaimTokens() {
         setPopupMessage("Please connect your wallet first.");
         setShowPopup(true);
         return;
+      }
+
+      if (unclaimedTokens < 1) {
+        setPopupMessage("Sorry, you dont have tokens to claim.");
+        setShowPopup(true);
+        return
       }
 
       const { request: contractRequest } = await prepareWriteContract({
