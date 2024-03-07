@@ -1,3 +1,4 @@
+
 .vipTitle {
   margin-top: 50px;
 }
@@ -11,18 +12,19 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 40px 0;
+  padding: 20px 0; /* Adjusted padding for mobile */
   width: 100%;
+  height: auto; /* Adjusted height for mobile */
 }
 
 .container .box {
   position: relative;
-  width: calc(100% - 60px); /* Adjusted width for mobile */
+  width: 280px; /* Adjusted width for mobile */
   height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 30px;
+  margin: 40px 15px; /* Adjusted margin for mobile */
   transition: 0.5s;
 }
 
@@ -32,7 +34,6 @@
 .mintContainer {
   margin-top: 76px;
 }
-
 .container .box::before {
   content: '';
   position: absolute;
@@ -84,12 +85,13 @@
 }
 
 .container .box span {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 3;
+  z-index: 50;
 }
 
 .container .box span::before {
@@ -174,7 +176,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   backdrop-filter: blur(10px);
-  z-index: 2;
+  z-index: 1;
   transition: 0.5s;
   color: #fff;
 }
@@ -232,7 +234,6 @@
 .container .box:nth-child(3) span::after {
   background-image: url('/images/vip-stars/price3.png');
 }
-
 
 .claimContainer {
   background: rgba(255, 255, 255, 0.1);
