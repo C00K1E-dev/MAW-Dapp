@@ -5,7 +5,6 @@ import { prepareWriteContract, waitForTransaction, writeContract } from 'wagmi/a
 import PopupMessage from "../PopupMessage";
 import { NFT_CONTRACT_ADDRESS, testabi } from "../contracts/VIP";
 
-
 function MintDeluxe() {
 
   const [popupMessage, setPopupMessage] = useState("");
@@ -48,8 +47,8 @@ function MintDeluxe() {
 
     } catch (error) {
       console.error('Error in handleMint:', error.message);
-      // setPopupMessage(error.message);
-      // setShowPopup(true);
+      setPopupMessage(error.message);
+      setShowPopup(true);
     } finally {
       setisLoading(false)
     }
@@ -57,9 +56,11 @@ function MintDeluxe() {
 
   return (
     <div>
-      <button className="btn btn--primary" disabled={isLoading} onClick={handleMint} >
-        {isLoading ? 'testMinting...' : 'testMint'}
+      <button className="btn btn--primary" disabled={isLoading} onClick={handleMint}>
+        {isLoading ? 'Minting...' : 'Mint Deluxe'}
       </button>
+
+      {showPopup && <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />}
     </div>
   );
 }

@@ -48,8 +48,8 @@ function MintExclusive() {
 
     } catch (error) {
       console.error('Error in handleMint:', error.message);
-      // setPopupMessage(error.message);
-      // setShowPopup(true);
+      setPopupMessage(error.message);
+      setShowPopup(true);
     } finally {
       setisLoading(false)
     }
@@ -58,8 +58,10 @@ function MintExclusive() {
   return (
     <div>
       <button className="btn btn--primary" disabled={isLoading} onClick={handleMint} >
-        {isLoading ? 'testMinting...' : 'testMint'}
+        {isLoading ? 'Minting...' : 'Mint Exclusive'}
       </button>
+
+      {showPopup && <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />}
     </div>
   );
 }

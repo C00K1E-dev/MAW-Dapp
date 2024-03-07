@@ -5,7 +5,6 @@ import { prepareWriteContract, waitForTransaction, writeContract } from 'wagmi/a
 import PopupMessage from "../PopupMessage";
 import { NFT_CONTRACT_ADDRESS, testabi } from "../contracts/VIP";
 
-
 function MintUltimate() {
 
   const [popupMessage, setPopupMessage] = useState("");
@@ -48,8 +47,8 @@ function MintUltimate() {
 
     } catch (error) {
       console.error('Error in handleMint:', error.message);
-      // setPopupMessage(error.message);
-      // setShowPopup(true);
+      setPopupMessage(error.message);
+      setShowPopup(true);
     } finally {
       setisLoading(false)
     }
@@ -58,8 +57,10 @@ function MintUltimate() {
   return (
     <div>
       <button className="btn btn--primary" disabled={isLoading} onClick={handleMint} >
-        {isLoading ? 'testMinting...' : 'testMint'}
+        {isLoading ? 'Minting...' : 'Mint Ultimate'}
       </button>
+
+      {showPopup && <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />}
     </div>
   );
 }
