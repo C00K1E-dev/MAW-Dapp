@@ -5,9 +5,7 @@ import { prepareWriteContract, waitForTransaction, writeContract } from 'wagmi/a
 import PopupMessage from "../PopupMessage";
 import { NFT_CONTRACT_ADDRESS, testabi } from "../contracts/VIP";
 
-
 function MintExclusive() {
-
   const [popupMessage, setPopupMessage] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const { address, isConnected } = useAccount();
@@ -38,17 +36,23 @@ function MintExclusive() {
 
       const { hash: contractHash } = await writeContract(contractRequest)
 
-      await waitForTransaction({
+      const receipt = await waitForTransaction({
         hash: contractHash,
         confirmations: 1
       })
 
-      setPopupMessage("Your NFT has been minted successfully!");
+      // Check if the transaction was successful
+      if (receipt.status === 1) {
+        setPopupMessage("Your NFT has been minted successfully!");
+      } else {
+        setPopupMessage("Transaction canceled. Your balance has not been deducted.");
+      }
+
       setShowPopup(true);
 
     } catch (error) {
       console.error('Error in handleMint:', error.message);
-      setPopupMessage(error.message);
+      setPopupMessage("Insufficient funds. Please make sure you have enough BNB in your wallet.");
       setShowPopup(true);
     } finally {
       setisLoading(false)
@@ -57,7 +61,7 @@ function MintExclusive() {
 
   return (
     <div>
-      <button className="btn btn--primary" disabled={isLoading} onClick={handleMint} >
+      <button className="btn btn--primary" disabled={isLoading} onClick={handleMint}>
         {isLoading ? 'Minting...' : 'Mint Exclusive'}
       </button>
 
