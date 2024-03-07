@@ -4,6 +4,7 @@ import styles from "../../styles/vipstyle.module.css";
 import MintExclusive from "../buttons/MintExclusive";
 import MintDeluxe from "../buttons/MintDeluxe";
 import MintUltimate from "../buttons/MintUltimate";
+import ClaimTokens from "../buttons/ClaimTokens";
 
 
 const VIP = ({ ethereumClient }) => {
@@ -20,47 +21,68 @@ const VIP = ({ ethereumClient }) => {
       </div>
 
       <div className={styles.container}>
-        <div className={styles.box}>
-          <span></span>
-          <div className={styles.content}>
-            <h2>Exclusive</h2>
-            <ul>
-              <li>Access to Exclusive Collections</li>
-              <li>NFT Drops from Exclusive Collections</li>
-              <li>3 MAW tokens/everyday</li>
-            </ul>
-
+        <div className={styles.subContainer}>
+          <div className={styles.box}>
+            <span></span>
+            <div className={styles.content}>
+              <h2>Exclusive</h2>
+              <ul>
+                <li>Access to Exclusive Collections</li>
+                <li>NFT Drops from Exclusive Collections</li>
+                <li>3 MAW tokens/everyday</li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.mintContainer} >
             <MintExclusive ethereumClient={ethereumClient}> </MintExclusive>
-
           </div>
         </div>
-        <div className={styles.box}>
-          <span></span>
-          <div className={styles.content}>
-            <h2>DeLuxe</h2>
-            <ul>
-              <li>Access to Exclusive and DeLuxe Collections</li>
-              <li>NFT Drops from DeLuxe Collection</li>
-              <li>5 MAW tokens/everyday</li>
-            </ul>
+
+        <div className={styles.subContainer}>
+          <div className={styles.box}>
+            <span></span>
+            <div className={styles.content}>
+              <h2>DeLuxe</h2>
+              <ul>
+                <li>Access to Exclusive and DeLuxe Collections</li>
+                <li>NFT Drops from DeLuxe Collection</li>
+                <li>5 MAW tokens/everyday</li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.mintContainer} >
             <MintDeluxe ethereumClient={ethereumClient}> </MintDeluxe>
           </div>
         </div>
-        <div className={styles.box}>
-          <span></span>
-          <div className={styles.content}>
-            <h2>Ultimate</h2>
-            <ul>
-              <li>Access to Exclusive, DeLuxe and Ultimate Collections</li>
-              <li>NFT Drops from Ultimate Collections</li>
-              <li>Revenue share</li>
-              <li>10 MAW tokens/everyday</li>
-            </ul>
+
+        <div className={styles.subContainer}>
+          <div className={styles.box}>
+            <span></span>
+            <div className={styles.content}>
+              <h2>Ultimate</h2>
+              <ul>
+                <li>Access to Exclusive, DeLuxe and Ultimate Collections</li>
+                <li>NFT Drops from Ultimate Collections</li>
+                <li>Revenue share</li>
+                <li>10 MAW tokens/everyday</li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.mintContainer} >
             <MintUltimate ethereumClient={ethereumClient}> </MintUltimate>
           </div>
         </div>
       </div>
+
+      <div className={styles.claimContainer}>
+        <ClaimTokens ethereumClient={ethereumClient}> </ClaimTokens>
+      </div>
+
+
     </div>
+
+
+
   );
 };
 
