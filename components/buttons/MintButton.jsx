@@ -14,44 +14,48 @@ function MintNFT() {
   const [isLoading, setisLoading] = useState(false)
 
   const handleMint = async () => {
-    setisLoading(true)
+    setisLoading(true);
     try {
       if (!address) {
         setPopupMessage("Please connect your wallet first.");
         setShowPopup(true);
         return;
       }
-
+  
       if (!isConnected) {
         setPopupMessage("Please connect your wallet first.");
         setShowPopup(true);
         return;
       }
-
+  
       const { request: contractRequest } = await prepareWriteContract({
         address: NFT_CONTRACT_ADDRESS,
         abi: testabi,
         functionName: 'mintNFT',
         args: [],
         value: parseEther('0.13')
-      })
-
-      const { hash: contractHash } = await writeContract(contractRequest)
-
+      });
+  
+      const { hash: contractHash } = await writeContract(contractRequest);
+  
       await waitForTransaction({
         hash: contractHash,
         confirmations: 1
-      })
-
+      });
+  
       setPopupMessage("Your NFT has been minted successfully!");
       setShowPopup(true);
-
+  
     } catch (error) {
       console.error('Error in handleMint:', error.message);
-      // setPopupMessage(error.message);
-      // setShowPopup(true);
+      if (error.message.includes("insufficient funds for gas * price + value")) {
+        setPopupMessage("Insufficient funds. Please make sure you have enough BNB in your wallet.");
+      } else {
+        setPopupMessage(error.message);
+      }
+      setShowPopup(true);
     } finally {
-      setisLoading(false)
+      setisLoading(false);
     }
   };
 
