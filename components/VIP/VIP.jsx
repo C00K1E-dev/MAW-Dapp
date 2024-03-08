@@ -73,6 +73,7 @@ const VIP = ({ ethereumClient }) => {
           </div>
         </div>
       </div>
+
       <div className={styles.claimContainer}>
         <ClaimTokens ethereumClient={ethereumClient}> </ClaimTokens>
       </div>
