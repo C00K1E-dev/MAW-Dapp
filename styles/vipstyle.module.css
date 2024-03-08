@@ -247,3 +247,10 @@
   padding: 20px 0px;
   z-index: -99;
 }
+
+@media (max-width: 760px) {
+  .claimContainer {
+    width: 80%;
+  }
+  
+}

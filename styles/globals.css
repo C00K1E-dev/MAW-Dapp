@@ -113,6 +113,7 @@
 
   /* @TODO: Button style */
   .btn {
+    margin-top: 6px;
     @apply inline-flex items-center justify-center uppercase font-semibold rounded-[5px] gap-1 hover:shadow-[4px_4px_9px_var(--bg-gray)] ease-out hover:translate-y-1 transition-all;
     font-size: clamp(12px, 2.5vw, 24px);
     padding: clamp(2px 8px, 5vw 10vw, 10px 20px);
@@ -127,6 +128,13 @@
     .btn {
       font-size: 16px;  /* adjust as necessary */
       padding: 10px 20px;  /* adjust as necessary */
+    }
+  }
+
+  @media (max-width: 760px) {
+    .btn {
+      font-size: 14px;  /* adjust as necessary */
+      padding: 12px 18px;  /* adjust as necessary */
     }
   }
     
