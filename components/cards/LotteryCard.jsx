@@ -8,12 +8,12 @@ import Heading6 from "../headings/Heading6";
 import PopupMessage from "../PopupMessage";
 import NFTsButton from "../buttons/NFTsButton";
 import { useContractRead } from "wagmi";
-import { testabi, NFT_CONTRACT_ADDRESS } from "../contracts/1stCollection";
+import { abi1, NFT_CONTRACT_ADDRESS1 } from "../contracts/1stCollection";
 
-const abi = testabi;
+const abi = abi1;
 const NFTTotalSupplyQuery = {
-  address: NFT_CONTRACT_ADDRESS,
-  abi: abi,
+  address: NFT_CONTRACT_ADDRESS1,
+  abi: abi1,
   functionName: "totalSupply",
 };
 

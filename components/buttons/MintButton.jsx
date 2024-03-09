@@ -3,7 +3,7 @@ import { parseEther } from 'viem';
 import { useAccount } from 'wagmi';
 import { prepareWriteContract, waitForTransaction, writeContract } from 'wagmi/actions';
 import PopupMessage from "../PopupMessage";
-import { NFT_CONTRACT_ADDRESS, testabi } from "../contracts/1stCollection";
+import { NFT_CONTRACT_ADDRESS1, abi1 } from "../contracts/1stCollection";
 
 function MintNFT() {
   const [popupMessage, setPopupMessage] = useState("");
@@ -21,22 +21,23 @@ function MintNFT() {
       }
 
       const { request: contractRequest } = await prepareWriteContract({
-        address: NFT_CONTRACT_ADDRESS,
-        abi: testabi,
+        address: NFT_CONTRACT_ADDRESS1,
+        abi: abi1,
         functionName: 'mintNFT',
         args: [],
         value: parseEther('0.13')
       });
 
-      const { hash: contractHash } = await writeContract(contractRequest);
+      const { hash: contractHash } = await writeContract(contractRequest, { gasLimit: 500000, nonceManager: true });
 
-      await waitForTransaction({
-        hash: contractHash,
-        confirmations: 1
-      });
+      // Wait for the transaction to be mined
+      const receipt = await waitForTransaction({ hash: contractHash });
 
-      setPopupMessage("Your NFT has been minted successfully!");
-      setShowPopup(true);
+      // Check if the transaction was successful
+      if (receipt) {
+        setPopupMessage("Your NFT has been minted successfully!");
+        setShowPopup(true); // Show popup only if message is set
+      }
 
     } catch (error) {
       console.error('Error in handleMint:', error.message);
@@ -45,7 +46,7 @@ function MintNFT() {
       } else if (error.message.includes("User rejected")) {
         setPopupMessage("You have rejected the transaction. No funds were deducted.");
       } else {
-        setPopupMessage(error.message);
+        setPopupMessage(`Error minting NFT: ${error.message}`);
       }
       setShowPopup(true);
     } finally {

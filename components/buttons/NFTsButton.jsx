@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import PopupMessageNFT from "../PopupMessageNFT";
 import { readContract } from "wagmi/actions";
 import { useAccount } from 'wagmi';
-import { testabi, NFT_CONTRACT_ADDRESS } from "../contracts/1stCollection";
+import { abi1, NFT_CONTRACT_ADDRESS1 } from "../contracts/1stCollection";
+import { vipabi, VIP_CONTRACT_ADDRESS } from "../contracts/VIP";
 
-const abi = testabi;
-const contractAddress = NFT_CONTRACT_ADDRESS;
-const baseIpfsUrl = "https://silver-elegant-aphid-155.mypinata.cloud/ipfs/QmcjALMQb2m9uVCGPECJTMhCmFx4J5D6piiCdyUadSoDYU/";
+const baseIpfsUrl1stCollection = "https://silver-elegant-aphid-155.mypinata.cloud/ipfs/QmcjALMQb2m9uVCGPECJTMhCmFx4J5D6piiCdyUadSoDYU/";
+const baseIpfsUrlVIP = "https://silver-elegant-aphid-155.mypinata.cloud/ipfs/QmPsAaaXzzpxJGbaBp8kPDAAUsRWeunHwvhxX83dVkyGWR/";
 
 const NFTsButton = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -15,9 +15,16 @@ const NFTsButton = () => {
   const [loading, setLoading] = useState(true);
   const { address, isConnected } = useAccount();
 
-  const nftContract = {
-    address: contractAddress,
-    abi: abi,
+  const nftContract1stCollection = {
+    address: NFT_CONTRACT_ADDRESS1,
+    abi: abi1,
+    baseIpfsUrl: baseIpfsUrl1stCollection,
+  };
+
+  const nftContractVIP = {
+    address: VIP_CONTRACT_ADDRESS,
+    abi: vipabi,
+    baseIpfsUrl: baseIpfsUrlVIP,
   };
 
   useEffect(() => {
@@ -42,74 +49,60 @@ const NFTsButton = () => {
     }
   }, [nftsData, showPopup]);
 
-  const fetchNFTData = async () => {
-    try {
-      console.log("Inside fetchNFTData");
+ const fetchNFTData = async (contract) => {
+  try {
+    console.log("Inside fetchNFTData");
 
-      // Fetch contract data
-      const [name, totalSupply, symbol, balance, ownedTokenIdsData] = await Promise.all([
-        readContract({
-          ...nftContract,
-          functionName: 'name',
-        }),
-        readContract({
-          ...nftContract,
-          functionName: 'totalSupply',
-        }),
-        readContract({
-          ...nftContract,
-          functionName: 'symbol',
-        }),
-        readContract({
-          ...nftContract,
-          functionName: 'balanceOf',
-          args: [address],
-        }),
-        readContract({
-          ...nftContract,
-          functionName: 'getOwnedTokenIds',
-          args: [address],
-        }),
-      ]);
+    // Fetch contract data from the given collection
+    const [name, balance, ownedTokenIdsData] = await Promise.all([
+      readContract({
+        address: contract.address,
+        abi: contract.abi,
+        functionName: 'name',
+      }),
+      readContract({
+        address: contract.address,
+        abi: contract.abi,
+        functionName: 'balanceOf',
+        args: [address],
+      }),
+      readContract({
+        address: contract.address,
+        abi: contract.abi,
+        functionName: 'getOwnedTokenIds',
+        args: [address],
+      }),
+    ]);
 
-      console.log("Contract Data:", { name, totalSupply, symbol, balance });
-      console.log("Owned Token IDs Data:", ownedTokenIdsData);
+    console.log("Contract Data:", { name, balance });
+    console.log("Owned Token IDs Data:", ownedTokenIdsData);
 
-      // Ensure ownedTokenIdsData is an array
-      if (!Array.isArray(ownedTokenIdsData)) {
-        throw new Error("Owned Token IDs data is not an array.");
-      }
-
-      if (ownedTokenIdsData.length === 0) {
-        // User doesn't own any NFTs
-        setPopupMessage("You don't own any NFTs, or you DID NOT imported to your wallet!");
-        setShowPopup(true);
-        setLoading(false);
-        return;
-      }
-
-      const nfts = [];
-      ownedTokenIdsData.forEach((tokenId) => {
-        const videoUrl = `${baseIpfsUrl}${tokenId}.mp4`;
-        nfts.push({
-          tokenId: tokenId,
-          videoUrl: videoUrl,
-          collectionName: name,
-        });
-      });
-
-      console.log("NFTs:", nfts);
-
-      setNftsData(nfts);
-      setLoading(false);
-      setShowPopup(true); // Show popup after data is fetched
-    } catch (error) {
-      console.error("Error fetching NFT data:", error);
-      setPopupMessage("An error occurred while fetching your NFTs.");
-      setShowPopup(true);
-      setLoading(false);
+    // Handle contract NFTs
+    if (!Array.isArray(ownedTokenIdsData)) {
+      throw new Error("Contract: Owned Token IDs data is not an array.");
     }
-  };
+
+    const nfts = ownedTokenIdsData.map((tokenId) => {
+      const videoUrl = `${contract.baseIpfsUrl}${tokenId}.mp4`;
+      return {
+        tokenId: tokenId,
+        videoUrl: videoUrl,
+        collectionName: name,
+      };
+    });
+
+    console.log("Contract NFTs:", nfts);
+
+    setNftsData(nfts);
+    setLoading(false);
+    setShowPopup(true); // Show popup after data is fetched
+  } catch (error) {
+    console.error("Error fetching NFT data:", error);
+    setPopupMessage("An error occurred while fetching your NFTs.");
+    setShowPopup(true);
+    setLoading(false);
+  }
+};
 
   const handleButtonClick = async () => {
     if (!address) {
@@ -119,7 +112,10 @@ const NFTsButton = () => {
     }
 
     setLoading(true);
-    await fetchNFTData();
+    // Fetch NFTs for 1stCollection
+    await fetchNFTData(nftContract1stCollection);
+    // Fetch NFTs for VIP
+    await fetchNFTData(nftContractVIP);
   };
 
   return (

@@ -14,56 +14,54 @@ function MintUltimate() {
   const handleMint = async () => {
     setisLoading(true)
     try {
-      if (!address) {
+      if (!address || !isConnected) {
         setPopupMessage("Please connect your wallet first.");
         setShowPopup(true);
         return;
       }
-
-      if (!isConnected) {
-        setPopupMessage("Please connect your wallet first.");
-        setShowPopup(true);
-        return;
-      }
+      
+      const mintAmount = parseEther('1').toString();
 
       const { request: contractRequest } = await prepareWriteContract({
         address: VIP_CONTRACT_ADDRESS,
         abi: vipabi,
         functionName: 'mintUltimate',
         args: [],
-        value: parseEther('1')
+        value: mintAmount
       })
 
-      const { hash: contractHash } = await writeContract(contractRequest)
+// Increase gasLimit and add nonce management
+const { hash: contractHash } = await writeContract(contractRequest, { gasLimit: 500000, nonceManager: true });
+  
+// Wait for the transaction to be mined
+const receipt = await waitForTransaction({ hash: contractHash });
 
-      const receipt = await waitForTransaction({
-        hash: contractHash,
-        confirmations: 1
-      })
+// Check if the receipt is valid
+if (receipt) {
+  setPopupMessage("Your NFT has been minted successfully!");
+  setShowPopup(true); // Show popup only if message is set
+}
 
-      // Check if the transaction was successful
-      if (receipt.status === 1) {
-        setPopupMessage("Your NFT has been minted successfully!");
-      } else {
-        setPopupMessage("Transaction canceled. Your balance has not been deducted.");
-      }
 
-      setShowPopup(true);
-
-    } catch (error) {
-      console.error('Error in handleMint:', error.message);
-      if (error.message.includes("insufficient funds for gas * price + value")) {
-        setPopupMessage("Insufficient funds. Please make sure you have enough BNB in your wallet.");
-      } else if (error.message.includes("User rejected")) {
-        setPopupMessage("You have rejected the transaction. No funds were deducted.");
-      } else {
-        setPopupMessage(`Error minting NFT: ${error.message}`);
-      }
-      setShowPopup(true);
-    } finally {
-      setisLoading(false);
-    }
+} catch (error) {
+  console.error('Error in handleMint:', error.message);
+  if (error.message.includes("insufficient funds for gas * price + value")) {
+    setPopupMessage("Insufficient funds. Please make sure you have enough BNB in your wallet.");
+  } else if (error.message.includes("User rejected")) {
+    setPopupMessage("You have rejected the transaction. No funds were deducted.");
+  } else {
+    setPopupMessage(`Error minting NFT: ${error.message}`);
   }
+  setShowPopup(true); // Show popup for error cases as well
+} finally {
+  setisLoading(false);
+}
+};
+
+const handleClosePopup = () => {
+  setShowPopup(false);
+  setPopupMessage(""); // Clear message when closing popup
+};
 
   return (
     <div>
@@ -71,7 +69,7 @@ function MintUltimate() {
         {isLoading ? 'Minting...' : 'Mint Ultimate'}
       </button>
 
-      {showPopup && <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />}
+      {showPopup && <PopupMessage message={popupMessage} onClose={handleClosePopup} />}
     </div>
   );
 }

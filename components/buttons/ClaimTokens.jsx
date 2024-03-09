@@ -17,7 +17,7 @@ function ClaimTokens() {
 
   // Read unclaimed Tokens
   useEffect(() => {
-    const readUnlcaimed = async () => {
+    const readUnclaimed = async () => {
       try {
         const result = await readContract({
           address: VIP_CONTRACT_ADDRESS,
@@ -27,12 +27,11 @@ function ClaimTokens() {
         })
         const value = result.toString();
         setUnclaimedTokens(value);
-        console.log(value);
       } catch (err) {
         console.log(err);
       }
     };
-    readUnlcaimed();
+    readUnclaimed();
   }, [address, isConnected, popupMessage]);
 
   // Read claim time in Epoch timestamp
@@ -56,7 +55,7 @@ function ClaimTokens() {
   }, [address, isConnected]);
 
   // Claim Tokens
-  const handleMint = async () => {
+  const handleClaim = async () => {
     setisLoading(true)
     try {
       if (!address) {
@@ -72,9 +71,9 @@ function ClaimTokens() {
       }
 
       if (unclaimedTokens < 1) {
-        setPopupMessage("Sorry, you dont have tokens to claim.");
+        setPopupMessage("Sorry, you don't have tokens to claim.");
         setShowPopup(true);
-        return
+        return;
       }
 
       const { request: contractRequest } = await prepareWriteContract({
@@ -91,27 +90,31 @@ function ClaimTokens() {
         confirmations: 1
       })
 
-      setPopupMessage("Your tokens has been claim successfully!");
+      setPopupMessage("Your tokens have been claimed successfully!");
       setShowPopup(true);
 
     } catch (error) {
-      console.error('Error in handleMint:', error.message);
-      // setPopupMessage(error.message);
-      // setShowPopup(true);
+      console.error('Error in handleClaim:', error.message);
+      if (error.message.includes("insufficient funds for gas * price + value")) {
+        setPopupMessage("Insufficient funds. Please make sure you have enough BNB in your wallet.");
+      } else if (error.message.includes("User rejected") || error.message.includes("User denied")) {
+        setPopupMessage("You have rejected the transaction. No funds were deducted.");
+      } else {
+        setPopupMessage(error.message);
+      }
+      setShowPopup(true);
     } finally {
-      setisLoading(false)
+      setisLoading(false);
     }
   };
-
-
 
   return (
     <div>
       <div>
         <p>You have {unclaimedTokens} $MAW tokens to claim.</p>
       </div>
-      <button className="btn btn--primary" disabled={isLoading} onClick={handleMint} >
-        {isLoading ? 'testClaiming...' : 'testClaim'}
+      <button className="btn btn--primary" disabled={isLoading} onClick={handleClaim}>
+        {isLoading ? 'Claiming...' : 'Claim Tokens'}
       </button>
 
       {showPopup && <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />}

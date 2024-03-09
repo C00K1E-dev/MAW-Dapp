@@ -20,29 +20,28 @@ function MintDeluxe() {
         return;
       }
 
+      const mintAmount = parseEther('0.75').toString();
+
       const { request: contractRequest } = await prepareWriteContract({
         address: VIP_CONTRACT_ADDRESS,
         abi: vipabi,
         functionName: 'mintDeluxe',
         args: [],
-        value: parseEther('0.75')
+        value: mintAmount
       })
 
-      const { hash: contractHash } = await writeContract(contractRequest)
+      // Increase gasLimit and add nonce management
+      const { hash: contractHash } = await writeContract(contractRequest, { gasLimit: 500000, nonceManager: true });
 
-      const receipt = await waitForTransaction({
-        hash: contractHash,
-        confirmations: 1
-      })
+      // Wait for the transaction to be mined
+      const receipt = await waitForTransaction({ hash: contractHash });
 
-      // Check if the transaction was successful
-      if (receipt.status === 1) {
+      // Check if the receipt is valid
+      if (receipt) {
         setPopupMessage("Your NFT has been minted successfully!");
-      } else {
-        setPopupMessage("Transaction canceled. Your balance has not been deducted.");
+        setShowPopup(true); // Show popup only if message is set
       }
 
-      setShowPopup(true);
 
     } catch (error) {
       console.error('Error in handleMint:', error.message);
@@ -57,7 +56,12 @@ function MintDeluxe() {
     } finally {
       setisLoading(false);
     }
-  }
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setPopupMessage(""); // Clear message when closing popup
+  };
 
   return (
     <div>
@@ -65,7 +69,7 @@ function MintDeluxe() {
         {isLoading ? 'Minting...' : 'Mint Deluxe'}
       </button>
 
-      {showPopup && <PopupMessage message={popupMessage} onClose={() => setShowPopup(false)} />}
+      {showPopup && <PopupMessage message={popupMessage} onClose={handleClosePopup} />}
     </div>
   );
 }
