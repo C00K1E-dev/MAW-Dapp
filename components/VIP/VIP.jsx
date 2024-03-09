@@ -1,6 +1,6 @@
 import Heading2 from "../headings/Heading2";
 import styles from "../../styles/vipstyle.module.css";
-
+import ViewVipNfts from "../buttons/ViewVipNfts";
 import MintExclusive from "../buttons/MintExclusive";
 import MintDeluxe from "../buttons/MintDeluxe";
 import MintUltimate from "../buttons/MintUltimate";
@@ -72,9 +72,9 @@ const VIP = ({ ethereumClient }) => {
           </div>
         </div>
       </div>
-
       <div className={styles.claimContainer}>
         <ClaimTokens ethereumClient={ethereumClient}> </ClaimTokens>
+        <ViewVipNfts ethereumClient={ethereumClient}> </ViewVipNfts>
       </div>
     </div>
   );

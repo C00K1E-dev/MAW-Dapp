@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import PopupMessageNFT from "../PopupMessageNFT";
 import { readContract } from "wagmi/actions";
 import { useAccount } from 'wagmi';
-import { abi1, NFT_CONTRACT_ADDRESS1 } from "../contracts/1stCollection";
+import { vipabi, VIP_CONTRACT_ADDRESS } from "../contracts/VIP";
 
-const abi = abi1;
-const contractAddress = NFT_CONTRACT_ADDRESS1;
-const baseIpfsUrl = "https://silver-elegant-aphid-155.mypinata.cloud/ipfs/QmcjALMQb2m9uVCGPECJTMhCmFx4J5D6piiCdyUadSoDYU/";
+const abi = vipabi;
+const contractAddress = VIP_CONTRACT_ADDRESS;
+const baseIpfsUrl = "https://silver-elegant-aphid-155.mypinata.cloud/ipfs/QmP4Gic333FmRGPiGLbVjQCFDkyLYot9cLmcEpWBWKT28r/";
 
-const NFTsButton = () => {
+const VIPButton = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [nftsData, setNftsData] = useState([]);
@@ -113,11 +113,17 @@ const NFTsButton = () => {
     await fetchNFTData();
   };
 
+  useEffect(() => {
+    if (isConnected) {
+      setLoading(false);
+    }
+  }, [isConnected]);
+
   return (
     <div>
-      {isConnected && (
+      {isConnected && !loading && (
         <button className="btn btn--primary" onClick={handleButtonClick}>
-          View Your NFTs
+          View VIP Package
         </button>
       )}
 
@@ -128,4 +134,4 @@ const NFTsButton = () => {
   );
 };
 
-export default NFTsButton;
+export default VIPButton;
