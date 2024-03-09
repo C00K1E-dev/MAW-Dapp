@@ -25,14 +25,6 @@ const NavBar = () => {
     }
   };
 
-  const handleStakingClick = () => {
-    // Show the popup message for "Coming Soon"
-    setShowPopup(true);
-
-    // Close the navbar menu if open
-    setOpen(false);
-  };
-
   const handleDeFiClick = () => {
     // Show the popup message for "DeFi Coming Soon"
     setShowPopup(true);
@@ -100,7 +92,7 @@ const NavBar = () => {
               {/* Social icons */}
               <Social />
               {/* button */}
-              <w3m-button />
+              <w3m-button/>
             </div>
           </div>
         </div>

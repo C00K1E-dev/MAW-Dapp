@@ -49,7 +49,13 @@ function MintExclusive() {
 
     } catch (error) {
       console.error('Error in handleMint:', error.message);
-      setPopupMessage(`Error minting NFT: ${error.message}`);
+      if (error.message.includes("insufficient funds for gas * price + value")) {
+        setPopupMessage("Insufficient funds. Please make sure you have enough BNB in your wallet.");
+      } else if (error.message.includes("User rejected")) {
+        setPopupMessage("You have rejected the transaction. No funds were deducted.");
+      } else {
+        setPopupMessage(`Error minting NFT: ${error.message}`);
+      }
       setShowPopup(true);
     } finally {
       setisLoading(false);
