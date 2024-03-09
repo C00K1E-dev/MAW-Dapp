@@ -70,7 +70,7 @@
  /* Responsive font sizes for .heading-contract */
 @media (max-width: 320px) {
   .heading-contract {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
