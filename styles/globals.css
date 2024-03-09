@@ -70,37 +70,37 @@
  /* Responsive font sizes for .heading-contract */
 @media (max-width: 320px) {
   .heading-contract {
-    font-size: 8px;
+    font-size: 12px;
   }
 }
 
 @media (min-width: 321px) and (max-width: 375px) {
   .heading-contract {
-    font-size: 10px;
+    font-size: 13px;
   }
 }
 
 @media (min-width: 376px) and (max-width: 425px) {
   .heading-contract {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
   .heading-contract {
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .heading-contract {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {
   .heading-contract {
-    font-size: 18px;
+    font-size: 22px;
   }
 }
 
@@ -131,7 +131,7 @@
     }
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 768px) {
     .btn {
       font-size: 14px;  /* adjust as necessary */
       padding: 12px 18px;  /* adjust as necessary */
@@ -536,4 +536,3 @@ ul li::marker {
   border-radius: 5px;
   border: 2px solid rgba(255, 255, 255, 0.2); /* Add a border to the scrollbar thumb */
 }
-

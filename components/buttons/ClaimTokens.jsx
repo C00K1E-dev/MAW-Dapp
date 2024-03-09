@@ -3,7 +3,7 @@ import { parseEther } from 'viem';
 import { useAccount } from 'wagmi';
 import { prepareWriteContract, waitForTransaction, writeContract, readContract } from 'wagmi/actions';
 import PopupMessage from "../PopupMessage";
-import { NFT_CONTRACT_ADDRESS, testabi } from "../contracts/VIP";
+import { VIP_CONTRACT_ADDRESS, vipabi } from "../contracts/VIP";
 
 
 function ClaimTokens() {
@@ -20,8 +20,8 @@ function ClaimTokens() {
     const readUnlcaimed = async () => {
       try {
         const result = await readContract({
-          address: NFT_CONTRACT_ADDRESS,
-          abi: testabi,
+          address: VIP_CONTRACT_ADDRESS,
+          abi: vipabi,
           functionName: 'tokensAvailableForClaim',
           args: [address]
         })
@@ -40,8 +40,8 @@ function ClaimTokens() {
     const readClaimTime = async () => {
       try {
         const result = await readContract({
-          address: NFT_CONTRACT_ADDRESS,
-          abi: testabi,
+          address: VIP_CONTRACT_ADDRESS,
+          abi: vipabi,
           functionName: 'getLastClaim',
           args: [address]
         })
@@ -78,8 +78,8 @@ function ClaimTokens() {
       }
 
       const { request: contractRequest } = await prepareWriteContract({
-        address: NFT_CONTRACT_ADDRESS,
-        abi: testabi,
+        address: VIP_CONTRACT_ADDRESS,
+        abi: vipabi,
         functionName: 'claimTokens',
         args: [],
       })

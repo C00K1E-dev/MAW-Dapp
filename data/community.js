@@ -1,4 +1,3 @@
-import { BsMedium } from "react-icons/bs";
 import { FaDiscord, FaTelegramPlane } from "react-icons/fa";
 import CustomTwitterIcon from "../components/icons/CustomTwitterIcon";
 
@@ -24,11 +23,5 @@ export const communityData = [
     desc: "Chat with the community",
     link: "https://discord.gg/7a5Ye6NcHF",
   },
-  {
-    id: "4",
-    icon: <BsMedium />,
-    title: "Medium",
-    desc: "Read our blogs and articles",
-    link: "https://medium.com/@mintandwin",
-  },
+
 ];

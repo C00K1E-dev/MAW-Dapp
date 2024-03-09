@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 30px;
+  margin: 40px 0px;
   transition: 0.5s;
 }
 
@@ -251,6 +251,44 @@
 @media (max-width: 760px) {
   .claimContainer {
     width: 80%;
+
   }
   
+}
+
+.container .box.deluxeCard {
+  margin-top: 80px; /* Adjust this value as needed */
+}
+
+.container .box.ultimateCard {
+  margin-top: 80px; /* Adjust this value as needed */
+}
+
+
+/* Existing styles */
+
+@media (min-width: 768px) {
+  .container .box.deluxeCard {
+    margin-top: 43px; /* Adjust this value as needed */
+  }
+
+  .container .box.ultimateCard {
+    margin-top: 50px; /* Adjust this value as needed */
+  }
+
+  .subContainer {
+    display: grid; /* Adjust
+    justify-content: relative;
+    align-items: absolute;
+  }
+
+  .container .box {
+    width: calc(50% - 20px); /* Adjust the width and margin as needed */
+    margin: 20px;
+  }
+
+  .container .box:nth-child(2):before,
+  .container .box:nth-child(2):after {
+    margin-left: -40px; /* Adjust the negative margin as needed */
+  }
 }

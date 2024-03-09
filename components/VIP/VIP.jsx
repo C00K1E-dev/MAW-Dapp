@@ -6,7 +6,6 @@ import MintDeluxe from "../buttons/MintDeluxe";
 import MintUltimate from "../buttons/MintUltimate";
 import ClaimTokens from "../buttons/ClaimTokens";
 
-
 const VIP = ({ ethereumClient }) => {
   return (
     <div className="max-w-[1296px] m-auto" id="vip">
@@ -16,13 +15,13 @@ const VIP = ({ ethereumClient }) => {
         </div>
         <p className="mt-[10px]">
           Mint and win offers special access levels and privileges for participants that hold certain NFTs.
-          These special access levels may provide early access to events, exclusive NFT drops or other unique benefits.
+          These special access levels may provide early access to events, exclusive NFT drops, or other unique benefits.
         </p>
       </div>
 
       <div className={styles.container}>
         <div className={styles.subContainer}>
-          <div className={styles.box}>
+          <div className={`${styles.box} ${styles.exclusiveCard}`}>
             <span></span>
             <div className={styles.content}>
               <h2>Exclusive</h2>
@@ -33,13 +32,13 @@ const VIP = ({ ethereumClient }) => {
               </ul>
             </div>
           </div>
-          <div className={styles.mintContainer} >
+          <div className={styles.mintContainer}>
             <MintExclusive ethereumClient={ethereumClient}> </MintExclusive>
           </div>
         </div>
 
         <div className={styles.subContainer}>
-          <div className={styles.box}>
+          <div className={`${styles.box} ${styles.deluxeCard}`}>
             <span></span>
             <div className={styles.content}>
               <h2>DeLuxe</h2>
@@ -50,25 +49,25 @@ const VIP = ({ ethereumClient }) => {
               </ul>
             </div>
           </div>
-          <div className={styles.mintContainer} >
+          <div className={styles.mintContainer}>
             <MintDeluxe ethereumClient={ethereumClient}> </MintDeluxe>
           </div>
         </div>
 
         <div className={styles.subContainer}>
-          <div className={styles.box}>
+          <div className={`${styles.box} ${styles.ultimateCard}`}>
             <span></span>
             <div className={styles.content}>
               <h2>Ultimate</h2>
               <ul>
-                <li>Access to Exclusive, DeLuxe and Ultimate Collections</li>
+                <li>Access to Exclusive, DeLuxe, and Ultimate Collections</li>
                 <li>NFT Drops from Ultimate Collections</li>
                 <li>Revenue share</li>
                 <li>10 MAW tokens/everyday</li>
               </ul>
             </div>
           </div>
-          <div className={styles.mintContainer} >
+          <div className={styles.mintContainer}>
             <MintUltimate ethereumClient={ethereumClient}> </MintUltimate>
           </div>
         </div>
@@ -77,8 +76,8 @@ const VIP = ({ ethereumClient }) => {
       <div className={styles.claimContainer}>
         <ClaimTokens ethereumClient={ethereumClient}> </ClaimTokens>
       </div>
-      </div>
-    );
+    </div>
+  );
 };
 
 export default VIP;

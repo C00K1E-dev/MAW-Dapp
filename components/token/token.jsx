@@ -15,6 +15,9 @@ const Token = () => {
           <div className="w-full md:w-10/12 lg:w-6/12 mt-[-40px] md:mt-[-100px]">
             <div className="flex flex-col items-center">
               <Heading5>Mint and Win Token</Heading5>
+              <Heading5>!!!Liquidity generator token!!!</Heading5>
+              <Heading5>5% of Transcations goes</Heading5>
+              <Heading5>in Liquidity Pool</Heading5>
               <Headingcontract>0x4546dFFA8dC8D1D7044BEC469650a95306C2C086</Headingcontract>
               <a href="/docs/Whitepaper.pdf" target="_blank" rel="noopener noreferrer">
                 <button className="btn btn--primary">

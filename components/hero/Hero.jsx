@@ -29,23 +29,23 @@ const Hero = () => {
         <Image src={coin4} alt="coin4" />
       </div>
       <div className="max-w-[636px] m-auto text-center p-[291px_0_270px] md:p-[291px_0_370px] z-10 relative">
-        <Heading2>Unlock Rewards with Mint and Win!</Heading2>
-        <div>
-        <p className="mt-[10px] text-white">Step into the world of Mint and Win, where exciting opportunities await!</p>
-        <div>
-        <p className="mt-[10px] text-white">Explore the potential for big rewards through minting. We deploy on various blockchains unique digital assets that unlock exclusive experiences, art, collectibles, and other rare finds.</p>
-        </div>
-        </div>
-        <p className="mt-[10px] text-white">
-        Join us in discovering the possibilities and unlocking your chance for exciting rewards!
-        </p>
-        <div className="mt-[35px]">
-          <TelegramButton>
-            <FaTelegram className="text-[24px]" />
-            JOIN OUR Telegram
-          </TelegramButton>
-        </div>
-      </div>
+  <Heading2>Unlock Rewards with Mint and Win!</Heading2>
+  <div>
+    <p className="mt-[10px] text-white">Step into the world of Mint and Win, where exciting opportunities await!</p>
+    <div>
+      <p className="mt-[10px] text-white">Explore the potential for big rewards through minting. We deploy on various blockchains unique digital assets that unlock exclusive experiences, art, collectibles, and other rare finds.</p>
+    </div>
+  </div>
+  <p className="mt-[10px] text-white">
+    Join us in discovering the possibilities and unlocking your chance for exciting rewards!
+  </p>
+  <div className="mt-[15px]"> {/* Adjusted margin-top here */}
+    <TelegramButton style={{ marginTop: "-20px" }}> {/* Added inline style for negative margin-top */}
+      <FaTelegram className="text-[24px]" />
+      JOIN OUR Telegram
+    </TelegramButton>
+  </div>
+</div>
 
       <div className="coin8 animate-pulse">
         <Image src={coin8} alt="coin8" />

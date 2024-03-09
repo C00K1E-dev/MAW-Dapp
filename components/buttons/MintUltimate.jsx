@@ -3,7 +3,7 @@ import { parseEther } from 'viem';
 import { useAccount } from 'wagmi';
 import { prepareWriteContract, waitForTransaction, writeContract } from 'wagmi/actions';
 import PopupMessage from "../PopupMessage";
-import { NFT_CONTRACT_ADDRESS, testabi } from "../contracts/VIP";
+import { VIP_CONTRACT_ADDRESS, vipabi } from "../contracts/VIP";
 
 function MintUltimate() {
   const [popupMessage, setPopupMessage] = useState("");
@@ -27,8 +27,8 @@ function MintUltimate() {
       }
 
       const { request: contractRequest } = await prepareWriteContract({
-        address: NFT_CONTRACT_ADDRESS,
-        abi: testabi,
+        address: VIP_CONTRACT_ADDRESS,
+        abi: vipabi,
         functionName: 'mintUltimate',
         args: [],
         value: parseEther('1')
@@ -52,12 +52,12 @@ function MintUltimate() {
 
     } catch (error) {
       console.error('Error in handleMint:', error.message);
-      setPopupMessage("Insufficient funds. Please make sure you have enough BNB in your wallet.");
+      setPopupMessage("Error minting NFT. Please try again.");
       setShowPopup(true);
     } finally {
-      setisLoading(false)
+      setisLoading(false);
     }
-  };
+  }
 
   return (
     <div>
