@@ -63,22 +63,22 @@ useEffect(() => {
             <span className="text-[color:var(--color-primary)]">
               {totalNFTsSold}/1000{" "}
             </span>
-            Tickets Sold
+            NFTs Sold
           </Heading6>
         </div>
         <div className="border-y border-[#4A587B] mt-4 p-[10px_0_8px]">
           <Heading6 clr="text-white">
-            Ticket Price ={" "}
+            NFT Price ={" "}
             <span className="text-[color:var(--color-primary)]">0.13 BNB</span>
           </Heading6>
         </div>
         <div className="my-[30px]">
           <MintButton ethereumClient={ethereumClient}>
             <Image src={btn_icon} alt="btn_icon" />
-            Mint Tickets
+            Mint NFT
             {/* Add PopupMessage component as child component */}
             <PopupMessage>
-              Congratulations! You have successfully minted a ticket.
+              Congratulations! You have successfully minted.
             </PopupMessage>
           </MintButton>
           <div className="mt-4"></div>

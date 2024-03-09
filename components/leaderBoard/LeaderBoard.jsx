@@ -15,8 +15,7 @@ const LeaderBoard = () => {
           <Heading5>Latest Winners</Heading5>
           <Heading2>Leaderboard</Heading2>
           <p className="mt-[10px]">
-            The leaderboard shows the top 10 minters of the collection determined
-            by the number of NFT TICKET they have won.
+            The leaderboard shows the top 10 minters of the collection
           </p>
         </div>
 
@@ -31,7 +30,7 @@ const LeaderBoard = () => {
                   USER ID
                 </th>
                 <th scope="col" className="p-[17px_24px]">
-                  NFT TICKET
+                  NFT
                 </th>
               </tr>
             </thead>

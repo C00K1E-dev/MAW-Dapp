@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Heading5 from "../headings/Heading5";
 import Heading6 from "../headings/Heading6";
-
 import draw from "../../public/images/draw.png";
-import ticket from "../../public/images/ticket.png";
+import nft from "../../public/images/nft.png";
 import wallet from "../../public/images/wallet.png";
 
 const aboutData = [
@@ -15,7 +14,7 @@ const aboutData = [
   {
     id: "02",
     title: "Mint NFT",
-    img: ticket,
+    img: nft,
   },
   {
     id: "03",

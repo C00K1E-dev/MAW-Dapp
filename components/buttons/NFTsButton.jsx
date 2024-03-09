@@ -73,7 +73,7 @@ const NFTsButton = () => {
 
       if (ownedTokenIdsData.length === 0) {
         // User doesn't own any NFTs
-        setPopupMessage("You don't own any NFTs, or you DID NOT import to your wallet!");
+        setPopupMessage("You don't own any NFTs!");
         setShowPopup(true);
         setLoading(false);
         return;

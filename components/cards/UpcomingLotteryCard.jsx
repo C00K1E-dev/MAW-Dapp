@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Heading5 from "../headings/Heading5";
 
-const UpcomingLotteryCard = ({ title, tickets, price, avt_img, avt_mp4, currency }) => {
+const UpcomingLotteryCard = ({ title, nfts, price, avt_img, avt_mp4, currency }) => {
   return (
     <div className="inline-flex flex-col bg-[#2A3246] rounded-[10px]">
       <div className="inline-flex flex-col items-center p-[10px]">
@@ -34,13 +34,13 @@ const UpcomingLotteryCard = ({ title, tickets, price, avt_img, avt_mp4, currency
         <div className="flex justify-center gap-2 mt-[15px]">
           <h6 className="heading-6 font-normal">
             <span className="text-[color:var(--color-primary)]">
-              {tickets}{" "}
+              {nfts}{" "}
             </span>
-            Tickets
+            NFTs
           </h6>
           <span className="border"></span>
           <h6 className="heading-6 font-normal">
-            Ticket Price ={" "}
+            NFT Price ={" "}
             <span className="text-[color:var(--color-primary)]">
               {price} {currency}
             </span>
