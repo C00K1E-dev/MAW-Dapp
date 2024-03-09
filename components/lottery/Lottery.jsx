@@ -46,7 +46,7 @@ const Lottery = ({ ethereumClient }) => (
               </div>
             ))}
           </div>
-          <div className="mt-[30px] md:mt-[40px]">
+          <div className="mt-[10px] md:mt-[40px] mb-[10px]">
             <TelegramButton>
               <FaTelegram className="text-[24px]" />JOIN OUR Telegram
             </TelegramButton>
