@@ -17,11 +17,11 @@ import VIP from "../components/VIP/VIP";
 import Token from "../components/token/token";
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { WagmiConfig } from "wagmi";
-import { bscTestnet,arbitrum,avalanche,bsc,fantom,mainnet,optimism,polygon,} from "wagmi/chains";
+import { arbitrum,avalanche,bsc,fantom,mainnet,optimism,polygon,} from "wagmi/chains";
 import Modal from '../components/modal/Modal';
 
 
-const chains = [bscTestnet,polygon,avalanche,arbitrum,bsc,optimism,fantom,];
+const chains = [bsc,mainnet,polygon,avalanche,arbitrum,optimism,fantom,];
 const projectId = "aca932c97e3f9bc59a1636dc1aeae670";
 const metadata = {
 	name: "Mint and Win",
