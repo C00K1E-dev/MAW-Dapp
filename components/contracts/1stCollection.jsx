@@ -245,6 +245,25 @@ export const abi1 =  [
       {
         "indexed": true,
         "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "Mint",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
         "name": "_address",
         "type": "address"
       },
@@ -527,25 +546,6 @@ export const abi1 =  [
       }
     ],
     "name": "getOwnedTokenIds",
-    "outputs": [
-      {
-        "internalType": "uint256[]",
-        "name": "",
-        "type": "uint256[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      }
-    ],
-    "name": "getTokenIdsByOwner",
     "outputs": [
       {
         "internalType": "uint256[]",
@@ -874,4 +874,4 @@ export const abi1 =  [
   }
 ]
 
-export const NFT_CONTRACT_ADDRESS1 ="0x144D52463795a601332aa4250F5156F3Cef80d9c";
+export const NFT_CONTRACT_ADDRESS1 ="0x264a98286323172BC6554835ef5982b9205561e8";
