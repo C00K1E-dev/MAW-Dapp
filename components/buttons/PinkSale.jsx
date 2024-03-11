@@ -3,7 +3,7 @@ import React from "react";
 
 const PinkSaleButton = ({ children }) => {
   const openPinkSalePage = () => {
-    window.open("https://www.pinksale.finance/launchpads?chain=BSC", "_blank");
+    window.open("https://www.pinksale.finance/launchpad/0x051840a1519D178958c27047D11c727EE758B1e6?chain=BSC", "_blank");
   };
 
   return (
