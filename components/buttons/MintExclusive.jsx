@@ -20,7 +20,7 @@ function MintExclusive() {
         return;
       }
 
-      const mintAmount = parseEther('0.05').toString();
+      const mintAmount = parseEther('0.50').toString();
 
       const { request: contractRequest } = await prepareWriteContract({
         address: VIP_CONTRACT_ADDRESS,
