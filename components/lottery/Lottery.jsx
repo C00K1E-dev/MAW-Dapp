@@ -5,7 +5,7 @@ import Heading2 from "../headings/Heading2";
 import Heading3 from "../headings/Heading3";
 
 const Lottery = ({ ethereumClient }) => (
-  <section className="mt-[70px] sm:mt-[115px] px-4 xl:px-0" id="Lottery">
+  <section className="mt-[70px] sm:mt-[115px] px-4 xl:px-0" id="Collections">
     <div className="max-w-[1296px] m-auto text-center mb-8">
       <Heading2>Collections</Heading2>
       <div className="flex flex-col md:flex-row items-center gap-0 md:gap-5">

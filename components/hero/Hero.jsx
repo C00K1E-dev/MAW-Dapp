@@ -15,7 +15,7 @@ import Heading5 from "../headings/Heading5";
 
 const Hero = () => {
   return (
-    <section className="hero relative px-4 xl:px-0" id="hero">
+    <section className="hero relative px-4 xl:px-0" id="Home">
       <div className="coin1 animate-pulse hidden md:block">
         <Image src={coin1} alt="coin1" />
       </div>

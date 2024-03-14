@@ -68,8 +68,8 @@ const NavBar = () => {
             <div className="pb-0 tablet:pb-6">
               <ul className="flex flex-row tablet:flex-col gap-1.5 xl:gap-[20px]">
                 {[
-                  ["Home", "#hero"],
-                  ["Collections", "#Lottery"],
+                  ["Home", "#Home"],
+                  ["Collections", "#Collections"],
                   ["Token", "#token"],
                   ["Roadmap", "#roadmap"],
                   ["Team", "#team"],
