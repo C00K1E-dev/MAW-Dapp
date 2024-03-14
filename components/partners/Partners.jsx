@@ -1,7 +1,14 @@
 import Image from "next/image";
 import Heading2 from "../headings/Heading2";
+import { useRouter } from "next/router";
 
 const Partners = () => {
+  const router = useRouter();
+
+  const handleImageClick = () => {
+    window.open("https://nftcalendar.io/event/mint-and-win/", "_blank");
+  };
+
   return (
     <section className="mt-[55px] sm:mt-[110px] px-4 2xl:px-0">
       <div className="max-w-[1296px] m-auto">
@@ -16,6 +23,8 @@ const Partners = () => {
               alt={`partners${i + 1}`}
               width="196"
               height="70"
+              className="cursor-pointer"
+              onClick={i === 3 ? handleImageClick : null}
             />
           ))}
         </div>
