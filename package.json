@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@haensl/react-hooks": "^1.13.0",
-    "@types/node": "18.19.14",
+    "@types/node": "18.19.17",
     "@types/react-dom": "18.2.18",
     "@web3modal/ethers5": "^4.0.11",
     "@web3modal/wagmi": "3.5.7",
