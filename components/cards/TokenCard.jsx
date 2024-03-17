@@ -3,7 +3,7 @@ import Image from "next/image";
 import tokenImage from "../../public/images/tokenImage.png"; // Import an image for your token
 import Heading4 from "../headings/Heading4";
 import Heading6 from "../headings/Heading6";
-import PinkSaleButton from "../buttons/PinkSale";
+
 
 const TokenCard = () => {
   const [showPopup, setShowPopup] = useState(false); // Create the showPopup state variable
@@ -32,7 +32,9 @@ const TokenCard = () => {
           </Heading6>
         </div>
         <div className="my-[30px]">
-          <PinkSaleButton/>
+        <Heading6 clr="text-white">
+            <span className="text-[color:var(--color-primary)]">Coming Soon</span>
+          </Heading6>
         </div>
       </div>
     </div>
