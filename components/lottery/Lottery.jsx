@@ -14,7 +14,7 @@ const Lottery = ({ ethereumClient }) => (
           <p className="mt-[15px]">
             Discover Mint and Win, where exciting surprises await you! We're
             thrilled to present 1000 exclusive video NFTs, each offering a
-            chance to get rewarded with fantastic prizes. Join us now and mint
+            chance to get fantastic rewards. Join us now and mint
             your exclusive video NFTs promptly. Wishing you success on your
             rewarding journey with Mint and Win!
           </p>

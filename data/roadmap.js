@@ -33,7 +33,7 @@ export const roadmapData = [
       titles: [
         "Expand the NFT collections available for minting and staking",
         "Introduce new features to the Mint and Win platform, such as a token burn mechanism",
-        "Develop partnerships with mainstream brands to offer exclusive NFT collections and prizes",
+        "Develop partnerships with mainstream brands to offer exclusive NFT collections and rewards",
         "Explore new opportunities to expand the Mint and Win ecosystem",
       ],
     },
