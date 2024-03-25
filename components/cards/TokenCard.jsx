@@ -28,7 +28,7 @@ const TokenCard = () => {
         <div className="border-y border-[#4A587B] mt-4 p-[10px_0_8px]">
           <Heading6 clr="text-white">
             Token Price ={" "}
-            <span className="text-[color:var(--color-primary)]">0.05 $ in BNB</span>
+            <span className="text-[color:var(--color-primary)]">0.05 $</span>
           </Heading6>
         </div>
         <div className="my-[30px]">
