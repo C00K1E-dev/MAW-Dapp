@@ -29,10 +29,10 @@ const ApacheChart = () => {
           radius: '50%',
           data: [
             {
-              value: 20,
-              name: 'Staking Rewards 20%',
-              itemStyle: { color: '#008F95' },
-              label: { color: '#008F95', fontSize: 15, fontWeight: 'bold' } 
+              value: 10,
+              name: 'Presale 10%',
+              itemStyle: { color: '#33E2C9' },
+              label: { color: '#33E2C9', fontSize: 15, fontWeight: 'bold' } 
             },
             {
               value: 10,
@@ -41,35 +41,24 @@ const ApacheChart = () => {
               label: { color: '#D1D5E3', fontSize: 15, fontWeight: 'bold' } 
             },
             {
-              value: 10,
-              name: 'Reserve 10%',
+              value: 5,
+              name: 'Reserve 5%',
               itemStyle: { color: '#CCBADF' },
               label: { color: '#CCBADF', fontSize: 15, fontWeight: 'bold' } 
             },
             {
               value: 20,
-              name: 'Marketing (including airdrops) 20%',
-              itemStyle: { color: '#2D8EA4' },
-              label: { color: '#2D8EA4', fontSize: 15, fontWeight: 'bold' } 
+              name: 'Staking Rewards 20%',
+              itemStyle: { color: '#008F95' },
+              label: { color: '#008F95', fontSize: 15, fontWeight: 'bold' } 
             },
             {
-              value: 20,
-              name: 'Liquidity Pools 20%',
+              value: 55,
+              name: 'Public 55%',
               itemStyle: { color: '#29647C' },
               label: { color: '#29647C', fontSize: 15, fontWeight: 'bold' } 
             },
-            {
-              value: 10,
-              name: 'Presale 10%',
-              itemStyle: { color: '#33E2C9' },
-              label: { color: '#33E2C9', fontSize: 15, fontWeight: 'bold' } 
-            },
-            {
-              value: 10,
-              name: 'Development Fund 10%',
-              itemStyle: { color: '#A0A5C2' },
-              label: { color: '#A0A5C2', fontSize: 15, fontWeight: 'bold' } 
-            }
+              
           ],
           emphasis: {
             itemStyle: {
