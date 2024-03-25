@@ -15,7 +15,7 @@ const Token = () => {
           <div className="w-full md:w-10/12 lg:w-6/12 mt-[-40px] md:mt-[-100px]">
             <div className="flex flex-col items-center">
               <Heading5>Mint and Win Token</Heading5>
-              <Headingcontract>0x3504a26843A7dE2795f4B6BF7d096A2c4D5c52F7</Headingcontract>
+              <Headingcontract>0xf3157603B6B76f051C0195369eaC1030a41af4d2</Headingcontract>
               <a href="/docs/Whitepaper.pdf" target="_blank" rel="noopener noreferrer">
                 <button className="btn btn--primary">
                   View Whitepaper
