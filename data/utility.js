@@ -9,7 +9,7 @@ export const utilityData = [
     img: token,
     title: "Token",
     details:
-      "The Mint and Win utility token is MAW. It is an liquidity generator token, that means that a percentage of every transaction goes to the liquidity pool. More details available in the WhitePaper",
+      "The Mint and Win utility token is MAW. More details available in the WhitePaper",
   },
   {
     id: "2",

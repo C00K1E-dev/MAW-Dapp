@@ -706,4 +706,4 @@ export const vipabi = [
     "type": "function"
   }
 ]
-export const VIP_CONTRACT_ADDRESS ="0x7CF92edA772eFB4326d998c8cC26C679797426c4";
+export const VIP_CONTRACT_ADDRESS ="0x09d7fce3349BC9efB7a3004C7Ba4683F38cb54c2";
