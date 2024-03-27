@@ -17,7 +17,7 @@ const ApacheChart = () => {
         bottom: 'left',
         textStyle: {
           fontFamily: 'Jost',
-          color: 'inherit', 
+          color: 'inherit',
           fontWeight: 'bold',
           fontSize: 15
         }
@@ -32,33 +32,32 @@ const ApacheChart = () => {
               value: 10,
               name: 'Presale 10%',
               itemStyle: { color: '#33E2C9' },
-              label: { color: '#33E2C9', fontSize: 15, fontWeight: 'bold' } 
+              label: { color: '#33E2C9', fontSize: 15, fontWeight: 'bold' }
             },
             {
               value: 10,
               name: 'Team 10%',
               itemStyle: { color: '#D1D5E3' },
-              label: { color: '#D1D5E3', fontSize: 15, fontWeight: 'bold' } 
+              label: { color: '#D1D5E3', fontSize: 15, fontWeight: 'bold' }
             },
             {
               value: 5,
               name: 'Reserve 5%',
               itemStyle: { color: '#CCBADF' },
-              label: { color: '#CCBADF', fontSize: 15, fontWeight: 'bold' } 
+              label: { color: '#CCBADF', fontSize: 15, fontWeight: 'bold' }
             },
             {
               value: 20,
               name: 'Staking Rewards 20%',
               itemStyle: { color: '#008F95' },
-              label: { color: '#008F95', fontSize: 15, fontWeight: 'bold' } 
+              label: { color: '#008F95', fontSize: 15, fontWeight: 'bold' }
             },
             {
               value: 55,
               name: 'Public 55%',
               itemStyle: { color: '#29647C' },
-              label: { color: '#29647C', fontSize: 15, fontWeight: 'bold' } 
+              label: { color: '#29647C', fontSize: 15, fontWeight: 'bold' }
             },
-              
           ],
           emphasis: {
             itemStyle: {
@@ -74,13 +73,21 @@ const ApacheChart = () => {
     // Set the chart option
     myChart.setOption(option);
 
+    // Resize chart when window size changes
+    const handleResize = () => {
+      myChart.resize();
+    };
+
+    window.addEventListener('resize', handleResize);
+
     // Cleanup when component unmounts
     return () => {
+      window.removeEventListener('resize', handleResize);
       myChart.dispose();
     };
   }, []);
 
-  return <div ref={chartRef} style={{ width:'100%',height: '490px' }} />;
+  return <div ref={chartRef} style={{ width: '100%', height: '490px', marginBottom: '20px' }} />;
 };
 
 export default ApacheChart;

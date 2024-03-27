@@ -536,3 +536,9 @@ ul li::marker {
   border-radius: 5px;
   border: 2px solid rgba(255, 255, 255, 0.2); /* Add a border to the scrollbar thumb */
 }
+
+.btn--whitepaper {
+  /* Additional styles specific to the "View Whitepaper" button */
+  z-index: 10; /* Ensure it's above other elements */
+  position: relative; /* Ensure proper positioning */
+}
