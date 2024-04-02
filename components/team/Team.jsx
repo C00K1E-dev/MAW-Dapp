@@ -14,7 +14,7 @@ const Team = () => {
       <div className="max-w-[1296px] m-auto">
         <div className="w-full lg:w-1/2 m-auto text-center">
           <Heading5>Meet Our</Heading5>
-          <Heading2>Team Members of the Project</Heading2>
+          <Heading2>Founder of the Project</Heading2>
           <p className="mt-[10px]">
           Mint and Win is the brainchild of a dedicated solo developer, Andrei. With a passion for innovation and a drive to create something extraordinary, Andrei welcomes collaborations with fellow enthusiasts, artists, entrepreneurs, and experts in blockchain technology. Together, we can transform ideas into reality and drive Mint and Win towards its ambitious goals.
           </p>
