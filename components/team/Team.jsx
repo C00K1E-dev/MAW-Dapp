@@ -16,9 +16,7 @@ const Team = () => {
           <Heading5>Meet Our</Heading5>
           <Heading2>Team Members of the Project</Heading2>
           <p className="mt-[10px]">
-            Mint and Win team includes successful artists, entrepreneurs, marketing
-            geniuses, blockchain specialists, and financial professionals. These
-            members have the technologies and methods to drive Mint and Win goal.
+          Mint and Win is the brainchild of a dedicated solo developer, Andrei. With a passion for innovation and a drive to create something extraordinary, Andrei welcomes collaborations with fellow enthusiasts, artists, entrepreneurs, and experts in blockchain technology. Together, we can transform ideas into reality and drive Mint and Win towards its ambitious goals.
           </p>
         </div>
 

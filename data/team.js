@@ -8,7 +8,4 @@ export const teamData = [
     designation: "Product Owner and Developer",
     linkedin: "https://www.linkedin.com/in/andrei-galea-a2a8b9278/",
   },
-
-
-
 ];
