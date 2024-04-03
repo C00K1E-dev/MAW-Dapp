@@ -3,6 +3,7 @@ import { roadmapData } from "../../data/roadmap";
 import Heading2 from "../headings/Heading2";
 import Heading3 from "../headings/Heading3";
 import Heading6 from "../headings/Heading6";
+import MawverseShowcase from "../mawverseShowcase/MawverseShowcase";
 
 const Roadmap = () => {
   return (
@@ -57,9 +58,19 @@ const Roadmap = () => {
 
         <div className="text-center mt-[10px]">
           <Heading3>
-            ENTERING METAVERSE
+             2025 ENTERING MAWVerse
           </Heading3>
         </div>
+
+        {/* New component usage with improved text */}
+        <div className="max-w-[800px] mt-4 sm:mt-6 px-4 sm:px-0 mx-auto">
+          <MawverseShowcase
+            imageUrl="/images/mawverse.png"
+            text="Best suited for content creators and influencers. Vote for NFTs to increase the value! Is that possible?!? On MAWVerse, yes! Free Speech! NO ADS??? It's like having YouTube Premium without paying for Premium. Perhaps a Meta killer? A YouTube/Twitch and so on Killer??? MAWVerse will revolutionize the industry. Stay Tuned for announcements!"
+            className="mx-auto"
+          />
+        </div>
+        
       </div>
     </section>
   );
