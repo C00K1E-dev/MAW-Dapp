@@ -1,7 +1,7 @@
 export const roadmapData = [
   {
     id: "1",
-    questionNumber: "2024 Q1",
+    questionNumber: "2024 Q2",
     phase: {
       number: "1",
       titles: [
@@ -15,7 +15,7 @@ export const roadmapData = [
   },
   {
     id: "2",
-    questionNumber: "2024 Q2",
+    questionNumber: "2024 Q3",
     phase: {
       number: "2",
       titles: [
@@ -27,7 +27,7 @@ export const roadmapData = [
   },
   {
     id: "3",
-    questionNumber: "2024 Q3",
+    questionNumber: "2024 Q4",
     phase: {
       number: "3",
       titles: [
@@ -40,7 +40,7 @@ export const roadmapData = [
   },
   {
     id: "4",
-    questionNumber: "2024 Q4",
+    questionNumber: "2025 Q1",
     phase: {
       number: "4",
       titles: [
@@ -48,6 +48,17 @@ export const roadmapData = [
         "Establish a revenue-sharing program for NFT creators and holders",
         "Launch a charity program to support causes related to art, culture, and technology",
         "Explore ways to reduce the environmental impact of the Mint and Win platform",
+      ],
+    },
+  },
+  {
+    id: "5",
+    questionNumber: "2025 Q2",
+    phase: {
+      number: "4",
+      titles: [
+        "Launching of Decentralized Social Platform MAWVerse best suited for content creators and influencers",
+        "Dive into the virtual realm and explore opportunities to integrate Mint and Win within the Metaverse, offering users a more immersive experience.",
       ],
     },
   },
