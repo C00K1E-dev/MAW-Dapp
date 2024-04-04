@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaDiscord, FaInstagram, FaTelegram, FaTiktok,  } from "react-icons/fa";
+import {  FaTelegram, FaTiktok,  } from "react-icons/fa";
 import CustomTwitterIcon from "../icons/CustomTwitterIcon";
 
 const Social = () => (
@@ -7,7 +7,7 @@ const Social = () => (
     {[
       ["1", CustomTwitterIcon, "https://twitter.com/MAW_MintandWin"],
       ["2", FaTelegram, "https://t.me/mintandwin"],
-      ["3", FaDiscord, "https://discord.gg/7a5Ye6NcHF"],
+      
     ].map(([id, SocialIcon, href]) => (
       <a
         key={id}

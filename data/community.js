@@ -1,4 +1,4 @@
-import { FaDiscord, FaTelegramPlane } from "react-icons/fa";
+import {  FaTelegramPlane } from "react-icons/fa";
 import CustomTwitterIcon from "../components/icons/CustomTwitterIcon";
 
 export const communityData = [
@@ -15,13 +15,6 @@ export const communityData = [
     title: "Telegram",
     desc: "Announcements and community",
     link: "https://t.me/mintandwin",
-  },
-  {
-    id: "3",
-    icon: <FaDiscord />,
-    title: "Discord",
-    desc: "Chat with the community",
-    link: "https://discord.gg/7a5Ye6NcHF",
   },
 
 ];
