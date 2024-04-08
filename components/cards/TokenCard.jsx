@@ -21,8 +21,8 @@ const TokenCard = () => {
         <Heading4>MAW Token</Heading4>
         <div className="flex justify-center gap-2 mt-[20px]">
           <Heading6 clr="text-white">
-            <span className="text-[color:var(--color-primary)]">1 milion </span>
-            Available in this presale phase
+            <span className="text-[color:var(--color-primary)]">Presale Coming Soon </span>
+            
           </Heading6>
         </div>
         <div className="border-y border-[#4A587B] mt-4 p-[10px_0_8px]">
@@ -32,7 +32,9 @@ const TokenCard = () => {
           </Heading6>
         </div>
         <div className="my-[30px]">
-          <GemPadButton/>
+          <Heading6 clr="text-white">
+            COMING SOON
+          </Heading6>
         </div>
       </div>
     </div>
