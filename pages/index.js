@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import CookieConsent from "../components/CookieConsent"; 
 import About from "../components/about/About";
+import Intro from "../components/intro/Intro";
 import Community from "../components/community/Community";
 import Faq from "../components/faq/Faq";
 import Footer from "../components/footer/Footer";
@@ -62,6 +63,7 @@ const Home = () => {
           <CookieConsent />
           <Hero />
           <About />
+          <Intro />
           <Lottery/>
           <Upcoming />
           <VIP />
