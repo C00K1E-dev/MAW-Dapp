@@ -12,7 +12,7 @@ const Intro = ({ imageUrl, text }) => {
                     Mint and Win is poised to revolutionize the BSC ecosystem, offering a unique fusion of NFTs, Metaverse, Rewards, DeFi, and DeSo all in one platform for unparalleled user experience and substantial gains.
                 </p>
                 <p className="max-w-[800px] mt-4 sm:mt-6 px-4 sm:px-0 mx-auto">
-                    Unlike many projects, we believe in transparency and utility. Our team doesn't hide behind gimmicky images of monkeys or dogs or any other meme token NFTs, nor do we use nicknames. We are dedicated to building a project that stands on its merits and delivers real value to our community.
+                    Unlike many projects, we believe in transparency and utility. Our Founder and core developer doesn't hide behind gimmicky images of monkeys or dogs or any other meme token NFTs, nor does he use nicknames. We are dedicated to building a project that stands on its merits and delivers real value to our community.
                 </p>
                 <p className="max-w-[800px] mt-4 sm:mt-6 px-4 sm:px-0 mx-auto">
                     Our token not only offers utility within the Mint and Win ecosystem but also provides an opportunity for users to generate passive income through our upcoming staking platform.
